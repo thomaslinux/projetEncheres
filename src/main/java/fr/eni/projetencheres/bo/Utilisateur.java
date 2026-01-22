@@ -1,7 +1,7 @@
 package fr.eni.projetencheres.bo;
 
 public class Utilisateur {
-    private Long id_utilisateur;
+    private long id_utilisateur;
     private String pseudo;
     private String nom;
     private String prenom;
@@ -26,11 +26,11 @@ public class Utilisateur {
                 '}';
     }
 
-    public Long getId_utilisateur() {
+    public long getId_utilisateur() {
         return id_utilisateur;
     }
 
-    public void setId_utilisateur(Long id_utilisateur) {
+    public void setId_utilisateur(long id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
     }
 
@@ -98,7 +98,7 @@ public class Utilisateur {
         this.code_postal = code_postal;
     }
 
-    public Utilisateur(Long id_utilisateur, String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal) {
+    public Utilisateur(long id_utilisateur, String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal) {
         this.id_utilisateur = id_utilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
