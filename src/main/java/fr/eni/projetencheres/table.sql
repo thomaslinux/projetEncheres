@@ -1,3 +1,8 @@
+/*Créer manuellement dans SSMS la table projet_enchere*/
+
+USE projet_enchere;
+GO
+
 CREATE TABLE CATEGORIE (
 	id_categorie INTEGER IDENTITY(1,1) NOT NULL,
     libelle        VARCHAR(30) NOT NULL,
