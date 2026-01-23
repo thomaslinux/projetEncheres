@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Profile("SQL")
 public class CategorieDaoSQL implements CategorieDao{
 
     JdbcTemplate jdbcTemplate;
