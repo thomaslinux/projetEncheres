@@ -1,15 +1,19 @@
 package fr.eni.projetencheres.repository;
 
 import fr.eni.projetencheres.bo.Categorie;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+@Profile("SQL")
 public class CategorieDaoSQL implements CategorieDao{
 
     JdbcTemplate jdbcTemplate;
@@ -22,12 +26,16 @@ public class CategorieDaoSQL implements CategorieDao{
 
     @Override
     public List<Categorie> readCategories() {
-        return List.of();
+        String sql = """
+                select * from Categorie
+                """;
+
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Categorie.class));
     }
 
     @Override
     public void addCategorie(Categorie categorie) {
-        // recupere ID SQL de element ajoute une fois ajoute dans la table sql
+        // recupere ID SQL de categorie, une fois categorie inserted dans la table sql
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
         String sql = "insert into [Categorie] (libelle) values (:libelle)";
 
@@ -46,7 +54,7 @@ public class CategorieDaoSQL implements CategorieDao{
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_categorie", id);
 
-        return namedParameterJdbcTemplate.queryForObject(sql,map, new BeanPropertyRowMapper<>(Categorie.class))
+        return namedParameterJdbcTemplate.queryForObject(sql,map, new BeanPropertyRowMapper<>(Categorie.class));
     }
 
     @Override
