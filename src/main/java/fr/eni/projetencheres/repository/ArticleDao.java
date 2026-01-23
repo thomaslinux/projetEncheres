@@ -1,5 +1,9 @@
 package fr.eni.projetencheres.repository;
 
+import fr.eni.projetencheres.bo.Article;
+
+import java.util.List;
+
 public interface ArticleDao {
     public List<Article> readArticles();
 
