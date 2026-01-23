@@ -44,8 +44,8 @@ class ProjetEncheresApplicationTests {
         System.out.println("Avant update :");
         utilisateurDao.addUtilisateur(jeanMich);
         System.out.println(utilisateurDao.readUtilisateurs());
-        utilisateurDao.updateUtilisateur(new Utilisateur(3, "jeanMich2", "Jean-Michel2", "Cherel2", "jmcherel2@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true));
-
+        utilisateurDao.updateUtilisateur(new Utilisateur(8, "jeanMich2", "Jean-Michel2", "Cherel2", "jmcherel2@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true));
+        System.out.println(utilisateurDao.readUtilisateurs());
 
     }
 }
