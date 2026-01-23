@@ -1,0 +1,45 @@
+<html data-th-fragment="frag_layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <!--  la abalise sera remplacée par le contenu de title -->
+    <title>EniEncheres</title>
+
+    <link rel="stylesheet" href="/static/general.css">
+</head>
+
+<body class="master">
+
+<header>
+    <h1 id="nav-title">Eni Encheres</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/">S'inscrire</a></li>
+            <li><a href="/">Se Connecter</a></li>
+
+            <li><a class="nav-link" href="/">Accueil</a></li>
+            <li th:if="${#authorization.expression('hasRole(''UTILISATEUR'')')}">
+                <a class="nav-link" href="/">Enchères</a>
+            </li>
+
+
+            <!--  copie/colle du dernier TP barbie de Julian -->
+            <li th:if="${#authorization.expression('isAuthenticated()')}">
+                <form th:action="@{/logout}" method="post">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}">
+                    <button type="submit" class="nav-link">Déconnexion</button>
+                </form>
+            </li>
+        </ul>
+
+    </nav>
+</header>
+
+<main data-th-replace="${content}"></main>
+
+<footer>
+    <p>&copy;D2WM LTS</p>
+</footer>
+</body>
+</html>
