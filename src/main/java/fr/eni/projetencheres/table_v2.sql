@@ -1,7 +1,7 @@
 /*Créer manuellement dans SSMS la table projet_enchere*/
 
-CREATE DATABASE projet_enchere;
-GO
+--CREATE DATABASE projet_enchere;
+--GO
 USE projet_enchere;
 GO
 
