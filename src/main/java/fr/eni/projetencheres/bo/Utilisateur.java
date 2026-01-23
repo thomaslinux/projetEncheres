@@ -10,20 +10,43 @@ public class Utilisateur {
     private String telephone;
     private String rue;
     private String code_postal;
+    private String ville;
+    private int credit;
+    private boolean administrateur;
+    private boolean actif;
 
-    @Override
-    public String toString() {
-        return "Utilisateur{" +
-                "id_utilisateur=" + id_utilisateur +
-                ", pseudo='" + pseudo + '\'' +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", rue='" + rue + '\'' +
-                ", code_postal='" + code_postal + '\'' +
-                '}';
+    public Utilisateur() {
+    }
+
+    public Utilisateur(long id_utilisateur, String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal, String ville, int credit, boolean administrateur, boolean actif) {
+        this.id_utilisateur = id_utilisateur;
+        this.pseudo = pseudo;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.telephone = telephone;
+        this.rue = rue;
+        this.code_postal = code_postal;
+        this.ville = ville;
+        this.credit = credit;
+        this.administrateur = administrateur;
+        this.actif = actif;
+    }
+
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal, String ville, int credit, boolean administrateur, boolean actif) {
+        this.pseudo = pseudo;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.telephone = telephone;
+        this.rue = rue;
+        this.code_postal = code_postal;
+        this.ville = ville;
+        this.credit = credit;
+        this.administrateur = administrateur;
+        this.actif = actif;
     }
 
     public long getId_utilisateur() {
@@ -98,29 +121,54 @@ public class Utilisateur {
         this.code_postal = code_postal;
     }
 
-    public Utilisateur(long id_utilisateur, String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal) {
-        this.id_utilisateur = id_utilisateur;
-        this.pseudo = pseudo;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.password = password;
-        this.telephone = telephone;
-        this.rue = rue;
-        this.code_postal = code_postal;
+    public String getVille() {
+        return ville;
     }
 
-    public Utilisateur(String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal) {
-        this.pseudo = pseudo;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.password = password;
-        this.telephone = telephone;
-        this.rue = rue;
-        this.code_postal = code_postal;
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 
-    public Utilisateur() {
+    public int getCredit() {
+        return credit;
+    }
+
+    public void setCredit(int credit) {
+        this.credit = credit;
+    }
+
+    public boolean isAdministrateur() {
+        return administrateur;
+    }
+
+    public void setAdministrateur(boolean administrateur) {
+        this.administrateur = administrateur;
+    }
+
+    public boolean isActif() {
+        return actif;
+    }
+
+    public void setActif(boolean actif) {
+        this.actif = actif;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "id_utilisateur=" + id_utilisateur +
+                ", pseudo='" + pseudo + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", rue='" + rue + '\'' +
+                ", code_postal='" + code_postal + '\'' +
+                ", ville='" + ville + '\'' +
+                ", credit='" + credit + '\'' +
+                ", administrateur=" + administrateur +
+                ", actif=" + actif +
+                '}';
     }
 }
