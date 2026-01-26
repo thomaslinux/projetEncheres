@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 
 public class Article {
- private long id_article;
+    private long id_article;
     private String nom_article;
     private String description;
     private LocalDate date_debut_encheres;
