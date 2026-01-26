@@ -31,4 +31,8 @@ public class CategorieDaoTests {
         System.out.println("Categorie list after delete");
         categorieDao.readCategories().forEach(System.out::println);
     }
+
+    void testUpdateCategorie() {
+
+    }
 }
