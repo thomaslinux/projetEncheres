@@ -25,11 +25,9 @@ public class CategorieDaoTests {
 
     @Test
     void testDeleteCategorie() {
-//        Categorie categorie = new Categorie(1,"Ordinateur");
-//        categorieDao.addCategorie(categorie);
-//        System.out.println("Categorie list before delete");
-//        categorieDao.readCategories().forEach(System.out::println);
-        categorieDao.deleteCategorie(1);
+        Categorie categorie = new Categorie(2,"Tableau");
+        categorieDao.addCategorie(categorie);
+        categorieDao.deleteCategorie(2);
         System.out.println("Categorie list after delete");
         categorieDao.readCategories().forEach(System.out::println);
     }
