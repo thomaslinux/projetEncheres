@@ -1,6 +1,6 @@
 package fr.eni.projetencheres;
 
-import fr.eni.projetencheres.Service.UtilisateurService;
+import fr.eni.projetencheres.service.UtilisateurService;
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.CategorieDao;
 import fr.eni.projetencheres.repository.UtilisateurDao;

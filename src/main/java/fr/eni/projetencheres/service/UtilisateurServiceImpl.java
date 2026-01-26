@@ -1,4 +1,4 @@
-package fr.eni.projetencheres.Service;
+package fr.eni.projetencheres.service;
 
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.UtilisateurDao;
