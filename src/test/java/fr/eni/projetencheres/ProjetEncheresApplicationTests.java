@@ -1,6 +1,7 @@
 package fr.eni.projetencheres;
 
 import fr.eni.projetencheres.bo.Utilisateur;
+import fr.eni.projetencheres.repository.CategorieDao;
 import fr.eni.projetencheres.repository.UtilisateurDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,13 @@ class ProjetEncheresApplicationTests {
     @Autowired
     UtilisateurDao utilisateurDao;
 
+    @Autowired
+    CategorieDao categorieDao;
+
+    // fonctionne
     @Test
-    void contextLoads() {
+    void testCategorieReadAllCategorie() {
+        categorieDao.readCategories().forEach(System.out::println);
     }
 
     @Test
