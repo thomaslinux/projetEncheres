@@ -34,18 +34,18 @@ public class EnchereDaoSQL implements EnchereDao{
     // TODO test
     @Override
     public void addEnchere(Enchere enchere) {
-        // recupere ID SQL de enchere, une fois enchere inserted dans la table sql
-        GeneratedKeyHolder kh = new GeneratedKeyHolder();
-        String sql = """
-                insert into [Enchere] (date_enchere,montant_enchere,id_utilisateur,id_article) 
-                values (:date_enchere,:montant_enchere,:id_utilisateur,:id_article)
-                """;
-        BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(enchere);
-
-        namedParameterJdbcTemplate.update(sql, map, kh);
-
-        //récupération de l'id
-        enchere.setId_enchere(kh.getKey().longValue());
+//        // recupere ID SQL de enchere, une fois enchere inserted dans la table sql
+//        GeneratedKeyHolder kh = new GeneratedKeyHolder();
+//        String sql = """
+//                insert into [Enchere] (date_enchere,montant_enchere,id_utilisateur,id_article)
+//                values (:date_enchere,:montant_enchere,:id_utilisateur,:id_article)
+//                """;
+//        BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(enchere);
+//
+//        namedParameterJdbcTemplate.update(sql, map, kh);
+//
+//        //récupération de l'id
+//        enchere.setId_enchere(kh.getKey().longValue());
   }
 
     // TODO test
@@ -62,12 +62,12 @@ public class EnchereDaoSQL implements EnchereDao{
     // TODO test
     @Override
     public void deleteEnchere(long id) {
-//        String sql = "delete from [Enchere] where id_enchere =:id";
-//
-//        MapSqlParameterSource map = new MapSqlParameterSource();
-//        map.addValue("id", id);
-//
-//        namedParameterJdbcTemplate.update(sql, map);
+        String sql = "delete from [Enchere] where id_enchere =:id";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", id);
+
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
     // TODO test
