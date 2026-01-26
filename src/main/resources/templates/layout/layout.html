@@ -12,15 +12,16 @@
 <body class="master">
 
 <header>
-    <h1 id="nav-title">Eni Encheres</h1>
+    <h1 id="nav-title" /> <a href="/">Eni Enchères </a> </h1>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
+
             <li><a href="/">Accueil</a></li>
             <li><a href="/">S'inscrire</a></li>
-            <li><a href="/">Se Connecter</a></li>
+            <li><a href="/login">Se Connecter</a></li>
 
-            <li><a class="nav-link" href="/">Accueil</a></li>
+
+
             <li th:if="${#authorization.expression('hasRole(''UTILISATEUR'')')}">
                 <a class="nav-link" href="/">Enchères</a>
             </li>
