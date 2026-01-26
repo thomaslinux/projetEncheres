@@ -18,21 +18,22 @@ public class CategorieDaoTests {
 
     @Test
     void testAddCategorie() {
-        Categorie categorie = new Categorie(1,"Ordinateur");
+        Categorie categorie = new Categorie("Ordinateur");
         categorieDao.addCategorie(categorie);
         System.out.println(categorie);
     }
 
     @Test
     void testDeleteCategorie() {
-        Categorie categorie = new Categorie(2,"Tableau");
+        Categorie categorie = new Categorie("Tableau");
         categorieDao.addCategorie(categorie);
-        categorieDao.deleteCategorie(2);
+        categorieDao.deleteCategorie(categorie.getId_categorie());
         System.out.println("Categorie list after delete");
         categorieDao.readCategories().forEach(System.out::println);
     }
 
+    @Test
     void testUpdateCategorie() {
-
+        categorieDao.updateCategorie(new Categorie(1,"Informatique"));
     }
 }
