@@ -51,7 +51,7 @@ public class CategorieDaoSQL implements CategorieDao{
         String sql = "select * from [Categorie] where id_categorie =:id";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
-        map.addValue("id_categorie", id);
+        map.addValue("id", id);
 
         return namedParameterJdbcTemplate.queryForObject(sql,map, new BeanPropertyRowMapper<>(Categorie.class));
     }
@@ -61,7 +61,7 @@ public class CategorieDaoSQL implements CategorieDao{
         String sql = "delete from [Categorie] where id_categorie =:id";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
-        map.addValue("id_categorie", id);
+        map.addValue("id", id);
 
         namedParameterJdbcTemplate.update(sql, map);
     }
@@ -72,7 +72,7 @@ public class CategorieDaoSQL implements CategorieDao{
                 update [Categorie] set  libelle = :libelle where id_categorie =:id
                 """;
         MapSqlParameterSource map = new MapSqlParameterSource();
-        map.addValue("id_categorie", categorie.getId_categorie());
+        map.addValue("id", categorie.getId_categorie());
         map.addValue("libelle", categorie.getLibelle());
 
         namedParameterJdbcTemplate.update(sql, map);
