@@ -6,7 +6,8 @@ public class Enchere {
     private long id;
     private LocalDate date_enchere;
     private int montant_enchere;
-
+    private Utilisateur utilisateur;
+    private Article article;
 
     @Override
     public String toString() {
@@ -14,13 +15,24 @@ public class Enchere {
                 "id=" + id +
                 ", date_enchere=" + date_enchere +
                 ", montant_enchere=" + montant_enchere +
+                ", utilisateur=" + utilisateur +
+                ", article=" + article +
                 '}';
     }
 
-    public Enchere(long id, LocalDate date_enchere, int montant_enchere) {
+    public Enchere(long id, LocalDate date_enchere, int montant_enchere, Utilisateur utilisateur, Article article) {
         this.id = id;
         this.date_enchere = date_enchere;
         this.montant_enchere = montant_enchere;
+        this.utilisateur = utilisateur;
+        this.article = article;
+    }
+
+    public Enchere(LocalDate date_enchere, int montant_enchere, Utilisateur utilisateur, Article article) {
+        this.date_enchere = date_enchere;
+        this.montant_enchere = montant_enchere;
+        this.utilisateur = utilisateur;
+        this.article = article;
     }
 
     public Enchere() {
@@ -50,11 +62,19 @@ public class Enchere {
         this.montant_enchere = montant_enchere;
     }
 
-    public Enchere(LocalDate date_enchere, int montant_enchere) {
-        this.date_enchere = date_enchere;
-        this.montant_enchere = montant_enchere;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
 
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 
+    public Article getArticle() {
+        return article;
+    }
 
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }
