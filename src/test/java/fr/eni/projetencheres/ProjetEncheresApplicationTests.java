@@ -12,6 +12,8 @@ class ProjetEncheresApplicationTests {
 
     @Autowired
     UtilisateurService utilisateurService;
+
+    @Autowired
     UtilisateurDao utilisateurDao;
 
     @Test

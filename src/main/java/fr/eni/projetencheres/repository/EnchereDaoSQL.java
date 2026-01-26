@@ -31,21 +31,24 @@ public class EnchereDaoSQL implements EnchereDao{
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Enchere.class));
     }
 
-    // TODO
+    // TODO test
     @Override
     public void addEnchere(Enchere enchere) {
 //        // recupere ID SQL de enchere, une fois enchere inserted dans la table sql
 //        GeneratedKeyHolder kh = new GeneratedKeyHolder();
-////        String sql = "insert into [Enchere] (libelle) values (:libelle)";
-//
+//        String sql = """
+//                insert into [Enchere] (date_enchere,montant_enchere,id_utilisateur,id_article)
+//                values (:date_enchere,:montant_enchere,:id_utilisateur,:id_article)
+//                """;
 //        BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(enchere);
 //
 //        namedParameterJdbcTemplate.update(sql, map, kh);
 //
 //        //récupération de l'id
-//        enchere.setId(kh.getKey().longValue());
+//        enchere.setId_enchere(kh.getKey().longValue());
   }
 
+    // TODO test
     @Override
     public Enchere getEnchere(long id) {
         String sql = "select * from [Enchere] where id_enchere =:id";
@@ -56,27 +59,31 @@ public class EnchereDaoSQL implements EnchereDao{
         return namedParameterJdbcTemplate.queryForObject(sql,map, new BeanPropertyRowMapper<>(Enchere.class));
     }
 
-    // TODO
+    // TODO test
     @Override
     public void deleteEnchere(long id) {
-//        String sql = "delete from [Enchere] where id_enchere =:id";
-//
-//        MapSqlParameterSource map = new MapSqlParameterSource();
-//        map.addValue("id", id);
-//
-//        namedParameterJdbcTemplate.update(sql, map);
+        String sql = "delete from [Enchere] where id_enchere =:id";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", id);
+
+        namedParameterJdbcTemplate.update(sql, map);
     }
 
-    // TODO
+    // TODO test
     @Override
     public void updateEnchere(Enchere enchere) {
-//        String sql = """
-////                update [Enchere] set  libelle = :libelle where id_enchere =:id
-//                """;
-////        MapSqlParameterSource map = new MapSqlParameterSource();
-////        map.addValue("id", enchere.getId_enchere());
-////        map.addValue("libelle", enchere.getLibelle());
-//
-//        namedParameterJdbcTemplate.update(sql, map);
+        String sql = """
+                update [Enchere]
+                set montant_enchere = :montant_enchere, 
+                    date_enchere = :date_enchere,
+                    id_utilisateur = :id_utilisateur,
+                    id_article = :id_article
+                where id_enchere = :id_enchere
+                """;
+
+        BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(enchere);
+
+        namedParameterJdbcTemplate.update(sql, map);
     }
 }

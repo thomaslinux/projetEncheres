@@ -38,11 +38,11 @@ public class Enchere {
     public Enchere() {
     }
 
-    public long getId() {
+    public long getId_enchere() {
         return id_enchere;
     }
 
-    public void setId(long id_enchere) {
+    public void setId_enchere(long id_enchere) {
         this.id_enchere = id_enchere;
     }
 
