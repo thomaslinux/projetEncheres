@@ -64,5 +64,7 @@ class ProjetEncheresApplicationTests {
         System.out.println("Delete :");
         utilisateurService.deleteUtilisateur(1);
         System.out.println(utilisateurService.getAllUtilisateurs());
+        System.out.println("1 Utilisateur (get by ID) :");
+        System.out.println(utilisateurService.getUtilisateurById(2));
     }
 }
