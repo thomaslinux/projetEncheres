@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html data-th-replace="~{layout/layout :: frag_layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<main>
+    <h2>Liste des Articles Enchères</h2>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>id_article</th>
+            <th>nom_article</th>
+            <th>description</th>
+            <th>date_debut_encheres</th>
+            <th>date_fin_encheres</th>
+            <th>prix_de_base</th>
+            <th>prix_de_vente</th>
+            <th>vente_en_cours</th>
+            <th>categorie</th>
+
+
+        </tr>
+        </thead>
+    </table>
+</main>
+
+
+</html>
