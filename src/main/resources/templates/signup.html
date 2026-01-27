@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html lang="fr" data-th-replace="~{layout/layout :: frag_layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<!--  tire passé en paramètre -->
+<title>Inscription</title>
+
+<main class="container">
+    <h2>Page d'inscription</h2>
+    <form method="POST" th:action="@{/inscription}">
+        <ul class="flex-outer">
+            <li>
+                <label for="pseudo">Pseudo</label>
+                <input type="text" name="pseudo" id="pseudo" required pattern="[a-zA-Z0-9]+">
+<!--                <span th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>-->
+<!--                ajouter gestion erreur dans Controller-->
+            </li>
+            <li>
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" id="nom" required pattern="[a-zA-Z]+">
+            </li>
+            <li>
+                <label for="prenom">Prenom</label>
+                <input type="text" name="prenom" id="prenom" required pattern="[a-zA-Z]+">
+            </li>
+            <li>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </li>
+            <li>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </li>
+            <li>
+                <label for="telephone">Telephone</label>
+                <input type="text" name="telephone" id="telephone" required>
+            </li>
+            <li>
+                <label for="rue">Rue</label>
+                <input type="text" name="rue" id="rue" required pattern="[a-zA-Z0-9]+">
+            </li>
+            <li>
+                <label for="code_postal">Code_Postal</label>
+                <input type="text" name="code_postal" id="code_postal" required pattern="[0-9]+">
+            </li>
+            <li>
+                <label for="ville">Ville</label>
+                <input type="text" name="ville" id="ville" required pattern="[a-zA-Z]+">
+            </li>
+            <li>
+                <button type="submit">S'inscrire</button>
+            </li>
+        </ul>
+    </form>
+</main>
