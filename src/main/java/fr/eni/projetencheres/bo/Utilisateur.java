@@ -34,7 +34,7 @@ public class Utilisateur {
 
     @NotBlank
     @Size(max = 255)
-    private String adresse;
+    private String rue;
 
     @NotBlank(message = "ne doit pas etre vide")
     @Pattern(regexp = "^[0-9]{5}$")
