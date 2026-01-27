@@ -86,7 +86,7 @@ ALTER TABLE ENCHERE ADD CONSTRAINT enchere_article_fk
 
 CREATE TABLE RETRAIT (
                          id_retrait 			INTEGER 	IDENTITY(1,1),
-                         rue              	VARCHAR(255),
+                         adresse              	VARCHAR(255),
                          code_postal      	VARCHAR(255),
                          ville            	VARCHAR(255),
                          id_article			INTEGER,

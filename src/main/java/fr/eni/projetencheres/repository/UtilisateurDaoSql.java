@@ -90,7 +90,7 @@ public class UtilisateurDaoSql implements UtilisateurDao {
         map.addValue("email", utilisateur.getEmail());
         map.addValue("password", utilisateur.getPassword());
         map.addValue("telephone", utilisateur.getTelephone());
-        map.addValue("rue", utilisateur.getAdresse());
+        map.addValue("adresse", utilisateur.getAdresse());
         map.addValue("code_postal", utilisateur.getCode_postal());
         map.addValue("ville", utilisateur.getVille());
         map.addValue("id_utilisateur", utilisateur.getId_utilisateur());
