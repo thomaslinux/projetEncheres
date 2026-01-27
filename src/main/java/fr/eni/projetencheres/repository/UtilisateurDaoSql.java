@@ -43,17 +43,18 @@ public class UtilisateurDaoSql implements UtilisateurDao {
     @Override
     public void addRoleToUtilisateur(Utilisateur utilisateur) {
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
-        String sql = "INSERT INTO ROLE(id_role, role, id_utilisateur) VALUES (:id_role, :role, :id_utilisateur)";
+        String sql = "INSERT INTO ROLE(role, id_utilisateur) VALUES (:role, :id_utilisateur)";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
 
-        map.addValue("id_role", kh.getKey());
         if (utilisateur.isAdministrateur()) {
             map.addValue("role", "ROLE_ADMIN");
         } else {
             map.addValue("role", "ROLE_UTILISATEUR");
         }
         map.addValue("id_utilisateur", utilisateur.getId_utilisateur());
+
+        namedParameterJdbcTemplate.update(sql, map, kh);
 
 
     }
