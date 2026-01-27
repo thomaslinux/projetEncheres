@@ -3,6 +3,7 @@ package fr.eni.projetencheres.controller;
 
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.UtilisateurDao;
+import fr.eni.projetencheres.service.UtilisateurService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +14,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 
-    UtilisateurDao utilisateurDao;
+    UtilisateurService utilisateurService;
 
-    public LoginController(UtilisateurDao utilisateurDao) {
-        this.utilisateurDao = utilisateurDao;
+    public LoginController(UtilisateurService utilisateurService) {
+        this.utilisateurService = utilisateurService;
     }
 
     @GetMapping({"/login"})
     public String displayLogin() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String handleLogin(Utilisateur utilisateur) {
+        // TODO handleLogin
         return "login";
     }
 
@@ -30,14 +37,14 @@ public class LoginController {
         return "signup";
     }
 
-    // TODO save the utilisateur on submit
-      @PostMapping ("/inscription")
-    public String inscription(@Valid Utilisateur utilisateur, BindingResult result, Model model) {
+    @PostMapping ("/inscription")
+    public String saveInscription(@Valid Utilisateur utilisateur, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "signup"; // renvoie la page avec les erreurs affichées
         }
-        utilisateurDao.addUtilisateur(utilisateur);
-          System.out.println(utilisateur);
+        // TODO do not save the utilisateur if email exists, display email exists
+        utilisateurService.addUtilisateur(utilisateur);
+        System.out.println(utilisateur);
         return "redirect:/login";
       }
 
