@@ -40,11 +40,11 @@ class UtilisateurTests {
     @Test
     void testUpdate() {
 
-        Utilisateur jeanMich = new Utilisateur("jeanMich", "Jean-Michel", "Cherel", "jmcherel@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true);
+        Utilisateur jeanMich = new Utilisateur("jeanMich", "Jean-Michel", "Pichon", "jmpichon@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true);
         System.out.println("Avant update :");
         utilisateurDao.addUtilisateur(jeanMich);
         System.out.println(utilisateurDao.readUtilisateurs());
-        utilisateurDao.updateUtilisateur(new Utilisateur(8, "jeanMich2", "Jean-Michel2", "Cherel2", "jmcherel2@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true));
+        utilisateurDao.updateUtilisateur(new Utilisateur(8, "jeanMich2", "Jean-Michel2", "Pichon2", "jmpichon2@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true));
         System.out.println(utilisateurDao.readUtilisateurs());
 
     }
@@ -52,11 +52,11 @@ class UtilisateurTests {
 
     @Test
     void testServiceAll() {
-        Utilisateur jeanMich = new Utilisateur("jeanMich", "Jean-Michel", "Cherel", "jmcherel@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true);
+        Utilisateur jeanMich = new Utilisateur("jeanMich", "Jean-Michel", "Pichon", "jmpichon@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true);
         utilisateurService.addUtilisateur(jeanMich);
         System.out.println(utilisateurService.getAllUtilisateurs());
         System.out.println("Update :");
-        Utilisateur jeanMich2 = new Utilisateur(1, "jeanMich2", "Jean-Michel2", "Cherel2", "jmcherel2@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true);
+        Utilisateur jeanMich2 = new Utilisateur(1, "jeanMich2", "Jean-Michel2", "Pichon2", "jmpichon2@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true);
         utilisateurService.updateUtilisateur(jeanMich2);
         System.out.println(utilisateurService.getAllUtilisateurs());
         System.out.println("Delete :");
@@ -64,5 +64,12 @@ class UtilisateurTests {
         System.out.println(utilisateurService.getAllUtilisateurs());
         System.out.println("1 Utilisateur (get by ID) :");
         System.out.println(utilisateurService.getUtilisateurById(2));
+    }
+
+    @Test
+    void testRoles() {
+        Utilisateur jeanMich = new Utilisateur("jeanMich", "Jean-Michel", "Pichon", "jmpichon@mail.com", "JEANMICH", "06 66 66 66 66", "12 rue de la ville", "44444", "Ville", 0, false, true);
+        utilisateurService.addUtilisateur(jeanMich);
+        System.out.println(utilisateurService.getAllUtilisateurs());
     }
 }

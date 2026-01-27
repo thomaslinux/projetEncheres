@@ -9,6 +9,8 @@ public interface UtilisateurDao {
 
     void addUtilisateur(Utilisateur utilisateur);
 
+    void addRoleToUtilisateur(Utilisateur utilisateur);
+
     Utilisateur getUtilisateur(long id_utilisateur);
 
     void deleteUtilisateur(long id_utilisateur);

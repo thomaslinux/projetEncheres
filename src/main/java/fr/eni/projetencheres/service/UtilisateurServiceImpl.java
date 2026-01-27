@@ -23,6 +23,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public void addUtilisateur(Utilisateur utilisateur) {
         this.utilisateurDao.addUtilisateur(utilisateur);
+        this.utilisateurDao.addRoleToUtilisateur(utilisateur);
     }
 
     @Override

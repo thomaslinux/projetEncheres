@@ -31,12 +31,31 @@ public class UtilisateurDaoSql implements UtilisateurDao {
     @Override
     public void addUtilisateur(Utilisateur utilisateur) {
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
-        String sql = "INSERT INTO UTILISATEUR(pseudo, nom, prenom, email, password, telephone, rue, code_postal, ville, credit, administrateur, actif) " +
-                     "VALUES (:pseudo, :nom, :prenom, :email, :password, :telephone, :rue, :code_postal, :ville, :credit, :administrateur, :actif)";
+        String sql = "INSERT INTO UTILISATEUR(pseudo, nom, prenom, email, password, telephone, adresse, code_postal, ville, credit, administrateur, actif) " +
+                     "VALUES (:pseudo, :nom, :prenom, :email, :password, :telephone, :adresse, :code_postal, :ville, :credit, :administrateur, :actif)";
+
         BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(utilisateur);
 
         namedParameterJdbcTemplate.update(sql, map, kh);
         utilisateur.setId_utilisateur(kh.getKey().longValue());
+    }
+
+    @Override
+    public void addRoleToUtilisateur(Utilisateur utilisateur) {
+        GeneratedKeyHolder kh = new GeneratedKeyHolder();
+        String sql = "INSERT INTO ROLE(id_role, role, id_utilisateur) VALUES (:id_role, :role, :id_utilisateur)";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+
+        map.addValue("id_role", kh.getKey());
+        if (utilisateur.isAdministrateur()) {
+            map.addValue("role", "ROLE_ADMIN");
+        } else {
+            map.addValue("role", "ROLE_UTILISATEUR");
+        }
+        map.addValue("id_utilisateur", utilisateur.getId_utilisateur());
+
+
     }
 
     @Override
@@ -61,7 +80,7 @@ public class UtilisateurDaoSql implements UtilisateurDao {
     @Override
     public void updateUtilisateur(Utilisateur utilisateur) {
         String sql = "UPDATE UTILISATEUR SET pseudo = :pseudo, nom = :nom, prenom = :prenom, " +
-                "email = :email, password = :password, telephone = :telephone, rue = :rue, " +
+                "email = :email, password = :password, telephone = :telephone, adresse = :adresse, " +
                 "code_postal = :code_postal, ville = :ville WHERE id_utilisateur = :id_utilisateur";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
@@ -71,7 +90,7 @@ public class UtilisateurDaoSql implements UtilisateurDao {
         map.addValue("email", utilisateur.getEmail());
         map.addValue("password", utilisateur.getPassword());
         map.addValue("telephone", utilisateur.getTelephone());
-        map.addValue("rue", utilisateur.getRue());
+        map.addValue("rue", utilisateur.getAdresse());
         map.addValue("code_postal", utilisateur.getCode_postal());
         map.addValue("ville", utilisateur.getVille());
         map.addValue("id_utilisateur", utilisateur.getId_utilisateur());
