@@ -14,41 +14,63 @@
         <ul class="flex-outer">
             <li>
                 <label for="pseudo">Pseudo</label>
-                <input type="text" th:field="*{pseudo}" name="pseudo" id="pseudo" required pattern="[a-zA-Z0-9]+">
-                <span th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
-<!--                ajouter gestion erreur dans Controller-->
+                <input type="text" th:field="*{pseudo}" name="pseudo" id="pseudo" required
+                       pattern="[a-zA-Z0-9]+" title="Que des chiffres et des lettres">
+                <span class="error" th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
             </li>
             <li>
                 <label for="nom">Nom</label>
-                <input type="text" th:field="*{nom}" name="nom" id="nom" required pattern="[a-zA-Z]+">
+                <input type="text" th:field="*{nom}" name="nom" id="nom" required
+                       pattern="[a-zA-Z]+" title="Que des lettres">
+                <span class="error" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+
             </li>
             <li>
                 <label for="prenom">Prenom</label>
-                <input type="text" th:field="*{prenom}" name="prenom" id="prenom" required pattern="[a-zA-Z]+">
+                <input type="text" th:field="*{prenom}" name="prenom" id="prenom" required
+                       pattern="[a-zA-Z]+" title="Que des lettres">
+
+                <span class="error" th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
             </li>
             <li>
                 <label for="email">Email</label>
                 <input type="email" th:field="*{email}" name="email" id="email" required>
+
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
             </li>
             <li>
                 <label for="password">Password</label>
                 <input type="password" th:field="*{password}" name="password" id="password" required>
+
+                <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
             </li>
             <li>
                 <label for="telephone">Telephone</label>
-                <input type="text" th:field="*{telephone}" name="telephone" id="telephone" required>
+                <input type="text" th:field="*{telephone}" name="telephone" id="telephone" required
+                    pattern="^\+?[0-9. ()-]{7,}$" title="Entrez un numero valide">
+
+                <span class="error" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></span>
             </li>
             <li>
                 <label for="adresse">Adresse</label>
-                <input type="text" th:field="*{adresse}" name="adresse" id="adresse" required pattern="[a-zA-Z0-9]+">
+                <input type="text" th:field="*{adresse}" name="adresse" id="adresse" required
+                       pattern="[a-z A-Z0-9]+" title="Que des lettres chiffres et espaces">
+
+                <span class="error" th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></span>
             </li>
             <li>
                 <label for="code_postal">Code_Postal</label>
-                <input type="text" th:field="*{code_postal}" name="code_postal" id="code_postal" required pattern="[0-9]+">
+                <input type="text" th:field="*{code_postal}" name="code_postal" id="code_postal" required
+                       pattern="^[0-9]{5}$" title="Que 5 chiffres">
+
+                <span class="error" th:if="${#fields.hasErrors('code_postal')}" th:errors="*{code_postal}"></span>
             </li>
             <li>
                 <label for="ville">Ville</label>
-                <input type="text" th:field="*{ville}" name="ville" id="ville" required pattern="[a-zA-Z]+">
+                <input type="text" th:field="*{ville}" name="ville" id="ville" required
+                       pattern="[a-z A-Z]+" title="Que des lettres ou espaces">
+
+                <span class="error" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
             </li>
             <li>
                 <button type="submit">S'inscrire</button>
