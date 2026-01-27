@@ -37,7 +37,6 @@ public class EncheresSecurity {
             //Accès du chemin /encheres en Get pour les employés
             auth.
                 requestMatchers(HttpMethod.GET, "/encheres/add").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.POST, "/encheres/create").hasRole("ADMIN")
 
 
             //donne à tous la permission sur la page d'accueil et tous les liens de type /quelquechose
