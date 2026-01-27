@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Retrait {
 
-    private String rue;
+    private String adresse;
     private LocalDate date_enchere;
     private  String ville;
     private Retrait retrait;
@@ -12,15 +12,15 @@ public class Retrait {
     @Override
     public String toString() {
         return "Retrait{" +
-                "rue='" + rue + '\'' +
+                "adresse='" + adresse + '\'' +
                 ", date_enchere=" + date_enchere +
                 ", ville='" + ville + '\'' +
                 ", retrait=" + retrait +
                 '}';
     }
 
-    public Retrait(String rue, LocalDate date_enchere, String ville, Retrait retrait) {
-        this.rue = rue;
+    public Retrait(String adresse, LocalDate date_enchere, String ville, Retrait retrait) {
+        this.adresse = adresse;
         this.date_enchere = date_enchere;
         this.ville = ville;
         this.retrait = retrait;
@@ -29,12 +29,12 @@ public class Retrait {
     public Retrait() {
     }
 
-    public String getRue() {
-        return rue;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setRue(String rue) {
-        this.rue = rue;
+    public void setAdresse(String rue) {
+        this.adresse = adresse;
     }
 
     public LocalDate getDate_enchere() {

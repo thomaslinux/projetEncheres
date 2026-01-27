@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ArticleDaoSQL implements ArticleDao {
@@ -76,8 +77,8 @@ public class ArticleDaoSQL implements ArticleDao {
                 " id_categorie = :id_categorie ";
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("description", article.getDescription());
-        map.addValue("date_debut_enchere", article.getDate_debut_encheres());
-        map.addValue("date_fin_enchere", article.getDate_fin_encheres());
+        map.addValue("date_debut_enchere", article.getDate_debut_enchere());
+        map.addValue("date_fin_enchere", article.getDate_fin_enchere());
         map.addValue("prix_de_base", article.getPrix_de_base());
         map.addValue("prix_de_vente", article.getPrix_de_vente());
         map.addValue("nom_article", article.getNom_article());
@@ -89,6 +90,8 @@ public class ArticleDaoSQL implements ArticleDao {
     }
 
     public Date convertLocalDateToSQL(LocalDate javaDate) {
-        return Date.valueOf(javaDate);
+            return Optional.ofNullable(javaDate)
+                    .map(Date::valueOf)
+                    .orElse(null);
     }
 }

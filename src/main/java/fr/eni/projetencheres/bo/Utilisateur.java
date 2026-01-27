@@ -8,7 +8,7 @@ public class Utilisateur {
     private String email;
     private String password;
     private String telephone;
-    private String rue;
+    private String adresse;
     private String code_postal;
     private String ville;
     private int credit;
@@ -18,7 +18,7 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(long id_utilisateur, String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal, String ville, int credit, boolean administrateur, boolean actif) {
+    public Utilisateur(long id_utilisateur, String pseudo, String nom, String prenom, String email, String password, String telephone, String adresse, String code_postal, String ville, int credit, boolean administrateur, boolean actif) {
         this.id_utilisateur = id_utilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -26,7 +26,7 @@ public class Utilisateur {
         this.email = email;
         this.password = password;
         this.telephone = telephone;
-        this.rue = rue;
+        this.adresse = adresse;
         this.code_postal = code_postal;
         this.ville = ville;
         this.credit = credit;
@@ -34,14 +34,14 @@ public class Utilisateur {
         this.actif = actif;
     }
 
-    public Utilisateur(String pseudo, String nom, String prenom, String email, String password, String telephone, String rue, String code_postal, String ville, int credit, boolean administrateur, boolean actif) {
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String password, String telephone, String adresse, String code_postal, String ville, int credit, boolean administrateur, boolean actif) {
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.password = password;
         this.telephone = telephone;
-        this.rue = rue;
+        this.adresse = adresse;
         this.code_postal = code_postal;
         this.ville = ville;
         this.credit = credit;
@@ -105,12 +105,12 @@ public class Utilisateur {
         this.telephone = telephone;
     }
 
-    public String getRue() {
-        return rue;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setRue(String rue) {
-        this.rue = rue;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public String getCode_postal() {
@@ -163,7 +163,7 @@ public class Utilisateur {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", telephone='" + telephone + '\'' +
-                ", rue='" + rue + '\'' +
+                ", adresse='" + adresse + '\'' +
                 ", code_postal='" + code_postal + '\'' +
                 ", ville='" + ville + '\'' +
                 ", credit='" + credit + '\'' +

@@ -7,8 +7,8 @@ public class Article {
     private long id_article;
     private String nom_article;
     private String description;
-    private LocalDate date_debut_encheres;
-    private LocalDate date_fin_encheres;
+    private LocalDate date_debut_enchere;
+    private LocalDate date_fin_enchere;
     private int prix_de_base;
     private int prix_de_vente;
     private boolean vente_en_cours;
@@ -21,8 +21,8 @@ public class Article {
                 "id_article=" + id_article +
                 ", nom_article='" + nom_article + '\'' +
                 ", description='" + description + '\'' +
-                ", date_debut_encheres=" + date_debut_encheres +
-                ", date_fin_encheres=" + date_fin_encheres +
+                ", date_debut_enchere=" + date_debut_enchere +
+                ", date_fin_enchere=" + date_fin_enchere +
                 ", prix_de_base=" + prix_de_base +
                 ", prix_de_vente=" + prix_de_vente +
                 ", vente_en_cours=" + vente_en_cours +
@@ -34,8 +34,8 @@ public class Article {
         this.id_article = id_article;
         this.nom_article = nom_article;
         this.description = description;
-        this.date_debut_encheres = date_debut_encheres;
-        this.date_fin_encheres = date_fin_encheres;
+        this.date_debut_enchere = date_debut_encheres;
+        this.date_fin_enchere = date_fin_encheres;
         this.prix_de_base = prix_de_base;
         this.prix_de_vente = prix_de_vente;
         this.vente_en_cours = vente_en_cours;
@@ -43,11 +43,11 @@ public class Article {
 
     }
 
-    public Article(String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie) {
+    public Article(String nom_article, String description, LocalDate date_debut_enchere, LocalDate date_fin_enchere, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie) {
         this.nom_article = nom_article;
         this.description = description;
-        this.date_debut_encheres = date_debut_encheres;
-        this.date_fin_encheres = date_fin_encheres;
+        this.date_debut_enchere = date_debut_enchere;
+        this.date_fin_enchere = date_fin_enchere;
         this.prix_de_base = prix_de_base;
         this.prix_de_vente = prix_de_vente;
         this.vente_en_cours = vente_en_cours;
@@ -81,20 +81,20 @@ public class Article {
         this.description = description;
     }
 
-    public LocalDate getDate_debut_encheres() {
-        return date_debut_encheres;
+    public LocalDate getDate_debut_enchere() {
+        return date_debut_enchere;
     }
 
-    public void setDate_debut_encheres(LocalDate date_debut_encheres) {
-        this.date_debut_encheres = date_debut_encheres;
+    public void setDate_debut_enchere(LocalDate date_debut_enchere) {
+        this.date_debut_enchere = date_debut_enchere;
     }
 
-    public LocalDate getDate_fin_encheres() {
-        return date_fin_encheres;
+    public LocalDate getDate_fin_enchere() {
+        return date_fin_enchere;
     }
 
-    public void setDate_fin_encheres(LocalDate date_fin_encheres) {
-        this.date_fin_encheres = date_fin_encheres;
+    public void setDate_fin_enchere(LocalDate date_fin_enchere) {
+        this.date_fin_enchere = date_fin_enchere;
     }
 
     public int getPrix_de_base() {
