@@ -16,25 +16,25 @@ public class EnchereDaoTests {
         enchereDao.readEncheres().forEach(System.out::println);
     }
 
-//    @Test
-//    void testAddEnchere() {
-////        Utilisateur utilisateur = new Utilisateur("anonymousMaster","master","anonymous",
-////                "anonymousmaster@noreply.github.com","eafeafg465465!",
-////                "0606060606","rue de la rue",
-////                "69000","New York",699,false,true);
-////        utilisateurDao.addUtilisateur(utilisateur);
-////        Categorie categorie = new Categorie("Ordinateur");
-////        Article article = new Article("nom_article","description",
-////                LocalDate.of(2011,11,30),
-////                LocalDate.of(2012,12,29),
-////                99,110,true,categorie);
-////        Enchere enchere = new Enchere(
-////                LocalDate.of(2012,12,31)
-////                ,299,utilisateur,article
-////        );
-////        enchereDao.addEnchere(enchere);
-////        System.out.println(enchere);
-//    }
+    @Test
+    void testAddEnchere() {
+//        Utilisateur utilisateur = new Utilisateur("anonymousMaster","master","anonymous",
+//                "anonymousmaster@noreply.github.com","eafeafg465465!",
+//                "0606060606","rue de la rue",
+//                "69000","New York",699,false,true);
+//        utilisateurDao.addUtilisateur(utilisateur);
+//        Categorie categorie = new Categorie("Ordinateur");
+//        Article article = new Article("nom_article","description",
+//                LocalDate.of(2011,11,30),
+//                LocalDate.of(2012,12,29),
+//                99,110,true,categorie);
+//        Enchere enchere = new Enchere(
+//                LocalDate.of(2012,12,31)
+//                ,299,utilisateur,article
+//        );
+//        enchereDao.addEnchere(enchere);
+//        System.out.println(enchere);
+    }
 
     @Test
     void testDeleteEnchere() {

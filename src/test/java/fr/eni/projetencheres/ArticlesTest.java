@@ -32,12 +32,5 @@ public class ArticlesTest {
         Article art = new Article("Ours en peluche", "C'est un ours en peluche", debut, fin, 10, 15, false, jouet);
         articleDao.addArticle(art);
         System.out.println(articleDao.readArticles());
-//        Article art2 = new Article(1, "Ours en peluche MIEUX", "C'est un ours en peluche MIEUX", debut, fin, 10, 1500, false, null);
-//        articleDao.updateArticle(art2);
-//        System.out.println("Après update :");
-//        System.out.println(articleDao.readArticles());
-//        articleDao.deleteArticle(1);
-//        System.out.println("Après delete :");
-//        System.out.println(articleDao.readArticles());
     }
 }
