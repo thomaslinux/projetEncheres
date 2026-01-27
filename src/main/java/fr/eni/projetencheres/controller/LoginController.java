@@ -16,4 +16,7 @@ public class LoginController {
         return "signup";
     }
 
+    // TODO
+    //  @PostMapping ("/inscription")
+
 }
