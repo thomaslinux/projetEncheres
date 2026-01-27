@@ -1,16 +1,49 @@
 package fr.eni.projetencheres.bo;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.springframework.security.core.parameters.P;
+
 public class Utilisateur {
     private long id_utilisateur;
+    @NotBlank(message = "ne doit pas etre vide")
+    @Size(min = 3, max = 20)
     private String pseudo;
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Size(max = 50)
     private String nom;
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Size(max = 50)
     private String prenom;
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Email
     private String email;
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Size(min = 6, max = 255)
     private String password;
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Pattern(regexp = "^\\+?[0-9. ()-]{7,}$")
     private String telephone;
-    private String rue;
-    private String code_postal;
+
+    @NotBlank
+    @Size(max = 255)
+    private String adresse;
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Pattern(regexp = "^[0-9]{5}$")
+    private String code_postal; // French postal code format
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Size(max = 255)
     private String ville;
+
     private int credit;
     private boolean administrateur;
     private boolean actif;
