@@ -66,6 +66,20 @@ public class UtilisateurDaoSql implements UtilisateurDao {
         return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
     }
 
+    public Utilisateur getUtilisateurByEmail(String email) {
+        String sql = "SELECT * FROM UTILISATEUR WHERE email = :email";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("email", email);
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
+    }
+
+    public Utilisateur getUtilisateurByPseudo(String pseudo) {
+        String sql = "SELECT * FROM UTILISATEUR WHERE pseudo = :pseudo";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("pseudo", pseudo);
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
+    }
+
     @Override
     public void deleteUtilisateur(long id_utilisateur) {
         String sql = "DELETE FROM UTILISATEUR WHERE id_utilisateur = :id_utilisateur";
