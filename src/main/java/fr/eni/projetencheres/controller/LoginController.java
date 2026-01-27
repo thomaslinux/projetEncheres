@@ -10,4 +10,10 @@ public class LoginController {
     public String displayLogin() {
         return "login";
     }
+
+    @GetMapping ("/inscription")
+    public String inscription() {
+        return "signup";
+    }
+
 }
