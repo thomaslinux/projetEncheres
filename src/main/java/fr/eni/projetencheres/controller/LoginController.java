@@ -25,12 +25,6 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String handleLogin(Utilisateur utilisateur) {
-        // TODO handleLogin
-        return "login";
-    }
-
     @GetMapping ("/inscription")
     public String inscription(Model model) {
         model.addAttribute("utilisateur", new Utilisateur());
