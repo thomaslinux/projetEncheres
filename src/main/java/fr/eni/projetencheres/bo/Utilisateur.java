@@ -43,6 +43,9 @@ public class Utilisateur {
     @NotBlank(message = "ne doit pas etre vide")
     @Size(max = 255)
     private String adresse;
+
+    @NotBlank(message = "ne doit pas etre vide")
+    @Size(max = 255)
     private String ville;
 
     private int credit;
