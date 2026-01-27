@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -39,6 +41,7 @@ public class ArticleDaoSQL implements ArticleDao {
                      ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie)";
 
         BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(article);
+
 
         namedParameterJdbcTemplate.update(sql, map, kh);
 
@@ -83,5 +86,9 @@ public class ArticleDaoSQL implements ArticleDao {
 
         namedParameterJdbcTemplate.update(sql, map);
 
+    }
+
+    public Date convertLocalDateToSQL(LocalDate javaDate) {
+        return Date.valueOf(javaDate);
     }
 }
