@@ -29,6 +29,17 @@ class UtilisateurTests {
     }
 
     @Test
+    void getUtilisateurByPseudo()
+    {
+        System.out.println(utilisateurDao.getUtilisateurByPseudo("jeanMich"));
+    }
+
+    @Test
+    void getUtilisateurByEmail() {
+        System.out.println(utilisateurDao.getUtilisateurByEmail("jmcherel@mail.com"));
+    }
+
+    @Test
     void deleteUtilisateur() {
         System.out.println("Avant suppression :");
         System.out.println(utilisateurDao.readUtilisateurs());
