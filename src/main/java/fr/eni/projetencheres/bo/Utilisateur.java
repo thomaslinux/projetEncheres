@@ -8,44 +8,45 @@ import org.springframework.security.core.parameters.P;
 
 public class Utilisateur {
     private long id_utilisateur;
-    @NotBlank(message = "ne doit pas etre vide")
+    @NotBlank
     @Size(min = 3, max = 20)
+    @Pattern(regexp = "[a-zA-Z0-9]+",message = "Que des chiffres et des lettres")
     private String pseudo;
 
-    @NotBlank(message = "ne doit pas etre vide")
+    @NotBlank
     @Size(max = 50)
+    @Pattern(regexp = "[a-zA-Z]+",message = "Que des lettres")
     private String nom;
 
-    @NotBlank(message = "ne doit pas etre vide")
+    @NotBlank
     @Size(max = 50)
+    @Pattern(regexp = "[a-zA-Z]+",message = "Que des lettres")
     private String prenom;
 
-    @NotBlank(message = "ne doit pas etre vide")
+    @NotBlank
     @Email
     private String email;
 
-    @NotBlank(message = "ne doit pas etre vide")
+    @NotBlank
     @Size(min = 6, max = 255)
     private String password;
 
-    @NotBlank(message = "ne doit pas etre vide")
-    @Pattern(regexp = "^\\+?[0-9. ()-]{7,}$")
+    @NotBlank
+    @Pattern(regexp = "^\\+?[0-9. ()-]{7,}$",message = "Entrez un numero valide")
     private String telephone;
 
     @NotBlank
     @Size(max = 255)
-    private String rue;
-
-    @NotBlank(message = "ne doit pas etre vide")
-    @Pattern(regexp = "^[0-9]{5}$")
-    private String code_postal; // French postal code format
-
-    @NotBlank(message = "ne doit pas etre vide")
-    @Size(max = 255)
+    @Pattern(regexp = "[a-z A-Z0-9]+",message = "Que des lettres chiffres et espaces")
     private String adresse;
 
-    @NotBlank(message = "ne doit pas etre vide")
+    @NotBlank
+    @Pattern(regexp = "^[0-9]{5}$",message = "Que 5 chiffres")
+    private String code_postal; // French postal code format
+
+    @NotBlank
     @Size(max = 255)
+    @Pattern(regexp = "[a-z A-Z]+$",message = "Que des lettres ou espaces")
     private String ville;
 
     private int credit;
