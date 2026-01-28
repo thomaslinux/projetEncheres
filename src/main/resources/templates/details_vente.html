@@ -6,7 +6,63 @@
 						content= ~{::main} )}">
 
 <main>
-    <h2>Détails de Vente</h2>
+    <h2>Details de Vente</h2>
+
+
+
+
+        <div class="container-photo">
+            <img src="images/logo-eni.png" alt="article chaise">
+        </div>
+
+        <table>
+            <thead>
+
+        <tr>
+
+            <th>Id article</th>
+            <th>Nom article</th>
+            <th>Description</th>
+            <th>Categorie</th>
+            <th>Prix de base</th>
+            <th>Prix de vente</th>
+            <th>Date fin encheres</th>
+            <th>Retrait</th>
+            <th>Vendeur</th>
+        </tr>
+            </thead>
+
+
+        <tbody>
+        <tr data-th-each="item : ${articleLst}">
+            <td data-th-text="${item.id_article}"></td>
+            <td data-th-text="${item.nom_article}"></td>
+            <td data-th-text="${item.description}"></td>
+            <td data-th-text="${item.Categorie?.libelle}"></td>
+            <td data-th-text="${item.Retrait?.adresse}"></td>
+            <td data-th-text="${item.Retrait?.ville}"></td>
+            <td data-th-text="${item.Utilisateur?.pseudo}"></td>
+
+            <td><a data-th-href="@{/encheres/enchere(id=${item.id})}">Enchérir</a></td>
+        </tr>
+
+    </table>
+    </tbody>
+
+        <fieldset class="fieldset">
+            <legend>Ma proposition :</legend>
+            <form action="" method="POST">
+                <label for="nombre">Eni Points :</label>
+                <input type="number"
+                       name="nombre"
+                       id="nombre"
+                       min="5"
+                       max="100"
+                       step="1">
+            </form>
+        </fieldset>
+
+
 </main>
 
 

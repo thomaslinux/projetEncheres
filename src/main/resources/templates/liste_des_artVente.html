@@ -7,25 +7,35 @@
 
 <main>
     <h2>Liste des Articles Enchères</h2>
+<table>
+    <thead>
+    <tr>
+    <th>Article</th>
+    <th>Categorie</th>
+    <th>Date debut enchèree</th>
+    <th>Prix de base</th>
+        <th>Détails</th>
+    </tr>
+    </thead>
+
+    <body>
+    <tr data-th-each="item : ${articleLst}">
+        <td data-th-text="${item.nom_article}">
+        <td data-th-text="${item.categorie?.libelle}">
+        <td data-th-text="${date_debut_enchere}">
+        <td data-th-text="${prix_de_base}">
+        <td><a th:href="@{/encheres/details_vente}">Details de Vente</a></td>
+  </body>
 
 
-    <table>
-        <thead>
-        <tr>
-            <th>id_article</th>
-            <th>nom_article</th>
-            <th>description</th>
-            <th>date_debut_encheres</th>
-            <th>date_fin_encheres</th>
-            <th>prix_de_base</th>
-            <th>prix_de_vente</th>
-            <th>vente_en_cours</th>
-            <th>categorie</th>
-        </tr>
+</table>
 
-        </thead>
-    </table>
+
+
+
 </main>
 
 
 </html>
+
+

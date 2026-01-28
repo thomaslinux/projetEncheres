@@ -1,8 +1,10 @@
 package fr.eni.projetencheres.service;
 
 import fr.eni.projetencheres.bo.Article;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface ArticleService {
 
