@@ -38,7 +38,6 @@ class UtilisateurTests {
         System.out.println(utilisateurDao.readUtilisateurs());
     }
 
-
     @Test
     void testUpdate() {
 

@@ -28,14 +28,15 @@ CREATE TABLE ARTICLE (
                          date_fin_enchere 	DATETIME2,
                          prix_de_base 		INTEGER,
                          prix_de_vente 		INTEGER,
-                         vente_en_cours 		bit,
+                         vente_en_cours 		bit ,
                          id_categorie 		INTEGER,
                          CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
 );
 
-ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
-    FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ARTICLE
+    ADD CONSTRAINT article_categorie_fk
+        FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE UTILISATEUR (
                              id_utilisateur   INTEGER IDENTITY(1,1) NOT NULL,
@@ -61,9 +62,10 @@ CREATE TABLE ROLE (
                       CONSTRAINT ROLE_PK PRIMARY KEY (id_role)
 );
 
-ALTER TABLE ROLE ADD CONSTRAINT role_utilisateur_fk
-    FOREIGN KEY (pseudo) REFERENCES UTILISATEUR (pseudo)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ROLE
+    ADD CONSTRAINT role_utilisateur_fk
+        FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE ENCHERE (
                          id_enchere 		INTEGER 	IDENTITY(1,1),
@@ -74,15 +76,17 @@ CREATE TABLE ENCHERE (
                          CONSTRAINT ENCHERE_PK 		PRIMARY KEY (id_enchere)
 );
 
-ALTER TABLE ENCHERE ADD CONSTRAINT enchere_utilisateur_fk
-    FOREIGN KEY (id_utilisateur)
-        REFERENCES UTILISATEUR (id_utilisateur)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ENCHERE
+    ADD CONSTRAINT enchere_utilisateur_fk
+        FOREIGN KEY (id_utilisateur)
+            REFERENCES UTILISATEUR (id_utilisateur)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE ENCHERE ADD CONSTRAINT enchere_article_fk
-    FOREIGN KEY (id_article)
-        REFERENCES ARTICLE (id_article)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ENCHERE
+    ADD CONSTRAINT enchere_article_fk
+        FOREIGN KEY (id_article)
+            REFERENCES ARTICLE (id_article)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE RETRAIT (
                          id_retrait 			INTEGER 	IDENTITY(1,1),

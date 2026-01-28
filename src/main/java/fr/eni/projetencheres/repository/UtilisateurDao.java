@@ -15,6 +15,10 @@ public interface UtilisateurDao {
 
     Utilisateur getUtilisateurByUsername(String pseudo);
 
+    Utilisateur getUtilisateurByEmail(String email);
+
+    Utilisateur getUtilisateurByPseudo(String pseudo);
+
     void deleteUtilisateur(long id_utilisateur);
 
     void updateUtilisateur(Utilisateur utilisateur);
