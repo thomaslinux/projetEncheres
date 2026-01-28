@@ -1,6 +1,7 @@
 package fr.eni.projetencheres.repository;
 
 import fr.eni.projetencheres.bo.Article;
+import fr.eni.projetencheres.repository.RowMapper.ArticleRowMapper;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -27,9 +28,14 @@ public class ArticleDaoSQL implements ArticleDao {
 
     @Override
     public List<Article> readArticles() {
-        String sql = "SELECT * FROM ARTICLE";
+        String sql = """
+                select id_article, nom_article,description, date_debut_enchere, 
+                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, 
+                ARTICLE.id_categorie, libelle from ARTICLE
+                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie;
+                """;
 
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Article.class));
+        return jdbcTemplate.query(sql, new ArticleRowMapper());
 
     }
 

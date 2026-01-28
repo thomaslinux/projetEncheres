@@ -9,9 +9,33 @@
 
 
 <main>
-    <h2>Page de connexion</h2>
+    <h2>Eni Enchères</h2>
+
+    <h2>Liste des Enchères</h2>
+
+    <label for="site-search">Recharche:</label>
+    <input type="search" id="site-search" name="q"/>
+    <button>Search</button>
+
+    <ul>
 
 
+        <li><a th:href="@{/encheres}">Toutes les Enchères</a></li>
+
+
+    </ul>
+
+
+
+
+    <!--   <ul class="flex-outer">-->
+
+    <!--        <li><label for="id_categorie">Categorie</label> <select id="id_categorie" th:field="*{type}">-->
+    <!--            <option th:each="item : ${categorieLst}" th:text="${item.libelle}" th:value="${item.id_categorie}">-->
+
+    <!--            </option>-->
+    <!--        </select></li>-->
+    <!--    </ul>-->
 
 
 </main>

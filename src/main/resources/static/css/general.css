@@ -225,3 +225,19 @@ form h1 {
 	border-radius: 2px;
 	padding: 8px 16px
 }
+
+.fieldset {
+
+    width: fit-content;
+    min-width: 200px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.container-photo {
+    display: block;
+    margin: 20px 0;
+    clear: both;
+
+}
