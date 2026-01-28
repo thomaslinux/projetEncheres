@@ -43,7 +43,8 @@ ALTER TABLE ARTICLE
 CREATE TABLE UTILISATEUR
 (
     id_utilisateur INTEGER IDENTITY (1,1) NOT NULL,
-    pseudo         VARCHAR(255) UNIQUE,
+    -- pseudo         VARCHAR(255) UNIQUE,
+    pseudo         VARCHAR(255),
     nom            VARCHAR(255),
     prenom         VARCHAR(255),
     email          VARCHAR(255),
@@ -61,7 +62,7 @@ CREATE TABLE UTILISATEUR
 CREATE TABLE ROLE
 (
     id_role INTEGER IDENTITY (1,1),
-    id_utilisateur  VARCHAR(255),
+    id_utilisateur  INTEGER,
     role    VARCHAR(255) UNIQUE,
     CONSTRAINT ROLE_PK PRIMARY KEY (id_role)
 );
