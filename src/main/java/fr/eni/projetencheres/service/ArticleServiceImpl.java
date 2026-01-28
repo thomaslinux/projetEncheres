@@ -2,9 +2,11 @@ package fr.eni.projetencheres.service;
 
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.repository.ArticleDao;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ArticleServiceImpl implements ArticleService {
 
     ArticleDao articleDao;
