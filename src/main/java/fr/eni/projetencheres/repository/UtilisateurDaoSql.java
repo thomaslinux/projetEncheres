@@ -43,17 +43,18 @@ public class UtilisateurDaoSql implements UtilisateurDao {
     @Override
     public void addRoleToUtilisateur(Utilisateur utilisateur) {
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
-        String sql = "INSERT INTO ROLE(id_role, role, id_utilisateur) VALUES (:id_role, :role, :id_utilisateur)";
+        String sql = "INSERT INTO ROLE(role, pseudo) VALUES (:role, :pseudo)";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
 
-        map.addValue("id_role", kh.getKey());
         if (utilisateur.isAdministrateur()) {
             map.addValue("role", "ROLE_ADMIN");
         } else {
             map.addValue("role", "ROLE_UTILISATEUR");
         }
-        map.addValue("id_utilisateur", utilisateur.getId_utilisateur());
+        map.addValue("pseudo", utilisateur.getPseudo());
+
+        namedParameterJdbcTemplate.update(sql, map, kh);
 
 
     }
@@ -104,7 +105,7 @@ public class UtilisateurDaoSql implements UtilisateurDao {
         map.addValue("email", utilisateur.getEmail());
         map.addValue("password", utilisateur.getPassword());
         map.addValue("telephone", utilisateur.getTelephone());
-        map.addValue("rue", utilisateur.getAdresse());
+        map.addValue("adresse", utilisateur.getAdresse());
         map.addValue("code_postal", utilisateur.getCode_postal());
         map.addValue("ville", utilisateur.getVille());
         map.addValue("id_utilisateur", utilisateur.getId_utilisateur());

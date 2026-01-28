@@ -41,8 +41,15 @@ public class ArticleDaoSQL implements ArticleDao {
                      "VALUES (:nom_article, :description, :date_debut_enchere, " +
                      ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie)";
 
-        BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(article);
-
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("nom_article", article.getNom_article());
+        map.addValue("description", article.getDescription());
+        map.addValue("date_debut_enchere", article.getDate_debut_enchere());
+        map.addValue("date_fin_enchere", article.getDate_fin_enchere());
+        map.addValue("prix_de_base", article.getPrix_de_base());
+        map.addValue("prix_de_vente", article.getPrix_de_vente());
+        map.addValue("vente_en_cours", article.isVente_en_cours());
+        map.addValue("id_categorie", article.getCategorie().getId_categorie());
 
         namedParameterJdbcTemplate.update(sql, map, kh);
 

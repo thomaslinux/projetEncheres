@@ -35,19 +35,20 @@ public class EncheresSecurity {
         http.authorizeHttpRequests(auth -> {
             //autorise l'accès à la liste des enchères à tous les employés
             //Accès du chemin /encheres en Get pour les employés
-            auth.
-                requestMatchers(HttpMethod.GET, "/encheres/add").hasRole("ADMIN")
-
-
-            //donne à tous la permission sur la page d'accueil et tous les liens de type /quelquechose
-                    .requestMatchers("/*").permitAll()
-                    .requestMatchers("/encheres").permitAll()
-                    //donner acces au css
-                    .requestMatchers("/css/*").permitAll()
-                    //donner acces au image
-                    .requestMatchers("/image/*").permitAll()
-                    //tous ce qui n'est pas spécifié n'est pas accessible
-                    .anyRequest().denyAll();
+            //A SUPPRIMER : anyRequest().permitAll() <- pour travailler sur le site, mais pas sécurisé !
+            auth.anyRequest().permitAll();
+//                requestMatchers(HttpMethod.GET, "/encheres/add").hasRole("ADMIN")
+//
+//
+//            //donne à tous la permission sur la page d'accueil et tous les liens de type /quelquechose
+//                    .requestMatchers("/*").permitAll()
+//                    .requestMatchers("/encheres").permitAll()
+//                    //donner acces au css
+//                    .requestMatchers("/css/*").permitAll()
+//                    //donner acces au image
+//                    .requestMatchers("/image/*").permitAll()
+//                    //tous ce qui n'est pas spécifié n'est pas accessible
+//                    .anyRequest().denyAll();
         });
         return http.build();
     }

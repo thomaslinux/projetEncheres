@@ -34,18 +34,23 @@ public class EnchereDaoSQL implements EnchereDao{
     // TODO test
     @Override
     public void addEnchere(Enchere enchere) {
-//        // recupere ID SQL de enchere, une fois enchere inserted dans la table sql
-//        GeneratedKeyHolder kh = new GeneratedKeyHolder();
-//        String sql = """
-//                insert into [Enchere] (date_enchere,montant_enchere,id_utilisateur,id_article)
-//                values (:date_enchere,:montant_enchere,:id_utilisateur,:id_article)
-//                """;
-//        BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(enchere);
-//
-//        namedParameterJdbcTemplate.update(sql, map, kh);
-//
-//        //récupération de l'id
-//        enchere.setId_enchere(kh.getKey().longValue());
+        // recupere ID SQL de enchere, une fois enchere inserted dans la table sql
+        GeneratedKeyHolder kh = new GeneratedKeyHolder();
+        String sql = """
+                insert into [Enchere] (date_enchere,montant_enchere,id_utilisateur,id_article)
+                values (:date_enchere,:montant_enchere,:id_utilisateur,:id_article)
+                """;
+        MapSqlParameterSource map = new MapSqlParameterSource();
+
+        map.addValue("date_enchere", enchere.getDate_enchere());
+        map.addValue("montant_enchere", enchere.getMontant_enchere());
+        map.addValue("id_utilisateur", enchere.getUtilisateur().getId_utilisateur());
+        map.addValue("id_article", enchere.getArticle().getId_article());
+
+        namedParameterJdbcTemplate.update(sql, map, kh);
+
+        //récupération de l'id
+        enchere.setId_enchere(kh.getKey().longValue());
   }
 
     // TODO test

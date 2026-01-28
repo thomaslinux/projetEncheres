@@ -9,9 +9,9 @@ public interface RetraitDao {
 
     void addRetrait(Retrait retrait);
 
-    Retrait getRetrait(long id);
+    Retrait getRetrait(long id_retrait);
 
-    void deleteRetrait(long id);
+    void deleteRetrait(long id_retrait);
 
     void updateRetrait(Retrait retrait);
 }
