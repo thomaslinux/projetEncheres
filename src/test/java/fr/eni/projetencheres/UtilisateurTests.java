@@ -16,6 +16,8 @@ class UtilisateurTests {
     @Autowired
     UtilisateurDao utilisateurDao;
 
+    // TODO implémenter la gestion de UNIQUE sur pseudo pour éviter les duplications de pseudo et gérer la restriction côté SQL
+
     @Test
     void addUtilisateur() {
         Utilisateur jeanMich = new Utilisateur("jeanMich", "Jean-Michel", "Cherel", "jmcherel@mail.com", "JEANMICH", "06 66 66 66 66", "rue de la ville", "44444", "Ville", 0, false, true);
