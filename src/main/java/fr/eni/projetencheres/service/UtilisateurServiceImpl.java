@@ -2,6 +2,7 @@ package fr.eni.projetencheres.service;
 
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.UtilisateurDao;
+import fr.eni.projetencheres.service.exception.ServiceException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,14 +22,18 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public void addUtilisateur(Utilisateur utilisateur) {
+    public void addUtilisateur(Utilisateur utilisateur) throws ServiceException {
+
+        if (utilisateurDao.getUtilisateurByUsername(utilisateur.getPseudo()) != null) {
+            throw new ServiceException("Ce pseudo est déjà utilisé !");
+        }
         this.utilisateurDao.addUtilisateur(utilisateur);
         this.utilisateurDao.addRoleToUtilisateur(utilisateur);
     }
 
     @Override
     public Utilisateur getUtilisateurById(long id) {
-        return this.utilisateurDao.getUtilisateur(id);
+        return this.utilisateurDao.getUtilisateurByID(id);
     }
 
     @Override

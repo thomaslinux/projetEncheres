@@ -52,3 +52,25 @@ public class EnchereController {
     }
 
 }
+
+// GetMapping("/add)
+// public String ajoutClient(Model model) {
+//      model.addAttribute("client", new Client());
+//      Return "add_client"
+// }
+
+// PostMapping("/add")
+// public String createClient(@Valid @ModelAttribute("client" Client client, BindingResult bindingResult) {
+//      if (bindingResult.hasErrors()) {
+//          return "add_client"
+//      }
+//        try {
+//          clientService.createClient(client)
+//          } catch(ServiceException e) {
+//          //Ajoute les erreurs puis renvoie sur la page d'ajout du client
+//              bindingResult.addErrors(new ObjectError("globalError", e.getMessage());
+//              return "add_client"
+//          }
+//        }
+//      return "redirect:/clients"
+// }

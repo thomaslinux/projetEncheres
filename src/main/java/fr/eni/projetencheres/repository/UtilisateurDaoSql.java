@@ -60,12 +60,32 @@ public class UtilisateurDaoSql implements UtilisateurDao {
     }
 
     @Override
-    public Utilisateur getUtilisateur(long id_utilisateur) {
+    public Utilisateur getUtilisateurByID(long id_utilisateur) {
         String sql = "SELECT * FROM UTILISATEUR WHERE id_utilisateur = :id_utilisateur";
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_utilisateur", id_utilisateur);
         return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
     }
+
+    @Override
+    public Utilisateur getUtilisateurByUsername(String pseudo) {
+        String sql = "SELECT * FROM UTILISATEUR WHERE pseudo = :pseudo";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("pseudo", pseudo);
+
+        List<Utilisateur> utilisateurs = namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
+
+        return utilisateurs.isEmpty() ? null : utilisateurs.get(0);
+
+    }
+
+//            //On utilise pas queryForObject on cherche à savoir si un utilisateur existe il peux ne pas y en avoir
+//        List<Client> clients = namedParameterJdbcTemplate.query( sql, map,
+//                new BeanPropertyRowMapper<>(Client.class)
+//        );
+//
+//        return clients.isEmpty() ? null : clients.get(0);
 
     @Override
     public void deleteUtilisateur(long id_utilisateur) {

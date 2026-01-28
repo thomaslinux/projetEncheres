@@ -28,7 +28,7 @@ CREATE TABLE ARTICLE (
                          date_fin_enchere 	DATETIME2,
                          prix_de_base 		INTEGER,
                          prix_de_vente 		INTEGER,
-                         vente_en_cours 		bit ,
+                         vente_en_cours 		bit,
                          id_categorie 		INTEGER,
                          CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
 );
@@ -39,18 +39,18 @@ ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
 
 CREATE TABLE UTILISATEUR (
                              id_utilisateur   INTEGER IDENTITY(1,1) NOT NULL,
-                             pseudo           VARCHAR(255) UNIQUE,
+                             pseudo           VARCHAR(255) UNIQUE NOT NULL,
                              nom              VARCHAR(255),
                              prenom           VARCHAR(255),
                              email            VARCHAR(255),
-                             password		 VARCHAR(255),
+                             password		  VARCHAR(255),
                              telephone        VARCHAR(255),
-                             adresse              VARCHAR(255),
+                             adresse          VARCHAR(255),
                              code_postal      VARCHAR(255),
                              ville            VARCHAR(255),
                              credit           INTEGER,
                              administrateur   bit,
-                             actif			 bit,
+                             actif			  bit,
                              CONSTRAINT UTILISATEUR_PK PRIMARY KEY (id_utilisateur)
 );
 
@@ -96,3 +96,5 @@ CREATE TABLE RETRAIT (
 ALTER TABLE RETRAIT ADD CONSTRAINT retrait_article_fk
     FOREIGN KEY (id_article) REFERENCES ARTICLE (id_article)
         ON UPDATE CASCADE ON DELETE SET NULL;
+
+
