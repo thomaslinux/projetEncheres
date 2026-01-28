@@ -43,11 +43,11 @@ ALTER TABLE ARTICLE
 CREATE TABLE UTILISATEUR
 (
     id_utilisateur INTEGER IDENTITY (1,1) NOT NULL,
-    -- pseudo         VARCHAR(255) UNIQUE,
-    pseudo         VARCHAR(255),
+    pseudo         VARCHAR(255) UNIQUE,
+--     pseudo         VARCHAR(255),
     nom            VARCHAR(255),
     prenom         VARCHAR(255),
-    email          VARCHAR(255),
+    email          VARCHAR(255) UNIQUE,
     password       VARCHAR(255),
     telephone      VARCHAR(255),
     adresse        VARCHAR(255),
