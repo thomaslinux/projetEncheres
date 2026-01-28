@@ -57,7 +57,6 @@ public class EncheresSecurity {
                     //donne l'accès à la page de login à tous
                     form.loginPage("/login").permitAll();
                     //redirige après le login sur la page d'accueil
-                    // le true peut foirer la redirection à cause de chrome
                     form.defaultSuccessUrl("/", true);
                 }
         );
