@@ -59,6 +59,7 @@ CREATE TABLE ROLE (
                       id_role 		INTEGER 	IDENTITY (1,1),
                       pseudo VARCHAR(255),
                       role 			VARCHAR(255),
+                      id_utilisateur INTEGER,
                       CONSTRAINT ROLE_PK PRIMARY KEY (id_role)
 );
 

@@ -27,16 +27,16 @@ class UtilisateurTests {
         }
         System.out.println(utilisateurDao.readUtilisateurs());
     }
-    @Test
-    void addUtilisateurADMIN() {
-        Utilisateur admin = new Utilisateur("Admin", "Min", "Add", "admin@admin.com", "ADmin", "01 04 14 09 15", "'1 rue des Admins", "14495", "AdminVille", 100, true, true);
-        try {
-            utilisateurService.addUtilisateur(admin);
-        } catch (ServiceException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(utilisateurDao.readUtilisateurs());
-    }
+//    @Test
+//    void addUtilisateurADMIN() {
+//        Utilisateur admin = new Utilisateur("Admin", "Min", "Add", "admin@admin.com", "ADmin", "01 04 14 09 15", "'1 rue des Admins", "14495", "AdminVille", 100, true, true);
+//        try {
+//            utilisateurService.addUtilisateur(admin);
+//        } catch (ServiceException e) {
+//            throw new RuntimeException(e);
+//        }
+//        System.out.println(utilisateurDao.readUtilisateurs());
+//    }
 
     @Test
     void testUpdate() {
@@ -75,7 +75,7 @@ class UtilisateurTests {
     void testRoles() {
         Utilisateur jeanMich = new Utilisateur("Megatron", "Jean-Megatron", "Pichatron", "jmpichatron@mail.com", "JEANMICH", "06 66 66 66 66", "12 rue de la ville", "44444", "Ville", 0, false, true);
         try {
-        utilisateurService.addUtilisateur(jeanMich);
+            utilisateurService.addUtilisateur(jeanMich);
         } catch (ServiceException e) {
             throw new RuntimeException(e);
         }

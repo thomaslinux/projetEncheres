@@ -33,10 +33,10 @@ public class EncheresSecurity {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         //C'est ici que l'on va définir les chemins autorisés en fonction des utilisateurs
         http.authorizeHttpRequests(auth -> {
-            //autorise l'accès à la liste des enchères à tous les employés
-            //Accès du chemin /encheres en Get pour les employés
+
             //A SUPPRIMER : anyRequest().permitAll() <- pour travailler sur le site, mais pas sécurisé !
             auth.anyRequest().permitAll();
+
 //                requestMatchers(HttpMethod.GET, "/encheres/add").hasRole("ADMIN")
 //
 //
@@ -50,6 +50,25 @@ public class EncheresSecurity {
 //                    //tous ce qui n'est pas spécifié n'est pas accessible
 //                    .anyRequest().denyAll();
         });
+
+        /*** pas touche *****/
+        //gestion du login
+        http.formLogin( form -> {
+                    //donne l'accès à la page de login à tous
+                    form.loginPage("/login").permitAll();
+                    //redirige après le login sur la page d'accueil
+                    // le true pour forer la redirection à cause de chrome
+                    form.defaultSuccessUrl("/", true);
+                }
+        );
+
+        http.logout( logout -> {
+            //supprimer la session du côté du serveur d'application
+            logout.logoutUrl("/logout")
+                    //redirige après le logout sur la page d'accueil
+                    .logoutSuccessUrl("/");
+        });
+
         return http.build();
     }
 
