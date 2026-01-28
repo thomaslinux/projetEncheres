@@ -24,7 +24,6 @@ public class EncheresSecurity {
         jdbc.setUsersByUsernameQuery("SELECT pseudo, password, actif FROM utilisateur WHERE pseudo = ?");
         //Requête utilisée pour le rôle :
         jdbc.setAuthoritiesByUsernameQuery("SELECT pseudo, role FROM roles WHERE pseudo = ?");
-
         return jdbc;
     }
 
@@ -34,7 +33,7 @@ public class EncheresSecurity {
         //C'est ici que l'on va définir les chemins autorisés en fonction des utilisateurs
         http.authorizeHttpRequests(auth -> {
 
-            //A SUPPRIMER : anyRequest().permitAll() <- pour travailler sur le site, mais pas sécurisé !
+            //À SUPPRIMER : anyRequest().permitAll() <- pour travailler sur le site, mais pas sécurisé !
             auth.anyRequest().permitAll();
 
 //                requestMatchers(HttpMethod.GET, "/encheres/add").hasRole("ADMIN")
@@ -42,10 +41,11 @@ public class EncheresSecurity {
 //
 //            //donne à tous la permission sur la page d'accueil et tous les liens de type /quelquechose
 //                    .requestMatchers("/*").permitAll()
-//                    .requestMatchers("/encheres").permitAll()
-//                    //donner acces au css
+//                    .requestMatchers("/encheres/*").permitAll()
+//                    .requestMatchers("/encheres/*").permitAll()
+//                    //donne accès au css
 //                    .requestMatchers("/css/*").permitAll()
-//                    //donner acces au image
+//                    //donne accès aux images
 //                    .requestMatchers("/image/*").permitAll()
 //                    //tous ce qui n'est pas spécifié n'est pas accessible
 //                    .anyRequest().denyAll();
@@ -57,7 +57,7 @@ public class EncheresSecurity {
                     //donne l'accès à la page de login à tous
                     form.loginPage("/login").permitAll();
                     //redirige après le login sur la page d'accueil
-                    // le true pour forer la redirection à cause de chrome
+                    // le true peut foirer la redirection à cause de chrome
                     form.defaultSuccessUrl("/", true);
                 }
         );
