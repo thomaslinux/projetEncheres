@@ -33,24 +33,25 @@ CREATE TABLE ARTICLE (
                          CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
 );
 
-ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
-    FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ARTICLE
+    ADD CONSTRAINT article_categorie_fk
+        FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE UTILISATEUR (
                              id_utilisateur   INTEGER IDENTITY(1,1) NOT NULL,
-                             pseudo           VARCHAR(255) UNIQUE,
+                             pseudo           VARCHAR(255) UNIQUE NOT NULL,
                              nom              VARCHAR(255),
                              prenom           VARCHAR(255),
                              email            VARCHAR(255),
-                             password		 VARCHAR(255),
+                             password		  VARCHAR(255),
                              telephone        VARCHAR(255),
-                             adresse              VARCHAR(255),
+                             adresse          VARCHAR(255),
                              code_postal      VARCHAR(255),
                              ville            VARCHAR(255),
                              credit           INTEGER,
                              administrateur   bit,
-                             actif			 bit,
+                             actif			  bit,
                              CONSTRAINT UTILISATEUR_PK PRIMARY KEY (id_utilisateur)
 );
 
@@ -58,12 +59,14 @@ CREATE TABLE ROLE (
                       id_role 		INTEGER 	IDENTITY (1,1),
                       pseudo VARCHAR(255),
                       role 			VARCHAR(255),
+                      id_utilisateur INTEGER,
                       CONSTRAINT ROLE_PK PRIMARY KEY (id_role)
 );
 
-ALTER TABLE ROLE ADD CONSTRAINT role_utilisateur_fk
-    FOREIGN KEY (pseudo) REFERENCES UTILISATEUR (pseudo)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ROLE
+    ADD CONSTRAINT role_utilisateur_fk
+        FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE ENCHERE (
                          id_enchere 		INTEGER 	IDENTITY(1,1),
@@ -74,15 +77,17 @@ CREATE TABLE ENCHERE (
                          CONSTRAINT ENCHERE_PK 		PRIMARY KEY (id_enchere)
 );
 
-ALTER TABLE ENCHERE ADD CONSTRAINT enchere_utilisateur_fk
-    FOREIGN KEY (id_utilisateur)
-        REFERENCES UTILISATEUR (id_utilisateur)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ENCHERE
+    ADD CONSTRAINT enchere_utilisateur_fk
+        FOREIGN KEY (id_utilisateur)
+            REFERENCES UTILISATEUR (id_utilisateur)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE ENCHERE ADD CONSTRAINT enchere_article_fk
-    FOREIGN KEY (id_article)
-        REFERENCES ARTICLE (id_article)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ENCHERE
+    ADD CONSTRAINT enchere_article_fk
+        FOREIGN KEY (id_article)
+            REFERENCES ARTICLE (id_article)
+            ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE RETRAIT (
                          id_retrait 			INTEGER 	IDENTITY(1,1),
@@ -96,3 +101,5 @@ CREATE TABLE RETRAIT (
 ALTER TABLE RETRAIT ADD CONSTRAINT retrait_article_fk
     FOREIGN KEY (id_article) REFERENCES ARTICLE (id_article)
         ON UPDATE CASCADE ON DELETE SET NULL;
+
+

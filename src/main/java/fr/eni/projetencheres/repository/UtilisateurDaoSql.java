@@ -43,7 +43,7 @@ public class UtilisateurDaoSql implements UtilisateurDao {
     @Override
     public void addRoleToUtilisateur(Utilisateur utilisateur) {
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
-        String sql = "INSERT INTO ROLE(role, pseudo) VALUES (:role, :pseudo)";
+        String sql = "INSERT INTO ROLE(role, id_utilisateur) VALUES (:role, :id_utilisateur)";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
 
@@ -52,7 +52,7 @@ public class UtilisateurDaoSql implements UtilisateurDao {
         } else {
             map.addValue("role", "ROLE_UTILISATEUR");
         }
-        map.addValue("pseudo", utilisateur.getPseudo());
+        map.addValue("id_utilisateur", utilisateur.getId_utilisateur());
 
         namedParameterJdbcTemplate.update(sql, map, kh);
 
@@ -60,12 +60,46 @@ public class UtilisateurDaoSql implements UtilisateurDao {
     }
 
     @Override
-    public Utilisateur getUtilisateur(long id_utilisateur) {
+    public Utilisateur getUtilisateurByID(long id_utilisateur) {
         String sql = "SELECT * FROM UTILISATEUR WHERE id_utilisateur = :id_utilisateur";
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_utilisateur", id_utilisateur);
         return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
     }
+
+    public Utilisateur getUtilisateurByEmail(String email) {
+        String sql = "SELECT * FROM UTILISATEUR WHERE email = :email";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("email", email);
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
+    }
+
+    public Utilisateur getUtilisateurByPseudo(String pseudo) {
+        String sql = "SELECT * FROM UTILISATEUR WHERE pseudo = :pseudo";
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("pseudo", pseudo);
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
+    }
+
+    @Override
+    public Utilisateur getUtilisateurByUsername(String pseudo) {
+        String sql = "SELECT * FROM UTILISATEUR WHERE pseudo = :pseudo";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("pseudo", pseudo);
+
+        List<Utilisateur> utilisateurs = namedParameterJdbcTemplate.query(sql, map, new BeanPropertyRowMapper<>(Utilisateur.class));
+
+        return utilisateurs.isEmpty() ? null : utilisateurs.get(0);
+
+    }
+
+//            //On utilise pas queryForObject on cherche à savoir si un utilisateur existe il peux ne pas y en avoir
+//        List<Client> clients = namedParameterJdbcTemplate.query( sql, map,
+//                new BeanPropertyRowMapper<>(Client.class)
+//        );
+//
+//        return clients.isEmpty() ? null : clients.get(0);
 
     @Override
     public void deleteUtilisateur(long id_utilisateur) {
