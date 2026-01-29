@@ -3,9 +3,12 @@ package fr.eni.projetencheres.service;
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.UtilisateurDao;
 import fr.eni.projetencheres.service.exception.ServiceException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService {
@@ -27,6 +30,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         if (utilisateurDao.getUtilisateurByUsername(utilisateur.getPseudo()) != null) {
             throw new ServiceException("Ce pseudo est déjà utilisé !");
         }
+
         this.utilisateurDao.addUtilisateur(utilisateur);
         this.utilisateurDao.addRoleToUtilisateur(utilisateur);
     }

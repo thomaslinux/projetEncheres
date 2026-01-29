@@ -7,9 +7,12 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 
 @Repository
 public class UtilisateurDaoSql implements UtilisateurDao {
@@ -37,7 +40,10 @@ public class UtilisateurDaoSql implements UtilisateurDao {
         BeanPropertySqlParameterSource map = new BeanPropertySqlParameterSource(utilisateur);
 
         namedParameterJdbcTemplate.update(sql, map, kh);
+
         utilisateur.setId_utilisateur(kh.getKey().longValue());
+
+
     }
 
     @Override
