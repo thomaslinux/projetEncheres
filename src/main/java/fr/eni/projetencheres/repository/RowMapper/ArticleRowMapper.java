@@ -17,10 +17,8 @@ public class ArticleRowMapper  implements RowMapper<Article> {
         articleResult.setDescription(rs.getString("description"));
         if (rs.getDate("date_debut_enchere") != null) {
             articleResult.setDate_debut_enchere(rs.getDate("date_debut_enchere").toLocalDate());
-
         }
         articleResult.setPrix_de_base(rs.getInt("prix_de_base"));
-        //la suite à faire
 
         long idCat = rs.getLong("id_categorie");
         if (idCat> 0) {
@@ -28,6 +26,7 @@ public class ArticleRowMapper  implements RowMapper<Article> {
             Categorie categorie = new Categorie();
             categorie.setId_categorie(idCat);
             categorie.setLibelle(rs.getString("libelle"));
+
             articleResult.setCategorie(categorie);
         }
 

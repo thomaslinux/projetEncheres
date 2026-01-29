@@ -42,7 +42,7 @@ public class LoginController {
         } catch(ServiceException e) {
          //Ajoute les erreurs puis renvoie sur la page
               bindingResult.addError(new ObjectError("globalError", e.getMessage()));
-              return "s_inscrire";
+              return "signup";
           }
         return "redirect:/login";
       }
