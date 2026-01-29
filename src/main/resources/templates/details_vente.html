@@ -11,9 +11,7 @@
 
 
 
-        <div class="container-photo">
-            <img src="images/logo-eni.png" alt="article chaise">
-        </div>
+
 
         <table>
             <thead>
@@ -43,7 +41,7 @@
             <td data-th-text="${item.Retrait?.ville}"></td>
             <td data-th-text="${item.Utilisateur?.pseudo}"></td>
 
-            <td><a data-th-href="@{/encheres/enchere(id=${item.id})}">Enchérir</a></td>
+            <td><a data-th-href="@{/encheres/details_vente(id=${item.id})}">Enchérir</a></td>
         </tr>
 
     </table>
@@ -62,6 +60,9 @@
             </form>
         </fieldset>
 
+    <div class="container-photo">
+        <img src="images/ballonKilyan.jpg" alt="article chaise">
+    </div>
 
 </main>
 
