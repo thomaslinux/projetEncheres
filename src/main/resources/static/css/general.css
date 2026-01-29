@@ -121,7 +121,7 @@ h1 {
 }
 
 footer {
-	background-color: #777;
+	background-color: #354596;
 	padding: 10px;
 	text-align: center;
 	height: auto;
@@ -231,7 +231,7 @@ form h1 {
     width: fit-content;
     min-width: 200px;
     padding: 10px 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     border-radius: 8px;
 }
 
@@ -239,5 +239,7 @@ form h1 {
     display: block;
     margin: 20px 0;
     clear: both;
-
+    background: #354596;
+    border: 1px solid #333;
+    padding: 10px 20px;
 }

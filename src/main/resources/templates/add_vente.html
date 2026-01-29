@@ -7,6 +7,49 @@
 
 <main>
     <h2>Mettre un article en vente</h2>
+
+    <form th:action="@{/encheres/create}" method="post" th:object="${article}">
+        <ul class="flex-outer">
+            <li><label for="idnom_article">Nom d'Article</label>
+                <input id="idnom_article" type="text" th:field="*{nom_article}"></li>
+
+            <li><label for="iddescription">Description</label>
+                <input id="iddescription" type="text" th:field="*{description}"></li>
+
+            <li><label for="date_debut_enchere">Date debut enchere</label>
+                <input id="date_debut_enchere" type="text" th:field="*{date_debut_enchere}"></li>
+
+            <li><label for="date_fin_enchere">Date fin enchere</label>
+                <input id="date_fin_enchere" type="text" th:field="*{date_fin_enchere}"></li>
+
+            <li><label for="prix_de_base">Prix de Base</label>
+                <input id="prix_de_base" type="text" th:field="*{prix_de_base}"></li>
+
+            <!--    private int prix_de_vente;-->
+
+
+            <li><label for="vente_en_cours">Vente en cours</label>
+                <input id="vente_en_cours" type="text" th:field="*{vente_en_cours}"></li>
+
+
+            <li><label for="idCategorie">Categorie</label>
+                <select id="idCategorie" th:field="*{categorie}">
+                <option th:each="item : ${categorieList}"
+
+                        th:value="${item.id_categorie}"
+                        th:text="${item.libelle}">
+
+
+
+                </option>
+            </select></li>
+            <li>
+                <button type="submit">Créer</button>
+            </li>
+        </ul>
+    </form>
+
+
 </main>
 
 

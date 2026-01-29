@@ -4,13 +4,14 @@ package fr.eni.projetencheres.controller;
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Categorie;
 import fr.eni.projetencheres.service.ArticleService;
+import fr.eni.projetencheres.service.CategorieService;
 import fr.eni.projetencheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,10 +21,12 @@ import java.util.List;
 public class EnchereController {
     ArticleService articleService;
     UtilisateurService utilisateurService;
+    CategorieService categorieService;
 
-    public EnchereController(ArticleService articleService, UtilisateurService utilisateurService) {
+    public EnchereController(ArticleService articleService, UtilisateurService utilisateurService, CategorieService categorieService) {
         this.articleService = articleService;
         this.utilisateurService = utilisateurService;
+        this.categorieService = categorieService;
     }
 
     @GetMapping("/encheres")
@@ -37,10 +40,21 @@ public class EnchereController {
     public String inscription() { return "s_inscrire";}
 
 
-    @GetMapping ("/encheres/vendre")
-    public String Vendre() {
+    @GetMapping ("/encheres/add")
+    public String addArticle(Model model, Article article) {
+        List<Categorie> list= categorieService.getAllCategories();
+
+        model.addAttribute("article", new Article());
+        model.addAttribute("categorieList",list);
         return "add_vente";
     }
+
+    @PostMapping("/encheres/create")
+    public String createArticle(Model model, Article article) {
+        articleService.addArticle(article);
+        return "redirect:/articles";
+    }
+
 
     @GetMapping ("/encheres/details_vente")
     public String details() {
