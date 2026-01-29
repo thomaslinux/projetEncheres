@@ -4,6 +4,7 @@ import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.UtilisateurDao;
 import fr.eni.projetencheres.service.exception.ServiceException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +15,11 @@ import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 public class UtilisateurServiceImpl implements UtilisateurService {
 
     UtilisateurDao utilisateurDao;
+    PasswordEncoder passwordEncoder;
 
-    public UtilisateurServiceImpl(UtilisateurDao utilisateurDao) {
+    public UtilisateurServiceImpl(UtilisateurDao utilisateurDao, PasswordEncoder passwordEncoder) {
         this.utilisateurDao = utilisateurDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -30,7 +33,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         if (utilisateurDao.getUtilisateurByUsername(utilisateur.getPseudo()) != null) {
             throw new ServiceException("Ce pseudo est déjà utilisé !");
         }
-
+        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
         this.utilisateurDao.addUtilisateur(utilisateur);
         this.utilisateurDao.addRoleToUtilisateur(utilisateur);
     }
