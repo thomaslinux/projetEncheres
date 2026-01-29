@@ -17,10 +17,10 @@
                 <input id="iddescription" type="text" th:field="*{description}"></li>
 
             <li><label for="date_debut_enchere">Date debut enchere</label>
-                <input id="date_debut_enchere" type="text" th:field="*{date_debut_enchere}"></li>
+                <input id="date_debut_enchere" type="date" th:field="*{date_debut_enchere}"></li>
 
             <li><label for="date_fin_enchere">Date fin enchere</label>
-                <input id="date_fin_enchere" type="text" th:field="*{date_fin_enchere}"></li>
+                <input id="date_fin_enchere" type="date" th:field="*{date_fin_enchere}"></li>
 
             <li><label for="prix_de_base">Prix de Base</label>
                 <input id="prix_de_base" type="text" th:field="*{prix_de_base}"></li>
@@ -44,7 +44,7 @@
                 </option>
             </select></li>
             <li>
-                <button type="submit">Créer</button>
+                <button type="submit">Ajouter</button>
             </li>
         </ul>
     </form>

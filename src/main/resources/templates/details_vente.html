@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-
-<!--  appel du fragment layout avec les paramètre -->
-<html lang="fr" data-th-replace="~{layout/layout :: frag_layout
-						(title= ~{:: title},
-						content= ~{::main} )}">
-
-<main>
-    <h2>Details de Vente</h2>
-
-
-
-
-
-
-        <table>
-            <thead>
-
+<!DOCTYPE html><!--  appel du fragment layout avec les paramètre -->
+<html lang="fr"
+      data-th-replace="~{layout/layout :: frag_layout                   (title= ~{:: title},                   content= ~{::main} )}">
+<title>Details de Vente</title>
+<main><h2>Details de Vente</h2>
+    <table>
+        <thead>
         <tr>
-
             <th>Id article</th>
             <th>Nom article</th>
             <th>Description</th>
@@ -28,8 +16,7 @@
             <th>Retrait</th>
             <th>Vendeur</th>
         </tr>
-            </thead>
-
+        </thead>
 
         <tbody>
         <tr data-th-each="item : ${articleLst}">
@@ -40,31 +27,106 @@
             <td data-th-text="${item.Retrait?.adresse}"></td>
             <td data-th-text="${item.Retrait?.ville}"></td>
             <td data-th-text="${item.Utilisateur?.pseudo}"></td>
-
             <td><a data-th-href="@{/encheres/details_vente(id=${item.id})}">Enchérir</a></td>
         </tr>
-
     </table>
     </tbody>
-
-        <fieldset class="fieldset">
-            <legend>Ma proposition :</legend>
-            <form action="" method="POST">
-                <label for="nombre">Eni Points :</label>
-                <input type="number"
-                       name="nombre"
-                       id="nombre"
-                       min="5"
-                       max="100"
-                       step="1">
-            </form>
-        </fieldset>
-
-    <div class="container-photo">
-        <img src="images/ballonKilyan.jpg" alt="article chaise">
-    </div>
-
+    <fieldset class="fieldset">
+        <legend>Ma proposition :</legend>
+        <form action="" method="POST"><label for="nombre">Eni Points :</label> <input type="number" name="nombre"
+                                                                                      id="nombre" min="5" max="100"
+                                                                                      step="1">
+        </form>
+    </fieldset>
+    <div class="container-photo"><img src="images/ballonKilyan.jpg" alt="article chaise"></div>
 </main>
-
-
 </html>
+
+
+<!--<!DOCTYPE html>-->
+
+<!--&lt;!&ndash;  appel du fragment layout avec les paramètre &ndash;&gt;-->
+<!--<html lang="fr" data-th-replace="~{layout/layout :: frag_layout-->
+<!--						(title= ~{:: title},-->
+<!--						content= ~{::main} )}">-->
+
+<!--<main>-->
+<!--    <h2>Details Enchère</h2>-->
+
+
+<!--    <form th:action="@{/encheres/update}"-->
+<!--          method="post"-->
+<!--          th:object="${article}">-->
+<!--        <ul class="flex-outer">-->
+<!--            <input type="text" th:field="*{id}" hidden />-->
+<!--            <li>-->
+<!--                <label for="idNom_article">Article</label>-->
+<!--                <input id="idNom_article" type="text" th:field="*{nom_article}"/>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <label for="idDescription">Description</label>-->
+<!--                <input id="idDescription" type="text" th:field="*{nom_article}"/>-->
+<!--            </li>-->
+
+
+
+<!--            <li>-->
+<!--                <label for="idDate_debut_enchere">Date debut enchère</label>-->
+<!--                <input id="idDate_debut_enchere" type="text" th:field="*{nom_article}"/>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <label for="idDate_fin_enchere">Date fin enchère</label>-->
+<!--                <input id="idDate_fin_enchere" type="text" th:field="*{nom_article}"/>-->
+<!--            </li>-->
+
+
+<!--            <li>-->
+<!--                <label for="idPrix_de_base">Prix de base</label>-->
+<!--                <input id="idPrix_de_base" type="text" th:field="*{nom_article}"/>-->
+<!--            </li>-->
+
+
+<!--            <li>-->
+<!--                <label for="idVente_en_cours">Vente en cours</label>-->
+<!--                <input id="idVente_en_cours" type="text" th:field="*{nom_article}"/>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <label for="idCategorie">Categorie</label>-->
+<!--                <select id="idCategorie" th:field="*{categorie}">-->
+<!--                    <option th:each="item : ${categorieList}"-->
+<!--                            th:text="${item.id_article}"-->
+<!--                            th:value="${item.nom_article}"-->
+<!--                            th:selected="${item.id == selectedArticleId}">-->
+<!--                    </option>-->
+<!--                </select>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <button type="submit">Mise à jour</button>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </form>-->
+
+
+
+<!--    <fieldset class="fieldset">-->
+<!--        <legend>Ma proposition :</legend>-->
+<!--        <form action="" method="POST">-->
+<!--            <label for="nombre">Eni Points :</label>-->
+<!--            <input type="number"-->
+<!--                   name="nombre"-->
+<!--                   id="nombre"-->
+<!--                   min="5"-->
+<!--                   max="100"-->
+<!--                   step="1">-->
+<!--        </form>-->
+<!--    </fieldset>-->
+
+
+<!--</main>-->
+
+
+<!--</html>-->
+

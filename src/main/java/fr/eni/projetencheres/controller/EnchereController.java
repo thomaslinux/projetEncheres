@@ -9,8 +9,7 @@ import fr.eni.projetencheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.time.LocalDate;
@@ -52,23 +51,31 @@ public class EnchereController {
     @PostMapping("/encheres/create")
     public String createArticle(Model model, Article article) {
         articleService.addArticle(article);
-        return "redirect:/articles";
+        return "redirect:/encheres";
+    }
+
+    @PostMapping("/encheres/update")
+    public String updateArticle(@ModelAttribute(name="article")Article article) {
+        System.out.println(article);
+        articleService.updateArticle(article);
+        return"redirect:/encheres";
     }
 
 
-    @GetMapping ("/encheres/details_vente")
-    public String details() {
-        return "details_vente";
-    }
-
-//    @GetMapping ("/liste_des_artVente")
-//    public String liste_des_artVente() {
-//        return "liste_des_artVente";
+//    @GetMapping ("/encheres/details_vente")
+//    public String detailsArticle(@RequestParam(name="id")long id, Model model) {
+//        Article article = articleService.getArticleById(id);
+//
+//        List<Categorie> list = categorieService.getAllCategories();
+//        model.addAttribute("selectdCategorie", article.getCategorie().getId_categorie());
+//        model.addAttribute("article", article );
+//        model.addAttribute("categorieList",list);
+//        return "details_vente";
 //    }
 
-    @GetMapping ("/encheres/login")
-    public String login() {
-        return "login";
+    @GetMapping ("/encheres/details_vente")
+    public String detailsArticle(){
+        return "details_vente";
     }
 
     @GetMapping ("/encheres/profil")
@@ -78,35 +85,5 @@ public class EnchereController {
 
 
 
-
-
-//    @GetMapping({"/details_vente"})
-//    public String showDetails(@RequestParam("id") long id, Model model) {
-//        Article article = this.articleService.getArticleById(id);
-//        model.addAttribute("article", article);
-//        return "details_vente";
-//    }
-
 }
 
-// GetMapping("/add)
-// public String ajoutClient(Model model) {
-//      model.addAttribute("client", new Client());
-//      Return "add_client"
-// }
-
-// PostMapping("/add")
-// public String createClient(@Valid @ModelAttribute("client" Client client, BindingResult bindingResult) {
-//      if (bindingResult.hasErrors()) {
-//          return "add_client"
-//      }
-//        try {
-//          clientService.createClient(client)
-//          } catch(ServiceException e) {
-//          //Ajoute les erreurs puis renvoie sur la page d'ajout du client
-//              bindingResult.addErrors(new ObjectError("globalError", e.getMessage());
-//              return "add_client"
-//          }
-//        }
-//      return "redirect:/clients"
-// }

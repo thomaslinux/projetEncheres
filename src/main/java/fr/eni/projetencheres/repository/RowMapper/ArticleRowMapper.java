@@ -18,6 +18,11 @@ public class ArticleRowMapper  implements RowMapper<Article> {
         if (rs.getDate("date_debut_enchere") != null) {
             articleResult.setDate_debut_enchere(rs.getDate("date_debut_enchere").toLocalDate());
         }
+
+        if (rs.getDate("date_fin_enchere") != null) {
+            articleResult.setDate_fin_enchere(rs.getDate("date_fin_enchere").toLocalDate());
+        }
+
         articleResult.setPrix_de_base(rs.getInt("prix_de_base"));
 
         long idCat = rs.getLong("id_categorie");
