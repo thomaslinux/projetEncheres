@@ -1,9 +1,11 @@
 package fr.eni.projetencheres.bo;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.security.core.parameters.P;
 
 public class Utilisateur {
