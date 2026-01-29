@@ -9,7 +9,8 @@ import fr.eni.projetencheres.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.time.LocalDate;
@@ -78,6 +79,16 @@ public class EnchereController {
         return "details_vente";
     }
 
+//    @GetMapping ("/liste_des_artVente")
+//    public String liste_des_artVente() {
+//        return "liste_des_artVente";
+//    }
+
+    @GetMapping ("/encheres/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping ("/encheres/profil")
     public String profil() {
         return "profil";
@@ -85,5 +96,13 @@ public class EnchereController {
 
 
 
-}
 
+
+//    @GetMapping({"/details_vente"})
+//    public String showDetails(@RequestParam("id") long id, Model model) {
+//        Article article = this.articleService.getArticleById(id);
+//        model.addAttribute("article", article);
+//        return "details_vente";
+//    }
+
+}

@@ -7,6 +7,9 @@ import fr.eni.projetencheres.service.exception.ServiceException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class UtilisateurTests {
@@ -16,6 +19,7 @@ class UtilisateurTests {
 
     @Autowired
     UtilisateurDao utilisateurDao;
+
 
     @Test
     void addUtilisateur() {
@@ -80,5 +84,17 @@ class UtilisateurTests {
             throw new RuntimeException(e);
         }
         System.out.println(utilisateurService.getAllUtilisateurs());
+    }
+
+    @Test
+    void testCryptage(){
+
+        Utilisateur admin = new Utilisateur("Admin", "Min", "Add", "admin@admin.com", "ADmin", "01 04 14 09 15", "'1 rue des Admins", "14495", "AdminVille", 100, true, true);
+        try {
+            utilisateurService.addUtilisateur(admin);
+        } catch (ServiceException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(utilisateurDao.readUtilisateurs());
     }
 }

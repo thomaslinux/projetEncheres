@@ -4,7 +4,7 @@
 <html lang="fr" data-th-replace="~{layout/layout :: frag_layout
 						(title= ~{:: title},
 						content= ~{::main} )}">
-
+<title>Vente</title>
 <main>
     <h2>Mettre un article en vente</h2>
 
@@ -27,10 +27,10 @@
 
             <!--    private int prix_de_vente;-->
 
-
+<!--
             <li><label for="vente_en_cours">Vente en cours</label>
-                <input id="vente_en_cours" type="text" th:field="*{vente_en_cours}"></li>
-
+                <input id="vente_en_cours" type="radio" th:field="*{vente_en_cours}"></li>
+-->
 
             <li><label for="idCategorie">Categorie</label>
                 <select id="idCategorie" th:field="*{categorie}">
