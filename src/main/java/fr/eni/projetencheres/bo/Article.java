@@ -1,5 +1,7 @@
 package fr.eni.projetencheres.bo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 
@@ -7,7 +9,9 @@ public class Article {
     private long id_article;
     private String nom_article;
     private String description;
+    @DateTimeFormat
     private LocalDate date_debut_enchere;
+    @DateTimeFormat
     private LocalDate date_fin_enchere;
     private int prix_de_base;
     private int prix_de_vente;

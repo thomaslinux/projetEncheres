@@ -51,7 +51,7 @@ public class Utilisateur {
 
     private int credit;
     private boolean administrateur;
-    private boolean actif;
+    private boolean actif = true;
 
     public Utilisateur() {
     }
