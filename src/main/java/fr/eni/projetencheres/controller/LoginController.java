@@ -52,7 +52,7 @@ public class LoginController {
         } catch(ServiceException e) {
          //Ajoute les erreurs puis renvoie sur la page
             bindingResult.addError(new ObjectError("globalError", e.getMessage()));
-           model.addAttribute("notUniqueMessage","Ce pseudo est déjà utilisé. Veuillez choisir un pseudo unique.");
+            model.addAttribute("notUniqueMessage","Ce pseudo est déjà utilisé. Veuillez choisir un pseudo unique.");
             return "signup";
           }
         return "redirect:/login";

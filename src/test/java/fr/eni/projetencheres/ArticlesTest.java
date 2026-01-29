@@ -33,4 +33,12 @@ public class ArticlesTest {
         articleDao.addArticle(art);
         System.out.println(articleDao.readArticles());
     }
+
+    @Test
+    void ilEstPasNulMonGet() {
+        LocalDate debut = LocalDate.of(2026,1,15);
+        LocalDate fin = LocalDate.of(2026,1,27);
+        Article art = new Article("Ours en peluche", "C'est un ours en peluche", debut, fin, 10, 15, false, categorieDao.getCategorie(2));
+        System.out.println(art.getCategorie());
+    }
 }

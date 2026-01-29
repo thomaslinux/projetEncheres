@@ -14,5 +14,4 @@ VALUES
     ('Écran', 'Écran 27 pouces Full HD', NULL, NULL, '220', NULL, 1, 1);
 
 SELECT * FROM ARTICLE
-
 SELECT * FROM CATEGORIE
