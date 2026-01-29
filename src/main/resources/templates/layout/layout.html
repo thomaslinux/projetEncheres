@@ -17,14 +17,12 @@
         <ul>
 
             <li><a href="/">Accueil</a></li>
-            <li><a href="/inscription">S'inscrire</a></li>
-            <li><a href="/login">Se Connecter</a></li>
-            <li><a href="/encheres/add">Ajout</a></li>
+            <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/inscription">S'inscrire</a></li>
+            <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
+            <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/encheres/add">Ajout</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
 
-
-
-            <li th:if="${#authorization.expression('hasRole(''UTILISATEUR'')')}">
+            <li th:if="${#authorization.expression('isAuthenticated()')}">
                 <a class="nav-link" href="/encheres">Enchères</a>
             </li>
 
