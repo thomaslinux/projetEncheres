@@ -4,11 +4,8 @@ package fr.eni.projetencheres.controller;
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.service.UtilisateurService;
 import fr.eni.projetencheres.security.EncheresSecurity;
-//import fr.eni.projetencheres.service.exception.ExceptionMessage;
 import fr.eni.projetencheres.service.exception.ServiceException;
 import jakarta.validation.Valid;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +13,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 
 @Controller
 public class LoginController {
@@ -56,7 +52,7 @@ public class LoginController {
         } catch(ServiceException e) {
          //Ajoute les erreurs puis renvoie sur la page
             bindingResult.addError(new ObjectError("globalError", e.getMessage()));
-//            model.addAttribute("exceptionMessage", new ExceptionMessage("Ce pseudo est déjà utilisé. Veuillez choisir un pseudo unique."));
+           model.addAttribute("notUniqueMessage","Ce pseudo est déjà utilisé. Veuillez choisir un pseudo unique.");
             return "signup";
           }
         return "redirect:/login";

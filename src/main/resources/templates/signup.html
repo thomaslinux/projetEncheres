@@ -17,6 +17,8 @@
                 <input type="text" th:field="*{pseudo}" name="pseudo" id="pseudo" required
                        pattern="[a-zA-Z0-9]+" title="Que des chiffres et des lettres">
                 <span class="error" th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
+                <div class="error" th:text="${notUniqueMessage}"></div>
+
             </li>
             <li>
                 <label for="nom">Nom</label>
