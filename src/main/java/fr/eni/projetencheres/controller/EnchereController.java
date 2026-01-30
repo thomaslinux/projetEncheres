@@ -37,18 +37,6 @@ public class EnchereController {
         return "liste_des_artVente";
     }
 
-    @GetMapping("/categories")
-    public String displayCategories(Model model) {
-        List<Categorie> categories = categorieService.getAllCategories();
-        model.addAttribute("list",categories);
-        return "categoriesList";
-    }
-
-    @GetMapping("/details_categories")
-    public String detailsCategorie(Model model, @RequestParam(name = "id") long id) {
-
-    }
-
     @GetMapping ("/encheres/add")
     public String addArticle(Model model, Article article) {
         List<Categorie> list= categorieService.getAllCategories();
