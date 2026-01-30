@@ -6,14 +6,13 @@ import fr.eni.projetencheres.bo.Categorie;
 import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
 import fr.eni.projetencheres.service.UtilisateurService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -61,7 +60,7 @@ public class EnchereController {
     }
 
     @PostMapping("/encheres/update")
-    public String updateArticle(@ModelAttribute(name="article")Article article) {
+    public String updateArticle(@ModelAttribute(name="article") Article article) {
         System.out.println(article);
         articleService.updateArticle(article);
         return"redirect:/encheres";
