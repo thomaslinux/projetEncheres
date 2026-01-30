@@ -49,10 +49,6 @@ public class EnchereController {
 
     }
 
-    @GetMapping ("/encheres/inscription")
-    public String inscription() { return "s_inscrire";}
-
-
     @GetMapping ("/encheres/add")
     public String addArticle(Model model, Article article) {
         List<Categorie> list= categorieService.getAllCategories();
