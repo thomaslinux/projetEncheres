@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html lang="fr" data-th-replace="~{layout/layout :: frag_layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+<!--  tire passé en paramètre -->
+<title>Liste des categories</title>
+<main>
+<!--    <h1>Liste des catégories</h1>-->
+    <table>
+        <thead>
+        <tr>
+            <th>Libelle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="item : ${list}">
+            <td data-th-text="${item.libelle}"></td>
+            <td><a data-th-href="@{/details_categorie(id=${item.id_categorie})}">Details categorie</a></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</html>

@@ -7,10 +7,12 @@ import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
 import fr.eni.projetencheres.service.UtilisateurService;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.List;
@@ -33,6 +35,18 @@ public class EnchereController {
         List<Article> list= this.articleService.getAllArticles();
         model.addAttribute("articleLst", list);
         return "liste_des_artVente";
+    }
+
+    @GetMapping("/categories")
+    public String displayCategories(Model model) {
+        List<Categorie> categories = categorieService.getAllCategories();
+        model.addAttribute("list",categories);
+        return "categoriesList";
+    }
+
+    @GetMapping("/details_categories")
+    public String detailsCategorie(Model model, @RequestParam(name = "id") long id) {
+
     }
 
     @GetMapping ("/encheres/inscription")
@@ -67,16 +81,16 @@ public class EnchereController {
 //        Article article = articleService.getArticleById(id);
 //
 //        List<Categorie> list = categorieService.getAllCategories();
-//        model.addAttribute("selectdCategorie", article.getCategorie().getId_categorie());
+//        model.addAttribute("selectedCategorie", article.getCategorie().getId_categorie());
 //        model.addAttribute("article", article );
-//        model.addAttribute("categorieList",list);
+//        model.addAttribute("categoriesList",list);
 //        return "details_vente";
 //    }
-
-    @GetMapping ("/encheres/details_vente")
-    public String detailsArticle(){
-        return "details_vente";
-    }
+//
+//    @GetMapping ("/encheres/details_vente")
+//    public String detailsArticle(){
+//        return "details_vente";
+//    }
 
 //    @GetMapping ("/liste_des_artVente")
 //    public String liste_des_artVente() {
