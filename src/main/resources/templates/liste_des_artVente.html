@@ -13,6 +13,7 @@
     <th>Article</th>
     <th>Catégorie</th>
     <th>Date debut enchère</th>
+    <th>Date fin enchère</th>
     <th>Prix de base</th>
         <th>Détails</th>
     </tr>
@@ -25,9 +26,7 @@
         <td data-th-text="${item.date_debut_enchere}">
         <td data-th-text="${item.date_fin_enchere}">
         <td data-th-text="${item.prix_de_base}">
-        <td data-th-text="${item.date_debut_enchere}">
-        <td data-th-text="${item.prix_de_base}">
-        <td><a th:href="@{/encheres/details_vente}">Details de Vente</a></td>
+        <td><a th:href="@{/encheres/details_vente(id=${item.id_article})}">Details de Vente</a></td>
   </tbody>
 
 

@@ -52,12 +52,30 @@ public class EnchereController {
     @PostMapping("/encheres/create")
     public String createArticle(Model model, Article article) {
         articleService.addArticle(article);
-        return "redirect:/articles";
+        return "redirect:/encheres";
+    }
+
+    @PostMapping("/encheres/update")
+    public String updateArticle(@ModelAttribute(name="article")Article article) {
+        System.out.println(article);
+        articleService.updateArticle(article);
+        return"redirect:/encheres";
     }
 
 
+//    @GetMapping ("/encheres/details_vente")
+//    public String detailsArticle(@RequestParam(name="id")long id, Model model) {
+//        Article article = articleService.getArticleById(id);
+//
+//        List<Categorie> list = categorieService.getAllCategories();
+//        model.addAttribute("selectdCategorie", article.getCategorie().getId_categorie());
+//        model.addAttribute("article", article );
+//        model.addAttribute("categorieList",list);
+//        return "details_vente";
+//    }
+
     @GetMapping ("/encheres/details_vente")
-    public String details() {
+    public String detailsArticle(){
         return "details_vente";
     }
 
@@ -66,15 +84,15 @@ public class EnchereController {
 //        return "liste_des_artVente";
 //    }
 
-//    @GetMapping ("/encheres/login")
-//    public String login() {
-//        return "login";
-//    }
-//
-//    @GetMapping ("/encheres/profil")
-//    public String profil() {
-//        return "profil";
-//    }
+    @GetMapping ("/encheres/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping ("/encheres/profil")
+    public String profil() {
+        return "profil";
+    }
 
 
 
