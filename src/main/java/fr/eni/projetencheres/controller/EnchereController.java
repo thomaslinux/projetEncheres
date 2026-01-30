@@ -28,16 +28,11 @@ public class EnchereController {
         this.categorieService = categorieService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/encheres")
     public String displayArticles (Model model) {
         List<Article> list= this.articleService.getAllArticles();
         model.addAttribute("articleLst", list);
         return "liste_des_artVente";
-    }
-
-    @GetMapping("/encheres")
-    public String redirect() {
-        return "redirect:/";
     }
 
     @GetMapping ("/encheres/inscription")
