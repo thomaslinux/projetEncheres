@@ -21,17 +21,15 @@
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/inscription">S'inscrire</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
             <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/encheres/add">Ajout</a></li>
-
-            <li th:if="${#authorization.expression('isAuthenticated()')}">
+            <li>
                 <a class="nav-link" href="/encheres">Enchères</a>
             </li>
-
 
             <!--  copie/colle du dernier TP barbie de Julian -->
             <li th:if="${#authorization.expression('isAuthenticated()')}">
                 <form th:action="@{/logout}" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <button type="submit" class="nav-link">Déconnexion</button>
+                    <button type="submit" id="deco">Déconnexion</button>
                 </form>
             </li>
         </ul>
