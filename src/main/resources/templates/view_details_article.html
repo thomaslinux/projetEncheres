@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html lang="fr" data-th-replace="~{layout/layout :: frag_layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+<!--  tire passé en paramètre -->
+<title>Détails de l'article</title>
+
+
+<main>
+    <form th:action="@{/encheres/update}"
+    th:object="${article}"
+    method="post">
+        <ul class="flex-outer">
+            <input type="hidden" name="id" th:value="*{id}">
+            <li>
+                <label for=""></label>
+            </li>
+        </ul>
+    </form>
+</main>
+</html>
