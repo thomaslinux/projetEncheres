@@ -18,15 +18,15 @@
                 <label for="description">description</label>
                 <textarea name="description" id="description" th:value="*{description}"></textarea>
             </li>
-<!--  TODO : cacher le champ date_fin_enchere-->
-<!-- si id_utilisateur connecté est différent de l'id_utilisateur -->
-<!--qui a mis l'article en vente ou si l'utilisateur n'est pas admin-->
+            <!--  TODO : cacher le champ date_fin_enchere-->
+            <!-- si id_utilisateur connecté est différent de l'id_utilisateur -->
+            <!--qui a mis l'article en vente ou si l'utilisateur n'est pas admin-->
 
-<!--/*         <li> -->
-<!--                <label for="date_fin_enchere">date_fin_enchere</label>-->
-<!--                <input type="datetime-local"-->
-<!--                       name="date_fin_enchere" id="date_fin_enchere" th:value="*{date_fin_enchere}">-->
-<!--            </li> */-->
+            <!--/*         <li> -->
+            <!--                <label for="date_fin_enchere">date_fin_enchere</label>-->
+            <!--                <input type="datetime-local"-->
+            <!--                       name="date_fin_enchere" id="date_fin_enchere" th:value="*{date_fin_enchere}">-->
+            <!--            </li> */-->
             <!--            TODO : Ajouter les autres champs de article-->
             <li>
                 <label for="idCategory">Categorie</label>
@@ -40,11 +40,11 @@
                 </select>
             </li>
             <li>
-<!--                TODO : cacher le bouton update si id_utilisateur connecté est différent de l'id_utilisateur qui a mis l'article en vente ou si l'utilisateur n'est pas admin-->
+                <!--                TODO : cacher le bouton update si id_utilisateur connecté est différent de l'id_utilisateur qui a mis l'article en vente ou si l'utilisateur n'est pas admin-->
                 <button type="submit">Update Article</button>
             </li>
         </ul>
-<!--        Cacher le fieldset si l'id_utilisateur actuel est égal à l'id_utilisateur qui a mis l'article en vente-->
+        <!--        Cacher le fieldset si l'id_utilisateur actuel est égal à l'id_utilisateur qui a mis l'article en vente-->
         <fieldset class="fieldset">
             <legend>Ma proposition :</legend>
             <form action="" method="POST">
