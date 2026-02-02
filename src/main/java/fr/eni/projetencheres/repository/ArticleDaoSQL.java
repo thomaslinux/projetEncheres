@@ -76,7 +76,7 @@ public class ArticleDaoSQL implements ArticleDao {
     public Article getArticle(long id_article) {
         String sql = """
                 select id_article, nom_article,description, date_debut_enchere, 
-                                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, 
+                                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien,
                                 ARTICLE.id_categorie, libelle from ARTICLE
                                 left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
                                                               where id_article = :id_article;

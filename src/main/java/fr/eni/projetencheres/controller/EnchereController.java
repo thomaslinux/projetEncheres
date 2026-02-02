@@ -80,31 +80,6 @@ public class EnchereController {
 //        return "details_vente";
         return "view_details_article";
     }
-//
-//    @GetMapping ("/encheres/details_vente")
-//    public String detailsArticle(){
-//        Article article = articleService.getArticleById(1);
-//        Categorie categorie = article.getCategorie();
-//        System.out.println(article);
-//        System.out.println(categorie);
-//        return "index";
-//    }
-
-//    @GetMapping ("/liste_des_artVente")
-//    public String liste_des_artVente() {
-//        return "liste_des_artVente";
-//    }
-
-    @GetMapping ("/encheres/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping ("/encheres/profil")
-    public String profil() {
-        return "profil";
-    }
-
 
 
 
