@@ -17,6 +17,20 @@
                 <label for="nom_article">nom_article</label>
                 <input type="text" name="nom_article" id="nom_article" th:value="*{nom_article}">
             </li>
+            <li>
+                <label for="description">description</label>
+                <textarea name="description" id="description" th:value="*{description}"></textarea>
+            </li>
+<!--  TODO : cacher le champ date_fin_enchere-->
+<!-- si id_utilisateur connecté est différent de l'id_utilisateur -->
+<!--qui a mis l'article en vente ou si l'utilisateur n'est pas admin-->
+
+            <li>
+                <label for="date_fin_enchere">date_fin_enchere</label>
+                <input type="datetime-local"
+                       min="${#dates.format(currentDate, 'yyyy-MM-dd\'T\'HH:mm')}"
+                       name="date_fin_enchere" id="date_fin_enchere" th:value="*{date_fin_enchere}">
+            </li>
             <!--            TODO : Ajouter les autres champs de article-->
             <li>
                 <label for="idCategory">Categorie</label>

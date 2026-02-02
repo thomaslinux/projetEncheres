@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -65,9 +66,13 @@ public class EnchereController {
         Article article = articleService.getArticleById(id);
         List<Categorie> list = categorieService.getAllCategories();
         long selectedCategoryId = article.getCategorie().getId_categorie();
+//        debug prints
         System.out.println(article);
         System.out.println(list);
         System.out.println(selectedCategoryId);
+//      La date minimum c'est pour la fin de la vente c'est aujourd'hui, handling côté BO à ajouter aussi
+        LocalDateTime currentDate = LocalDateTime.now();
+        model.addAttribute("currentDate", currentDate);
 
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
