@@ -72,6 +72,7 @@ public class EnchereController {
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
         model.addAttribute("selectedCategoryId", selectedCategoryId);
+//        return "details_vente";
         return "view_details_article";
     }
 //
