@@ -63,12 +63,27 @@ public class ArticleDaoSQL implements ArticleDao {
         article.setId_article(kh.getKey().longValue());
     }
 
+//    @Override
+//    public Article getArticle(long id_article) {
+//        String sql = "SELECT * FROM ARTICLE WHERE id_article = :id_article";
+//        MapSqlParameterSource map = new MapSqlParameterSource();
+//        map.addValue("id_article", id_article);
+//        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Article.class));
+//    }
+
     @Override
     public Article getArticle(long id_article) {
-        String sql = "SELECT * FROM ARTICLE WHERE id_article = :id_article";
+        String sql = """
+                select id_article, nom_article,description, date_debut_enchere, 
+                                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, 
+                                ARTICLE.id_categorie, libelle from ARTICLE
+                                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                                                              where id_article = :id_article;
+                
+                """;
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_article", id_article);
-        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Article.class));
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new ArticleRowMapper());
     }
 
     @Override
