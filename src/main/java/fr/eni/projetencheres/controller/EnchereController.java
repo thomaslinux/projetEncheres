@@ -39,7 +39,7 @@ public class EnchereController {
     }
 
     @GetMapping("/encheres/search")
-    public String searchArticles(@RequestParam(name="article_name") String article_name, Model model) {
+    public String searchArticles(@RequestParam(name="q") String article_name, Model model) {
         System.out.println("searchArticles");
         List<Article> list = articleService.searchArticle(article_name);
         model.addAttribute("articleLst",list);
