@@ -15,3 +15,5 @@ VALUES
     ('Écran', 'Écran 27 pouces Full HD', NULL, NULL, '220', NULL, 1, 1, 'ecran.jpg');
 SELECT * FROM ARTICLE
 SELECT * FROM CATEGORIE
+
+SELECT * FROM ARTICLE WHERE ARTICLE.nom_article LIKE '%a%'
