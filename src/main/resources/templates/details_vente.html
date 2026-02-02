@@ -9,16 +9,10 @@
     <h2>Details de Vente</h2>
 
 
-
-
-
-
-        <table>
-            <thead>
-
+    <table>
+        <thead>
         <tr>
-
-            <th>Id article</th>
+<!--            <th>Id article</th>-->
             <th>Nom article</th>
             <th>Description</th>
             <th>Categorie</th>
@@ -29,20 +23,29 @@
             <th>Vendeur</th>
         </tr>
         </thead>
-
         <tbody>
         <tr data-th-each="item : ${articleLst}">
-            <td data-th-text="${item.id_article}"></td>
+<!--            <td data-th-text="${item.id_article}"></td>-->
             <td data-th-text="${item.nom_article}"></td>
             <td data-th-text="${item.description}"></td>
-            <td data-th-text="${item.Categorie?.libelle}"></td>
+            <td>
+                <label for="idCategory">Categorie</label>
+                <select id="idCategory" th:field="*{categorie}">
+                    <option th:each="item : ${categoriesList}"
+                            th:text="${item.libelle}"
+                            th:value="${item.id_categorie}"
+                            th:selected="${item.id_categorie == selectedCategoryId}">
+
+                    </option>
+                </select>
+            </td>
             <td data-th-text="${item.Retrait?.adresse}"></td>
             <td data-th-text="${item.Retrait?.ville}"></td>
             <td data-th-text="${item.Utilisateur?.pseudo}"></td>
             <td><a data-th-href="@{/encheres/details_vente(id=${item.id})}">Enchérir</a></td>
         </tr>
+        </tbody>
     </table>
-    </tbody>
     <fieldset class="fieldset">
         <legend>Ma proposition :</legend>
         <form action="" method="POST"><label for="nombre">Eni Points :</label> <input type="number" name="nombre"
@@ -82,7 +85,6 @@
 <!--            </li>-->
 
 
-
 <!--            <li>-->
 <!--                <label for="idDate_debut_enchere">Date debut enchère</label>-->
 <!--                <input id="idDate_debut_enchere" type="text" th:field="*{nom_article}"/>-->
@@ -120,7 +122,6 @@
 <!--            </li>-->
 <!--        </ul>-->
 <!--    </form>-->
-
 
 
 <!--    <fieldset class="fieldset">-->
