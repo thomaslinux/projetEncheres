@@ -65,15 +65,12 @@ public class EnchereController {
     public String detailsArticle(@RequestParam(name="id")long id, Model model) {
         Article article = articleService.getArticleById(id);
         List<Categorie> list = categorieService.getAllCategories();
-        long selectedCategoryId = article.getCategorie().getId_categorie();
 //        debug prints
         System.out.println(article);
         System.out.println(list);
-        System.out.println(selectedCategoryId);
 
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
-        model.addAttribute("selectedCategoryId", selectedCategoryId);
         return "view_details_article";
     }
 
