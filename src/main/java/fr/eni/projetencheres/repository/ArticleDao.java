@@ -14,4 +14,6 @@ public interface ArticleDao {
     void deleteArticle(long id);
 
     void updateArticle(Article article);
+
+    public List<Article> searchArticles(String article_name);
 }

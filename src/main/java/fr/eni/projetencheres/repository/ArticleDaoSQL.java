@@ -43,9 +43,9 @@ public class ArticleDaoSQL implements ArticleDao {
     public void addArticle(Article article) {
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
         String sql = "INSERT INTO ARTICLE(nom_article, description, date_debut_enchere, " +
-                     "date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, id_categorie, image_lien) " +
-                     "VALUES (:nom_article, :description, :date_debut_enchere, " +
-                     ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie, :image_lien)";
+                "date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, id_categorie, image_lien) " +
+                "VALUES (:nom_article, :description, :date_debut_enchere, " +
+                ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie, :image_lien)";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("nom_article", article.getNom_article());
@@ -112,7 +112,7 @@ public class ArticleDaoSQL implements ArticleDao {
                 " where id_article = :id_article; ";
         System.out.println("updateArticle");
         MapSqlParameterSource map = new MapSqlParameterSource();
-        map.addValue("id_article",article.getId_article());
+        map.addValue("id_article", article.getId_article());
         map.addValue("description", article.getDescription());
         map.addValue("date_debut_enchere", article.getDate_debut_enchere());
         map.addValue("date_fin_enchere", article.getDate_fin_enchere());
@@ -125,5 +125,22 @@ public class ArticleDaoSQL implements ArticleDao {
 
         namedParameterJdbcTemplate.update(sql, map);
 
+    }
+
+    @Override
+    public List<Article> searchArticles(String article_name) {
+        String sql = """
+                            select id_article, nom_article,description, date_debut_enchere, 
+                            date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien, 
+                            ARTICLE.id_categorie, libelle from ARTICLE
+                            left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                             WHERE ARTICLE.nom_article LIKE :article_name
+                """;
+        System.out.println("ArticleDaoSQL searchArticles");
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("article_name", "%" + article_name + "%");
+
+        return namedParameterJdbcTemplate.query(sql, map, new ArticleRowMapper());
     }
 }

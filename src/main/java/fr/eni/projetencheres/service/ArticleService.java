@@ -17,4 +17,6 @@ public interface ArticleService {
     void deleteArticle(long id);
 
     void updateArticle(Article article);
+
+    List<Article> searchArticle(String article_name);
 }
