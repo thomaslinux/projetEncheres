@@ -34,6 +34,7 @@ public class ArticleRowMapper  implements RowMapper<Article> {
 
             articleResult.setCategorie(categorie);
         }
+        articleResult.setImage_lien(rs.getString("image_lien"));
 
         return articleResult;
     }

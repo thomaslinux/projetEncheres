@@ -23,6 +23,7 @@ public class Article {
     private int prix_de_vente;
     private boolean vente_en_cours;
     private Categorie categorie;
+    private String image_lien;
 
 
     @Override
@@ -37,10 +38,11 @@ public class Article {
                 ", prix_de_vente=" + prix_de_vente +
                 ", vente_en_cours=" + vente_en_cours +
                 ", categorie=" + categorie +
+                ", image_lien=" + image_lien +
                 '}';
     }
 
-    public Article(long id_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie) {
+    public Article(long id_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie, String image_lien) {
         this.id_article = id_article;
         this.nom_article = nom_article;
         this.description = description;
@@ -50,10 +52,11 @@ public class Article {
         this.prix_de_vente = prix_de_vente;
         this.vente_en_cours = vente_en_cours;
         this.categorie = categorie;
+        this.image_lien = image_lien;
 
     }
 
-    public Article(String nom_article, String description, LocalDate date_debut_enchere, LocalDate date_fin_enchere, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie) {
+    public Article(String nom_article, String description, LocalDate date_debut_enchere, LocalDate date_fin_enchere, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie, String image_lien) {
         this.nom_article = nom_article;
         this.description = description;
         this.date_debut_enchere = date_debut_enchere;
@@ -62,6 +65,7 @@ public class Article {
         this.prix_de_vente = prix_de_vente;
         this.vente_en_cours = vente_en_cours;
         this.categorie = categorie;
+        this.image_lien = image_lien;
     }
 
     public Article() {
@@ -137,5 +141,13 @@ public class Article {
 
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
+    }
+
+    public String getImage_lien() {
+        return image_lien;
+    }
+
+    public void setImage_lien(String image_lien) {
+        this.image_lien = image_lien;
     }
 }

@@ -18,12 +18,12 @@ public class CategorieController {
         this.categorieService = categorieService;
     }
 
-    @GetMapping("/categories")
-    public String displayCategories(Model model) {
-        List<Categorie> categories = categorieService.getAllCategories();
-        model.addAttribute("list",categories);
-        return "categoriesList";
-    }
+//    @GetMapping("/categories")
+//    public String displayCategories(Model model) {
+//        List<Categorie> categories = categorieService.getAllCategories();
+//        model.addAttribute("list",categories);
+//        return "categoriesList";
+//    }
 
     @GetMapping("/details_categorie")
     public String detailsCategorie(Model model, @RequestParam(name = "id") long id) {
@@ -31,4 +31,15 @@ public class CategorieController {
         model.addAttribute("category",categorie);
         return "view_details_categorie";
     }
+
+    @GetMapping("/")
+    public String index(Model model) {
+
+        List<Categorie> categories = categorieService.getAllCategories();
+
+        model.addAttribute("categories", categories);
+
+        return "index";
+    }
+
 }
