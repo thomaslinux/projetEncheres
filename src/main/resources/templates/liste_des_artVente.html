@@ -16,7 +16,7 @@
                  th:each="item : ${articleLst}">
 
             <div class="image">
-                <img src="/static/images/ballonKilyan.jpg" alt="Image article">
+            <img th:src="@{'/images/' + ${item?.image_lien}}" th:alt="${item?.description}">
             </div>
 
 
@@ -41,41 +41,6 @@
         </article>
 
     </section>
-
-
-
-
-
-
-
-
-
-<!------------------------------------------------>
-    <table>
-        <thead>
-        <tr>
-            <th>Article</th>
-            <th>Catégorie</th>
-            <th>Date debut enchère</th>
-            <th>Date fin enchère</th>
-            <th>Prix de base</th>
-            <th>Détails</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr data-th-each="item : ${articleLst}">
-            <td data-th-text="${item.nom_article}">
-            <td data-th-text="${item.categorie?.libelle}">
-            <td data-th-text="${item.date_debut_enchere}">
-            <td data-th-text="${item.date_fin_enchere}">
-            <td data-th-text="${item.prix_de_base}">
-            <td><a th:href="@{/encheres/details_vente(id=${item.id_article})}">Details de Vente</a></td>
-        </tr>
-        </tbody>
-
-
-    </table>
 
 
 </main>

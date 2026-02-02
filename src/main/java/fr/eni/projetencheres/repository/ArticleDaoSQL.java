@@ -30,7 +30,7 @@ public class ArticleDaoSQL implements ArticleDao {
     public List<Article> readArticles() {
         String sql = """
                 select id_article, nom_article,description, date_debut_enchere, 
-                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, 
+                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien, 
                 ARTICLE.id_categorie, libelle from ARTICLE
                 left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie;
                 """;
@@ -43,9 +43,9 @@ public class ArticleDaoSQL implements ArticleDao {
     public void addArticle(Article article) {
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
         String sql = "INSERT INTO ARTICLE(nom_article, description, date_debut_enchere, " +
-                     "date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, id_categorie) " +
+                     "date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, id_categorie, image_lien) " +
                      "VALUES (:nom_article, :description, :date_debut_enchere, " +
-                     ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie)";
+                     ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie, :image_lien)";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("nom_article", article.getNom_article());
@@ -56,6 +56,7 @@ public class ArticleDaoSQL implements ArticleDao {
         map.addValue("prix_de_vente", article.getPrix_de_vente());
         map.addValue("vente_en_cours", article.isVente_en_cours());
         map.addValue("id_categorie", article.getCategorie().getId_categorie());
+        map.addValue("image_lien", article.getImage_lien());
 
         namedParameterJdbcTemplate.update(sql, map, kh);
 
@@ -102,7 +103,7 @@ public class ArticleDaoSQL implements ArticleDao {
 
         String sql ="UPDATE article SET nom_article = :nom_article, description = :description, date_debut_enchere = :date_debut_enchere, " +
                 " date_fin_enchere = :date_fin_enchere, prix_de_base = :prix_de_base, prix_de_vente = :prix_de_vente, vente_en_cours = :vente_en_cours, " +
-                " id_categorie = :id_categorie ";
+                " id_categorie = :id_categorie, image_lien = :image_lien ";
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("description", article.getDescription());
         map.addValue("date_debut_enchere", article.getDate_debut_enchere());
@@ -112,14 +113,9 @@ public class ArticleDaoSQL implements ArticleDao {
         map.addValue("nom_article", article.getNom_article());
         map.addValue("vente_en_cours", article.isVente_en_cours());
         map.addValue("id_categorie", article.getCategorie());
+        map.addValue("image_lien", article.getImage_lien());
 
         namedParameterJdbcTemplate.update(sql, map);
 
-    }
-
-    public Date convertLocalDateToSQL(LocalDate javaDate) {
-            return Optional.ofNullable(javaDate)
-                    .map(Date::valueOf)
-                    .orElse(null);
     }
 }
