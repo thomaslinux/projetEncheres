@@ -63,15 +63,16 @@ public class EnchereController {
     @GetMapping ("/encheres/details_vente")
     public String detailsArticle(@RequestParam(name="id")long id, Model model) {
         Article article = articleService.getArticleById(id);
-        Categorie categorie = article.getCategorie();
-        System.out.println(article);
-        System.out.println(categorie);
-
         List<Categorie> list = categorieService.getAllCategories();
-        model.addAttribute("selectedCategorie", article.getCategorie().getId_categorie());
-        model.addAttribute("article", article );
+        long selectedCategoryId = article.getCategorie().getId_categorie();
+        System.out.println(article);
+        System.out.println(list);
+        System.out.println(selectedCategoryId);
+
+        model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
-        return "details_vente";
+        model.addAttribute("selectedCategoryId", selectedCategoryId);
+        return "view_details_article";
     }
 //
 //    @GetMapping ("/encheres/details_vente")

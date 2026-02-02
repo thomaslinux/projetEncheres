@@ -10,12 +10,23 @@
 
 <main>
     <form th:action="@{/encheres/update}"
-    th:object="${article}"
-    method="post">
+          th:object="${article}"
+          method="post">
         <ul class="flex-outer">
             <li>
                 <label for="nom_article">nom_article</label>
-                <input type="text" name="nom_article" id="nom_article" th:value="${article.nom_article}">
+                <input type="text" name="nom_article" id="nom_article" th:value="*{nom_article}">
+            </li>
+            <li>
+                <label for="idCategory">Categorie</label>
+                <select id="idCategory" th:field="*{categorie}">
+                    <option th:each="item : ${categoriesList}"
+                            th:text="${item.libelle}"
+                            th:value="${item.id_categorie}"
+                            th:selected="${item.id_categorie == selectedCategoryId}">
+
+                    </option>
+                </select>
             </li>
             <li>
                 <button type="submit">Update Article</button>
