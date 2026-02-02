@@ -38,6 +38,14 @@ public class EnchereController {
         return "liste_des_artVente";
     }
 
+    @GetMapping("/encheres/search")
+    public String searchArticles(@RequestParam(name="article_name") String article_name, Model model) {
+        System.out.println("searchArticles");
+        List<Article> list = articleService.searchArticle(article_name);
+        model.addAttribute("articleLst",list);
+        return "liste_des_artVente";
+    }
+
     @GetMapping ("/encheres/add")
     public String addArticle(Model model, Article article) {
         List<Categorie> list= categorieService.getAllCategories();
