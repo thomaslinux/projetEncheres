@@ -71,8 +71,8 @@ public class EnchereController {
         System.out.println(list);
         System.out.println(selectedCategoryId);
 //      La date minimum c'est pour la fin de la vente c'est aujourd'hui, handling côté BO à ajouter aussi
-        LocalDateTime currentDate = LocalDateTime.now();
-        model.addAttribute("currentDate", currentDate);
+//        LocalDateTime currentDate = LocalDateTime.now();
+//        model.addAttribute("currentDate", currentDate);
 
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
