@@ -56,8 +56,8 @@ public class EnchereController {
     @PostMapping("/encheres/update")
     public String updateArticle(@ModelAttribute(name="article") Article article) {
         System.out.println(article);
-        articleService.updateArticle(article);
-        return"redirect:/encheres";
+//        articleService.updateArticle(article);
+        return "redirect:/encheres";
     }
 
 
@@ -71,6 +71,7 @@ public class EnchereController {
 
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
+        model.addAttribute("selectedCategory",article.getCategorie().getId_categorie());
         return "view_details_article";
     }
 
