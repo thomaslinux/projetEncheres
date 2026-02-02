@@ -10,13 +10,15 @@
           th:object="${article}"
           method="post">
         <ul class="flex-outer">
+            <input type="text" th:field="*{id_article}" hidden />
+            <input type="text" th:field="*{image_lien}" hidden />
             <li>
                 <label for="nom_article">nom_article</label>
                 <input type="text" name="nom_article" id="nom_article" th:value="*{nom_article}">
             </li>
             <li>
                 <label for="description">description</label>
-                <textarea name="description" id="description" th:value="*{description}"></textarea>
+                <textarea type="text" name="description" id="description" th:text="*{description}"></textarea>
             </li>
             <!--  TODO : cacher le champ date_fin_enchere-->
             <!-- si id_utilisateur connecté est différent de l'id_utilisateur -->
