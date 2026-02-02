@@ -319,6 +319,17 @@ background: #1565c0;
      height: 50px;
      display: block;
      }
+
+
+.logo_text {
+    font-family: "Montserrat", sans-serif;
+    color: #1EAFE5;
+}
+
+.logo_text em {
+    font-style: normal;
+    font-weight: 100;
+}
 header {
     display: flex;
     background-color:#12284c;

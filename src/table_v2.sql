@@ -1,6 +1,5 @@
 /*Créer manuellement dans SSMS la table projet_enchere*/
 
-
 --CREATE DATABASE projet_enchere;
 --GO
 
@@ -30,28 +29,28 @@ CREATE TABLE ARTICLE (
                          prix_de_vente 		INTEGER,
                          vente_en_cours 		bit ,
                          id_categorie 		INTEGER,
+                         image_lien			VARCHAR(255),
                          CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
 );
 
-ALTER TABLE ARTICLE
-    ADD CONSTRAINT article_categorie_fk
-        FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
-            ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
+    FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
+        ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE UTILISATEUR (
                              id_utilisateur   INTEGER IDENTITY(1,1) NOT NULL,
-                             pseudo           VARCHAR(255) UNIQUE NOT NULL,
+                             pseudo           VARCHAR(255) UNIQUE,
                              nom              VARCHAR(255),
                              prenom           VARCHAR(255),
                              email            VARCHAR(255),
-                             password		  VARCHAR(255),
+                             password		 VARCHAR(255),
                              telephone        VARCHAR(255),
-                             adresse          VARCHAR(255),
+                             adresse              VARCHAR(255),
                              code_postal      VARCHAR(255),
                              ville            VARCHAR(255),
                              credit           INTEGER,
                              administrateur   bit,
-                             actif			  bit,
+                             actif			 bit,
                              CONSTRAINT UTILISATEUR_PK PRIMARY KEY (id_utilisateur)
 );
 
@@ -63,10 +62,9 @@ CREATE TABLE ROLE (
                       CONSTRAINT ROLE_PK PRIMARY KEY (id_role)
 );
 
-ALTER TABLE ROLE
-    ADD CONSTRAINT role_utilisateur_fk
-        FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
-            ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ROLE ADD CONSTRAINT role_utilisateur_fk
+    FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
+        ON UPDATE CASCADE ON DELETE CASCADE;
 
 CREATE TABLE ENCHERE (
                          id_enchere 		INTEGER 	IDENTITY(1,1),
@@ -77,17 +75,15 @@ CREATE TABLE ENCHERE (
                          CONSTRAINT ENCHERE_PK 		PRIMARY KEY (id_enchere)
 );
 
-ALTER TABLE ENCHERE
-    ADD CONSTRAINT enchere_utilisateur_fk
-        FOREIGN KEY (id_utilisateur)
-            REFERENCES UTILISATEUR (id_utilisateur)
-            ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ENCHERE ADD CONSTRAINT enchere_utilisateur_fk
+    FOREIGN KEY (id_utilisateur)
+        REFERENCES UTILISATEUR (id_utilisateur)
+        ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE ENCHERE
-    ADD CONSTRAINT enchere_article_fk
-        FOREIGN KEY (id_article)
-            REFERENCES ARTICLE (id_article)
-            ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ENCHERE ADD CONSTRAINT enchere_article_fk
+    FOREIGN KEY (id_article)
+        REFERENCES ARTICLE (id_article)
+        ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE RETRAIT (
                          id_retrait 			INTEGER 	IDENTITY(1,1),
@@ -101,5 +97,3 @@ CREATE TABLE RETRAIT (
 ALTER TABLE RETRAIT ADD CONSTRAINT retrait_article_fk
     FOREIGN KEY (id_article) REFERENCES ARTICLE (id_article)
         ON UPDATE CASCADE ON DELETE SET NULL;
-
-
