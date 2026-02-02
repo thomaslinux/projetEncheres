@@ -70,30 +70,12 @@ public class EnchereController {
         System.out.println(article);
         System.out.println(list);
         System.out.println(selectedCategoryId);
-//      La date minimum c'est pour la fin de la vente c'est aujourd'hui, handling côté BO à ajouter aussi
-//        LocalDateTime currentDate = LocalDateTime.now();
-//        model.addAttribute("currentDate", currentDate);
 
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
         model.addAttribute("selectedCategoryId", selectedCategoryId);
-//        return "details_vente";
         return "view_details_article";
     }
-//
-//    @GetMapping ("/encheres/details_vente")
-//    public String detailsArticle(){
-//        Article article = articleService.getArticleById(1);
-//        Categorie categorie = article.getCategorie();
-//        System.out.println(article);
-//        System.out.println(categorie);
-//        return "index";
-//    }
-
-//    @GetMapping ("/liste_des_artVente")
-//    public String liste_des_artVente() {
-//        return "liste_des_artVente";
-//    }
 
     @GetMapping ("/encheres/login")
     public String login() {
@@ -104,16 +86,5 @@ public class EnchereController {
     public String profil() {
         return "profil";
     }
-
-
-
-
-
-//    @GetMapping({"/details_vente"})
-//    public String showDetails(@RequestParam("id") long id, Model model) {
-//        Article article = this.articleService.getArticleById(id);
-//        model.addAttribute("article", article);
-//        return "details_vente";
-//    }
 
 }
