@@ -29,13 +29,11 @@
             <!--            </li> */-->
             <!--            TODO : Ajouter les autres champs de article-->
             <li>
-                <label for="idCategory">Categorie</label>
-                <select id="idCategory" th:field="*{categorie}">
+                <label for="categorie">Categorie</label>
+                <select id="categorie" th:field="*{categorie.id_categorie}">
                     <option th:each="item : ${categoriesList}"
                             th:text="${item.libelle}"
-                            th:value="${item.id_categorie}"
-                            th:selected="${item.id_categorie == selectedCategoryId}">
-
+                            th:value="${item.id_categorie}">
                     </option>
                 </select>
             </li>
