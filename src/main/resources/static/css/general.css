@@ -12,6 +12,34 @@ nav ul {
     font-weight: bold;
 }
 
+/********************Ajout Léna********************/
+.accueil {
+    display:flex;
+    justify-content : center;
+    align-items : center;
+    padding:
+}
+
+.accueil:not(:last-child) {
+    flex-flow: wrap column;
+}
+
+.accueil * {
+    margin-top : 1vh;
+    margin-bottom : 1vh;
+}
+
+.grandTitre {
+    display: flex;
+    align-items: flex-start;
+    font-size: 3em;
+    padding: 3vh;
+    background-color: #004982;
+    color: white;
+}
+
+/**************************************************/
+
 header li {
 	list-style: none;
 	display: inline-block;
