@@ -16,9 +16,11 @@
     <!-- <h1 id="nav-title" > <a href="/">Eni Enchères </a> </h1>-->
      <div class="logo-container">
        <a href="/">
-
-        <img th:src="@{/images/logo.png}" alt="alt-logo" class="logo">
-           </a>
+           <img src="/images/logo.png" alt="alt-logo" class="logo">
+       </a>
+<!--         <a th:href="@{/}">-->
+<!--             <img th:src="@{/images/logo.png}" alt="alt-logo" class="logo">-->
+<!--         </a>-->
     </div>
 
     <!--<nav>
@@ -40,7 +42,7 @@
 
             <!--  copie/colle du dernier TP barbie de Julian -->
             <li th:if="${#authorization.expression('isAuthenticated()')}">
-                <form th:action="@{/logout}" method="post">
+                <form id="deco_form" th:action="@{/logout}" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}">
                     <button type="submit" id="deco">Déconnexion</button>
                 </form>
