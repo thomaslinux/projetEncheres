@@ -1,5 +1,6 @@
 package fr.eni.projetencheres.bo;
 
+import jakarta.validation.constraints.AssertTrue;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -13,6 +14,11 @@ public class Article {
     private LocalDate date_debut_enchere;
     @DateTimeFormat
     private LocalDate date_fin_enchere;
+    @AssertTrue(message = "Interdit de mettre une date de fin avant aujourd'hui")
+    public boolean isDateFinEnchereValid() {
+        return date_fin_enchere != null && !date_fin_enchere.isBefore(LocalDate.now());
+    }
+
     private int prix_de_base;
     private int prix_de_vente;
     private boolean vente_en_cours;
