@@ -9,31 +9,44 @@
 
 
 <main>
-    <div class="accueil">
 
-    <h2 class="grandTitre">Eni Enchères</h2>
-
-    <label for="site-search">Recherche : </label>
-    <input type="search" id="site-search" name="q"/>
-
-    <button>Search</button>
-
+    <div>
+        <label for="site-search">Recherche : </label>
+        <input type="search" id="site-search" name="q"/>
+        <button class="btn">Search</button>
     </div>
 
-    <h2>Liste des Enchères :</h2>
+
+    <div class="accueil">
+        <h2 class="grandTitre">Eni Enchères</h2>
+    </div>
 
 
+        <h2>Liste des Articles Enchères</h2>
 
 
-    <!--   <ul class="flex-outer">-->
-
-    <!--        <li><label for="id_categorie">Categorie</label> <select id="id_categorie" th:field="*{type}">-->
-    <!--            <option th:each="item : ${categorieLst}" th:text="${item.libelle}" th:value="${item.id_categorie}">-->
-
-    <!--            </option>-->
-    <!--        </select></li>-->
-    <!--    </ul>-->
+<!--SB-->
+        <section class="articles">
+            <article class="fiche"
+                     th:each="item : ${categories}">
+                <div>
+                    <img src="/images/ballonKilyan.jpg" alt="Image article">
 
 
-</main>
+                <div class="infos">
+                    <h3 th:text="${item.libelle}">Catégorie</h3>
+                </div>
+
+                                    <a class="btn"
+                                       th:href ="@{/encheres/list_des_artVente(id=${item.id_categorie})}">
+                                        Voir enchères
+                                    </a>
+
+                </div>
+            </article>
+
+        </section>
+
+
+    </main>
 </html>
