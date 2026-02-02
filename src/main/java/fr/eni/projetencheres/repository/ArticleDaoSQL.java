@@ -100,15 +100,19 @@ public class ArticleDaoSQL implements ArticleDao {
 
     @Override
     public void updateArticle(Article article) {
-
-        String sql = """
-                UPDATE article SET nom_article = :nom_article, description = :description, date_debut_enchere = :date_debut_enchere, 
-                                 date_fin_enchere = :date_fin_enchere, prix_de_base = :prix_de_base, prix_de_vente = :prix_de_vente, vente_en_cours = :vente_en_cours, 
-                                 id_categorie = :id_categorie,
-                                image_lien = :image_lien
-                               where id_article = :id_article
-                """;
+        String sql = "UPDATE article SET nom_article = :nom_article," +
+                " description = :description," +
+                " date_debut_enchere = :date_debut_enchere," +
+                " date_fin_enchere = :date_fin_enchere," +
+                " prix_de_base = :prix_de_base," +
+                " prix_de_vente = :prix_de_vente," +
+                " vente_en_cours = :vente_en_cours," +
+                " id_categorie = :id_categorie," +
+                " image_lien = :image_lien" +
+                " where id_article = :id_article; ";
+        System.out.println("updateArticle");
         MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id_article",article.getId_article());
         map.addValue("description", article.getDescription());
         map.addValue("date_debut_enchere", article.getDate_debut_enchere());
         map.addValue("date_fin_enchere", article.getDate_fin_enchere());
@@ -116,7 +120,7 @@ public class ArticleDaoSQL implements ArticleDao {
         map.addValue("prix_de_vente", article.getPrix_de_vente());
         map.addValue("nom_article", article.getNom_article());
         map.addValue("vente_en_cours", article.isVente_en_cours());
-        map.addValue("id_categorie", article.getCategorie());
+        map.addValue("id_categorie", article.getCategorie().getId_categorie());
         map.addValue("image_lien", article.getImage_lien());
 
         namedParameterJdbcTemplate.update(sql, map);
