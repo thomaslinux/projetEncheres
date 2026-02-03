@@ -16,7 +16,7 @@
                     <h3 th:text="${item.libelle}">Catégorie</h3>
                 </div>
                 <a class="btn"
-                   th:href="@{/encheres/search(q=${item.libelle}, byCategorie='on')}">
+                   th:href="@{/encheres/search(q=${item.libelle}, byCategorie='on',categorie=${item.libelle})}">
                     Voir enchères
                 </a>
             </div>

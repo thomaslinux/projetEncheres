@@ -46,7 +46,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription) {
-        return articleDao.searchArticleConfigurable(searchedTerm, byCategorie, byDescription);
+    public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription, String categorie) {
+        return articleDao.searchArticleConfigurable(searchedTerm, byCategorie, byDescription, categorie);
     }
 }

@@ -20,5 +20,5 @@ public interface ArticleService {
 
     List<Article> searchArticle(String article_name);
 
-    List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription);
+    List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription, String categorie);
 }
