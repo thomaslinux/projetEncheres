@@ -22,7 +22,7 @@ public class CategorieServiceImpl implements CategorieService  {
     }
 
     @Override
-    public void addCategoeire(Categorie categorie) {
+    public void addCategorie(Categorie categorie) {
         this.categorieDao.addCategorie(categorie);
 
     }

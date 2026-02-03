@@ -7,7 +7,7 @@ import java.util.List;
 public interface CategorieService {
     List<Categorie> getAllCategories();
 
-    void addCategoeire(Categorie categorie);
+    void addCategorie(Categorie categorie);
 
     Categorie getCategorie(long id);
 
