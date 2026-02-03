@@ -44,6 +44,7 @@ public class LoginController {
     public String profil(Model model) {
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        assert userDetails != null;
         model.addAttribute("utilisateurConnect", utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
         return "profil";
     }
