@@ -128,18 +128,20 @@ public class ArticleDaoSQL implements ArticleDao {
     }
 
     @Override
-    public List<Article> searchArticles(String article_name) {
+    public List<Article> searchArticles(String searchedTerm) {
         String sql = """
                             select id_article, nom_article,description, date_debut_enchere, 
                             date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien, 
                             ARTICLE.id_categorie, libelle from ARTICLE
                             left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
-                             WHERE ARTICLE.nom_article LIKE :article_name
+                             WHERE ARTICLE.nom_article LIKE :searchedTerm
+                                OR ARTICLE.description LIKE :searchedTerm
+                                OR CATEGORIE.libelle   LIKE :searchedTerm
                 """;
-        System.out.println("ArticleDaoSQL searchArticles");
+//        System.out.println("ArticleDaoSQL searchArticles");
 
         MapSqlParameterSource map = new MapSqlParameterSource();
-        map.addValue("article_name", "%" + article_name + "%");
+        map.addValue("searchedTerm", "%" + searchedTerm + "%");
 
         return namedParameterJdbcTemplate.query(sql, map, new ArticleRowMapper());
     }
