@@ -22,6 +22,8 @@
        <a class="logo_text"><strong>ENI</strong><em>ENCHERES</em></a>
     </div>
 
+<!--    <img scr = "/images/back.jpg"/> -->
+
 
     <!--<nav>
         <ul>
@@ -61,9 +63,9 @@
 
             <!--  copie/colle du dernier TP barbie de Julian -->
             <li th:if="${#authorization.expression('isAuthenticated()')}">
-                <form id="deco_form" th:action="@{/logout}" method="post">
+                <form id="deconnexion_form" th:action="@{/logout}" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <button type="submit" id="deco">Déconnexion</button>
+                    <button type="submit" id="deconnexion">Déconnexion</button>
                 </form>
             </li>
         </ul>

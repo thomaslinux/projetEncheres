@@ -259,7 +259,7 @@ form {
     display: flex;
     flex-flow: wrap column;
     background: none;
-    font-size: 1rem
+    font-size: 1rem;
     box-shadow: none;
 
 }
@@ -315,6 +315,8 @@ form h1 {
 	flex: 1 0 220px;
 }
 
+
+
 /*buton Formulaire -------SB*/
 .flex-outer li button {
     margin-left: auto;
@@ -351,14 +353,6 @@ form h1 {
     max-width: 1200px;
             margin: 0 auto;
     }
-
-
-
-
-
-
-
-
 
 
 .fiche {
