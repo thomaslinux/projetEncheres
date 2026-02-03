@@ -15,14 +15,12 @@ public class Utilisateur {
     @Pattern(regexp = "[a-zA-Z0-9]+",message = "Que des chiffres et des lettres")
     private String pseudo;
 
-//    @NotBlank
     @Size(max = 50)
-    @Pattern(regexp = "[a-zA-Z]+",message = "Que des lettres")
+    @Pattern(regexp = "[a-zA-Z]*",message = "Que des lettres")
     private String nom;
 
-//    @NotBlank
     @Size(max = 50)
-    @Pattern(regexp = "[a-zA-Z]+",message = "Que des lettres")
+    @Pattern(regexp = "[a-zA-Z]*",message = "Que des lettres")
     private String prenom;
 
     @NotBlank
@@ -33,22 +31,20 @@ public class Utilisateur {
     @Size(min = 6, max = 255)
     private String password;
 
-//    @NotBlank
-    @Pattern(regexp = "^\\+?[0-9. ()-]$",message = "Entrez un numero valide")
+    @Size(max = 30)
+    @Pattern(regexp = "^\\+?[0-9. ()-]*",message = "Entrez un numero valide")
     private String telephone;
 
-//    @NotBlank
     @Size(max = 255)
-    @Pattern(regexp = "[a-z A-Z0-9]+",message = "Que des lettres chiffres et espaces")
+    @Pattern(regexp = "[a-z A-Z0-9]*",message = "Que des lettres chiffres et espaces")
     private String adresse;
 
-//    @NotBlank
-    @Pattern(regexp = "^[0-9]{5}$",message = "Que 5 chiffres")
+    @Size(max = 5)
+    @Pattern(regexp = "[0-9]*",message = "Entrez uniquement des chiffres")
     private String code_postal; // French postal code format
 
-//    @NotBlank
     @Size(max = 255)
-    @Pattern(regexp = "[a-z A-Z]+$",message = "Que des lettres ou espaces")
+    @Pattern(regexp = "[a-z A-Z]*",message = "Que des lettres ou espaces")
     private String ville;
 
     private int credit;
