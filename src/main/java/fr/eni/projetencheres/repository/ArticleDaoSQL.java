@@ -2,6 +2,7 @@ package fr.eni.projetencheres.repository;
 
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.repository.RowMapper.ArticleRowMapper;
+import fr.eni.projetencheres.repository.RowMapper.EnchereRowMapper;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -29,13 +30,25 @@ public class ArticleDaoSQL implements ArticleDao {
     @Override
     public List<Article> readArticles() {
         String sql = """
-                select id_article, nom_article,description, date_debut_enchere, 
-                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien, 
-                ARTICLE.id_categorie, libelle from ARTICLE
-                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie;
+                select id_article,
+                       nom_article,
+                       description,
+                       date_debut_enchere,
+                       date_fin_enchere,
+                       prix_de_base,
+                       prix_de_vente,
+                       vente_en_cours,
+                       image_lien,
+                       ARTICLE.id_categorie,
+                       libelle AS 'categorie',
+                       UTILISATEUR.id_utilisateur AS 'id_vendeur',
+                       pseudo  AS 'vendeur'
+                from ARTICLE
+                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur;
                 """;
 
-        return jdbcTemplate.query(sql, new ArticleRowMapper());
+        return jdbcTemplate.query(sql, new EnchereRowMapper());
 
     }
 
@@ -130,31 +143,55 @@ public class ArticleDaoSQL implements ArticleDao {
     @Override
     public List<Article> searchArticles(String searchedTerm) {
         String sql = """
-                            select id_article, nom_article,description, date_debut_enchere, 
-                            date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien, 
-                            ARTICLE.id_categorie, libelle from ARTICLE
-                            left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
-                             WHERE ARTICLE.nom_article LIKE :searchedTerm
-                                OR ARTICLE.description LIKE :searchedTerm
-                                OR CATEGORIE.libelle   LIKE :searchedTerm
+                select id_article,
+                       nom_article,
+                       description,
+                       date_debut_enchere,
+                       date_fin_enchere,
+                       prix_de_base,
+                       prix_de_vente,
+                       vente_en_cours,
+                       image_lien,
+                       ARTICLE.id_categorie,
+                       libelle AS 'categorie',
+                       UTILISATEUR.id_utilisateur AS 'id_vendeur',
+                       pseudo  AS 'vendeur'
+                from ARTICLE
+                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur
+                WHERE ARTICLE.nom_article LIKE :searchedTerm
+                OR ARTICLE.description LIKE :searchedTerm
+                OR CATEGORIE.libelle   LIKE :searchedTerm
                 """;
         System.out.println("ArticleDaoSQL searchArticles");
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("searchedTerm", "%" + searchedTerm + "%");
 
-        List<Article> result = namedParameterJdbcTemplate.query(sql, map, new ArticleRowMapper());
+        List<Article> result = namedParameterJdbcTemplate.query(sql, map, new EnchereRowMapper());
         System.out.println(result);
         return result;
     }
 
     public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription) {
         String baseSql = """
-                 select id_article, nom_article,description, date_debut_enchere, 
-                            date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien, 
-                            ARTICLE.id_categorie, libelle from ARTICLE
-                            left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
-                             WHERE ARTICLE.nom_article LIKE :searchedTerm 
+                select id_article,
+                       nom_article,
+                       description,
+                       date_debut_enchere,
+                       date_fin_enchere,
+                       prix_de_base,
+                       prix_de_vente,
+                       vente_en_cours,
+                       image_lien,
+                       ARTICLE.id_categorie,
+                       libelle AS 'categorie',
+                       UTILISATEUR.id_utilisateur AS 'id_vendeur',
+                       pseudo  AS 'vendeur'
+                from ARTICLE
+                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur
+                WHERE ARTICLE.nom_article LIKE :searchedTerm 
                 """;
         System.out.println("ArticleDaoSQL searchArticlesConfigurable");
 
@@ -171,7 +208,7 @@ public class ArticleDaoSQL implements ArticleDao {
 
         // decommente pour avoir les couleurs sur baseSql
 //        List<Article> result = namedParameterJdbcTemplate.query(baseSql, map, new ArticleRowMapper());
-        List<Article> result = namedParameterJdbcTemplate.query(finalSql.toString(), map, new ArticleRowMapper());
+        List<Article> result = namedParameterJdbcTemplate.query(finalSql.toString(), map, new EnchereRowMapper());
         System.out.println(result);
         return result;
     }

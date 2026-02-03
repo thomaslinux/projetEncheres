@@ -31,6 +31,7 @@
                 <p class="categorie" th:text="${item.categorie?.libelle}">Catégorie</p>
                 <p> Fin de l’enchère :<strong th:text="${item.date_fin_enchere}"> date</strong></p>
                 <p>Prix de base : <strong th:text="${item.prix_de_base}"></strong> points </p>
+                <p class="vendeur" th:text="${item.vendeur?.pseudo}">Vendeur</p>
 
 
                 <a class="btn"
