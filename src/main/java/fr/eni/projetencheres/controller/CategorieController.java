@@ -2,12 +2,16 @@ package fr.eni.projetencheres.controller;
 
 import fr.eni.projetencheres.bo.Categorie;
 import fr.eni.projetencheres.service.CategorieService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class CategorieController {
@@ -34,12 +38,18 @@ public class CategorieController {
 
     @GetMapping("/")
     public String index(Model model) {
-
         List<Categorie> categories = categorieService.getAllCategories();
 
         model.addAttribute("categories", categories);
 
         return "index";
+    }
+
+    @GetMapping("/encherir")
+    public String detailsEncherir(Model model) {
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        return "view_details_article_encherir"
     }
 
 }

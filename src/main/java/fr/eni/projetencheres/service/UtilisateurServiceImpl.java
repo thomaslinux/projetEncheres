@@ -30,7 +30,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public void addUtilisateur(Utilisateur utilisateur) throws ServiceException {
 
-        if (utilisateurDao.getUtilisateurByUsername(utilisateur.getPseudo()) != null) {
+        if (utilisateurDao.getUtilisateurByPseudo(utilisateur.getPseudo()) != null) {
             throw new ServiceException("Ce pseudo est déjà utilisé !");
         }
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
@@ -41,6 +41,16 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public Utilisateur getUtilisateurById(long id) {
         return this.utilisateurDao.getUtilisateurByID(id);
+    }
+
+    @Override
+    public Utilisateur getUtilisateurByUsername(String username) {
+        return this.utilisateurDao.getUtilisateurByPseudo(username);
+    }
+
+    @Override
+    public Utilisateur getUtilisateurByEmail(String email) {
+        return this.utilisateurDao.getUtilisateurByEmail(email);
     }
 
     @Override
