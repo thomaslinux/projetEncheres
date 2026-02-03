@@ -49,7 +49,7 @@ public class CategorieController {
     public String detailsEncherir(Model model) {
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
-        return "view_details_article_encherir"
+        return "view_details_article_encherir";
     }
 
 }
