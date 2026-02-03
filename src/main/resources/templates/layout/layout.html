@@ -31,14 +31,18 @@
         <ul>
             <li>
                 <form id="searchBar" th:action="@{/encheres/search}" method="get">
-                    <input type="search" name="q" placeholder="Recherche">
+                    <div>
+                        <input type="search" name="q" placeholder="Recherche">
+                        <button class="btn" type="submit">&#128270; Recherche</button>
+                    </div>
+                    <div>
                     <label>
                         <input id="byCategorie" type="checkbox" name="byCategorie" checked>Par catégorie
                     </label>
                     <label>
                         <input id="byDescription" type="checkbox" name="byDescription" checked>Par description
                     </label>
-                    <button class="btn" type="submit">Recherche</button>
+                    </div>
                 </form>
             </li>
             <li><a href="/">Accueil</a></li>

@@ -212,11 +212,14 @@ form {
 	background-color: rgba(115, 115, 115, 0.5);
 }
 
-/********************/
-/*barre de recherche*/
+
+/*******barre de recherche*******/
 
 #searchBar {
+    display: flex;
+    flex-flow: wrap column;
     background: none;
+    font-size: 1rem
 }
 
 #searchBar input {
@@ -227,8 +230,17 @@ form {
 
 #searchBar button {
     -webkit-appearance: none;
-    font-size: 1em;
 }
+
+#searchBar div:last-child {
+    display:flex;
+    flex-direction: column;
+}
+
+#searchBar input[type=checkbox]{
+    height: auto;
+}
+/********************************/
 
 form h1 {
 	margin: 15px;
