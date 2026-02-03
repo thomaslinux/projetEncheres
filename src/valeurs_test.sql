@@ -41,6 +41,7 @@ select id_article,
        pseudo  AS 'vendeur'
 from ARTICLE
 left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
-left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur;
+left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur
+WHERE libelle = 'INFORMATIQUE';
 
 SELECT * FROM UTILISATEUR
