@@ -27,3 +27,22 @@ SELECT * FROM ARTICLE WHERE ARTICLE.nom_article LIKE '%a%'
 
 INSERT INTO UTILISATEUR (pseudo, nom, prenom, email, password, telephone, adresse, code_postal, ville, credit, administrateur, actif)
 VALUES (N'ttt', N'ttt', N'ttt', N'ttt@gmail.com', N'$2a$10$rmjzZ.sK1GDERXJxOIHPpu8FycOihsxDIEHvDcty.weqLyLacYC/i', N'0606060606', N'ttt', N'35000', N'Rennes', 0, 0, 1);
+
+
+-- selectionnne article avec categorie et vendeur
+select id_article,
+       nom_article,
+       description,
+       date_debut_enchere,
+       date_fin_enchere,
+       prix_de_base,
+       prix_de_vente,
+       vente_en_cours,
+       image_lien,
+       ARTICLE.id_categorie,
+       libelle AS 'categorie',
+       UTILISATEUR.id_utilisateur AS 'id_vendeur',
+       pseudo  AS 'vendeur'
+from ARTICLE
+left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur;
