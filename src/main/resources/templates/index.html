@@ -1,47 +1,26 @@
 <!DOCTYPE html>
 
-<!--  appel du fragment layout avec les paramètre -->
 <html lang="fr" data-th-replace="~{layout/layout :: frag_layout
 						(title= ~{:: title},
 						content= ~{::main} )}">
-<!--  tire passé en paramètre -->
 <title>Index</title>
-
-
 <main>
-
-
-
     <div class="accueil">
         <h2 class="grandTitre">Eni Enchères</h2>
     </div>
-
-
-
-
-
-
-        <section class="articles">
-            <article class="fiche"
-                     th:each="item : ${categories}">
-                <div>
-                    <img src="/images/ballonKilyan.jpg" alt="Image article">
-
-
+    <section class="articles">
+        <article class="fiche" th:each="item : ${categories}">
+            <div>
+                <img src="/images/ballonKilyan.jpg" alt="Image article">
                 <div class="infos">
                     <h3 th:text="${item.libelle}">Catégorie</h3>
                 </div>
-
-                                    <a class="btn"
-                                       th:href ="@{/encheres/list_des_artVente(id=${item.id_categorie})}">
-                                        Voir enchères
-                                    </a>
-
-                </div>
-            </article>
-
-        </section>
-
-
-    </main>
+                <a class="btn"
+                   th:href="@{/encheres/search(q=${item.libelle}, byCategorie='on')}">
+                    Voir enchères
+                </a>
+            </div>
+        </article>
+    </section>
+</main>
 </html>
