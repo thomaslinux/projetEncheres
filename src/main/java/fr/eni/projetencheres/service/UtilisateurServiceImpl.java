@@ -62,4 +62,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public void updateUtilisateur(Utilisateur utilisateur) {
         this.utilisateurDao.updateUtilisateur(utilisateur);
     }
+
+
 }

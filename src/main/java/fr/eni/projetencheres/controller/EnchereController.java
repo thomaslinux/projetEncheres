@@ -6,6 +6,8 @@ import fr.eni.projetencheres.bo.Categorie;
 import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
 import fr.eni.projetencheres.service.UtilisateurService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 
 @Controller
@@ -82,6 +85,7 @@ public class EnchereController {
 
     @GetMapping ("/encheres/details_vente")
     public String detailsArticle(@RequestParam(name="id")long id, Model model) {
+
         Article article = articleService.getArticleById(id);
         List<Categorie> list = categorieService.getAllCategories();
 //        debug prints
