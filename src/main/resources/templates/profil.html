@@ -34,13 +34,47 @@
 
             <li>
                 <label for="password">Password</label>
-                <input type="text" name="password" id="password" th:value="${utilisateurConnect.password}">
+                <input type="password" name="password" id="password" th:value="${utilisateurConnect.password}">
             </li>
+
+
 
             <li>
                 <label for="telephone">Telephone</label>
                 <input type="text" name="telephone" id="telephone" th:value="${utilisateurConnect.telephone}">
             </li>
+
+            <li>
+                <label for="adresse">Adresse</label>
+                <input type="text" name="adresse" id="adresse" th:value="${utilisateurConnect.adresse}">
+            </li>
+
+            <li>
+                <label for="code_postal">Code Postal</label>
+                <input type="text" name="code_postal" id="code_postal" th:value="${utilisateurConnect.code_postal}">
+            </li>
+
+            <li>
+                <label for="ville">Ville</label>
+                <input type="ville" name="ville" id="ville" th:value="${utilisateurConnect.ville}">
+            </li>
+
+            <li>
+                <label for="credit">Crédit</label>
+                <input type="credit" name="credit" id="credit" th:value="${utilisateurConnect.credit}">
+            </li>
+
+
+            <li>
+                <label for="administrateur">Administrateur</label>
+                <input type="administrateur" name="administrateur" id="administrateur" th:value="${utilisateurConnect.administrateur}">
+            </li>
+
+            <li>
+                <label for="actif">Actifr</label>
+                <input type="actif" name="actif" id="actif" th:value="${utilisateurConnect.actif}">
+            </li>
+
 
 
             <li>
@@ -53,34 +87,3 @@
 
 
 
-<!--id_utilisateur   INTEGER IDENTITY(1,1) NOT NULL,-->
-<!--pseudo           VARCHAR(255) UNIQUE,-->
-<!--nom              VARCHAR(255),-->
-<!--prenom           VARCHAR(255),-->
-<!--email            VARCHAR(255),-->
-<!--password		 VARCHAR(255),-->
-<!--telephone        VARCHAR(255),-->
-<!--adresse              VARCHAR(255),-->
-<!--code_postal      VARCHAR(255),-->
-<!--ville            VARCHAR(255),-->
-<!--credit           INTEGER,-->
-<!--administrateur   bit,-->
-<!--actif			 bit,-->
-<!--CONSTRAINT UTILISATEUR_PK PRIMARY KEY (id_utilisateur)-->
-<!--);-->
-
-<!--<title>Details categorie</title>-->
-<!--<main>-->
-<!--    <form method="POST" data-th-object="${category}" th:action="@{/categories/update}">-->
-<!--        <ul class="flex-outer">-->
-<!--            <li>-->
-<!--                <label for="libelle">Libelle</label>-->
-<!--                <input type="text" name="libelle" id="libelle" th:value="${category.libelle}">-->
-<!--            </li>-->
-<!--            <li>-->
-<!--                <button type="submit">Update Category</button>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </form>-->
-<!--</main>-->
-<!--</html>-->
