@@ -25,10 +25,6 @@ SELECT * FROM CATEGORIE
 
 SELECT * FROM ARTICLE WHERE ARTICLE.nom_article LIKE '%a%'
 
-INSERT INTO UTILISATEUR (pseudo, nom, prenom, email, password, telephone, adresse, code_postal, ville, credit, administrateur, actif)
-VALUES (N'ttt', N'ttt', N'ttt', N'ttt@gmail.com', N'$2a$10$rmjzZ.sK1GDERXJxOIHPpu8FycOihsxDIEHvDcty.weqLyLacYC/i', N'0606060606', N'ttt', N'35000', N'Rennes', 0, 0, 1);
-
-
 -- selectionnne article avec categorie et vendeur
 select id_article,
        nom_article,
