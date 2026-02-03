@@ -10,11 +10,6 @@
 
 <main>
 
-    <div>
-        <label for="site-search">Recherche : </label>
-        <input type="search" id="site-search" name="q"/>
-        <button class="btn">Search</button>
-    </div>
 
 
     <div class="accueil">
@@ -22,10 +17,10 @@
     </div>
 
 
-        <h2>Liste des Articles Enchères</h2>
 
 
-<!--SB-->
+
+
         <section class="articles">
             <article class="fiche"
                      th:each="item : ${categories}">

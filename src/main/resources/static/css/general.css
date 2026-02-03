@@ -44,7 +44,7 @@ body {
 * {
 	margin: 0;
 	padding: 0;
-	font-family: Arial, Helvetica;
+	font-family: Poppins, Arial, Helvetica;
 }
 
 /* Header */
@@ -121,10 +121,11 @@ h1 {
 }
 
 footer {
-	background-color: #354596;
+	background-color: #12284c;
 	padding: 10px;
 	text-align: center;
 	height: auto;
+	Color: #FFFAFA;
 }
 
 nav li {
@@ -155,7 +156,7 @@ nav li {
 }
 
 table {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Poppins, Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	color: black;
 	width: 90%;
@@ -198,7 +199,7 @@ table a:link, table a:visited {
 
 button {
 
-	background-color: #008080;
+	background-color: #004982;
 	color: white;
 	padding: 14px 25px;
 	text-align: center;
@@ -236,14 +237,14 @@ form h1 {
 .flex-outer>li>label+* {
 	flex: 1 0 220px;
 }
-
+/*buton Formulaire -------SB*/
 .flex-outer li button {
     margin-left: auto;
     margin-bottom: 5px;
     padding : 8px 16px;
     border: none;
-    background: #333;
-    color: #004982;
+    background: #004982;
+    color: white;
     text-transform: uppercase;
     letter-spacing: .09em;
     border-radius: 2px;
@@ -335,4 +336,9 @@ header {
     background-color:#12284c;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;    box-shadow: 0 1px 8px #ddd;    position: webkit-sticky; /*SB*/    position: sticky;  /* SB */        top: 0;    /* SB */        z-index: 1000;}
+    padding: 20px 50px;
+    box-shadow: 0 1px 8px #ddd;
+    position: webkit-sticky; /*SB*/
+    position: sticky;  /* SB */
+    top: 0;    /* SB */
+    z-index: 1000;}

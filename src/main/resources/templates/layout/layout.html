@@ -29,7 +29,12 @@
     </nav>-->
     <nav>
         <ul>
-
+<li>
+             <form th:action="@{/encheres/search}" method="get">
+             <input type="search" name="q" placeholder="Recherche">
+             <button class = "btn" type="submit">Recherche </button>
+            </form>
+</li>
             <li><a href="/">Accueil</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/inscription">S'inscrire</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
