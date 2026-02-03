@@ -147,4 +147,32 @@ public class ArticleDaoSQL implements ArticleDao {
         System.out.println(result);
         return result;
     }
+
+    public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription) {
+        String baseSql = """
+                 select id_article, nom_article,description, date_debut_enchere, 
+                            date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien, 
+                            ARTICLE.id_categorie, libelle from ARTICLE
+                            left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                             WHERE ARTICLE.nom_article LIKE :searchedTerm 
+                """;
+        System.out.println("ArticleDaoSQL searchArticlesConfigurable");
+
+        // using StringBuilder instead of normal concat for more performance
+        StringBuilder finalSql = new StringBuilder(baseSql);
+        if (byCategorie.equals("on")) {
+            finalSql.append(" OR CATEGORIE.libelle LIKE :searchedTerm ");
+        }
+        if (byDescription.equals("on")) {
+            finalSql.append(" OR ARTICLE.description LIKE :searchedTerm ");
+        }
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("searchedTerm", "%" + searchedTerm + "%");
+
+        // decommente pour avoir les couleurs sur baseSql
+//        List<Article> result = namedParameterJdbcTemplate.query(baseSql, map, new ArticleRowMapper());
+        List<Article> result = namedParameterJdbcTemplate.query(finalSql.toString(), map, new ArticleRowMapper());
+        System.out.println(result);
+        return result;
+    }
 }
