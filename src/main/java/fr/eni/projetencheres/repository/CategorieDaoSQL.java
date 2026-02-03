@@ -56,6 +56,16 @@ public class CategorieDaoSQL implements CategorieDao{
     }
 
     @Override
+    public Categorie getCategorieByLibelle(String libelle) {
+        String sql = "select * from [Categorie] where libelle = :libelle";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("libelle",libelle);
+
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Categorie.class));
+    }
+
+    @Override
     public void deleteCategorie(long id) {
         String sql = "delete from [Categorie] where id_categorie =:id";
 

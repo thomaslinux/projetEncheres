@@ -11,6 +11,8 @@ public interface CategorieDao {
 
     Categorie getCategorie(long id);
 
+    Categorie getCategorieByLibelle(String libelle);
+
     void deleteCategorie(long id);
 
     void updateCategorie(Categorie categorie);

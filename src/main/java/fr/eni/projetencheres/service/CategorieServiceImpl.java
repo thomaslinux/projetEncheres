@@ -33,6 +33,11 @@ public class CategorieServiceImpl implements CategorieService  {
     }
 
     @Override
+    public Categorie getCategorieByLibelle(String libelle) {
+        return this.categorieDao.getCategorieByLibelle(libelle);
+    }
+
+    @Override
     public void deleteCategorie(long id) {
         this.categorieDao.deleteCategorie(id);
 
