@@ -6,6 +6,16 @@ nav ul {
    justify-content: space-between;
 }
 
+h2{
+text-align: center;
+font-family: Poppins,Arial;
+font-size: 2.5rem;
+color: #004982;
+padding-bottom: 1%;
+padding-top: 2%;
+
+}
+
 .error {
     color: #8B0000 ;
     font-weight: bold;
@@ -133,7 +143,9 @@ nav li {
 	align-self: center;
 }
 
-#deco {
+
+
+#deconnexion {
     display: inline;
     background: none;
     color:white;
@@ -147,15 +159,16 @@ nav li {
     -webkit-appearance: none;
 }
 
-#deco:hover {
+#deconnexion:hover {
     color: rgb(0, 128, 192);
 }
 
-#deco_form {
+#deconnexion_form {
     background: none;
 }
 
-table {
+
+/* table {
 	font-family: Poppins, Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	color: black;
@@ -195,22 +208,49 @@ table a:link, table a:visited {
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-}
+}*/
 
 button {
 
 	background-color: #004982;
+	margin-top: 1erm;
+	border-radius: 5px;
 	color: white;
-	padding: 14px 25px;
+	padding: 0.5rem 1rem;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
+	border-radius: 8px;
 }
 
+/*
+    display: inline-block;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background: #004982;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;*/
+
+
+
+
+/**********form formulaire**********/
 form {
 	padding: 14px 25px;
-	background-color: rgba(115, 115, 115, 0.5);
+	background-color: white;
+	max-weight: 200px;
+	max-width: 700px;
+    margin: 20px auto;  /* centré */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    color:  #004982;
+    background: ffffff;
+    overflow: hidden;
 }
+
+
 
 
 /*******barre de recherche*******/
@@ -220,6 +260,8 @@ form {
     flex-flow: wrap column;
     background: none;
     font-size: 1rem
+    box-shadow: none;
+
 }
 
 #searchBar input {
@@ -245,46 +287,58 @@ form {
 form h1 {
 	margin: 15px;
 	color: black;
+
 }
+
+
+/*li Formulaires -------*/
 
 .flex-outer li {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	margin: 5px;
+	margin:20px;
+	border-radius: 8px;
 }
 
 .flex-outer>li select {
-	flex: 1 0 220px;
+	flex: 1 0 50px;
 }
 
 .flex-outer>li>label {
 	flex: 1 0 120px;
 	max-width: 220px;
+	padding: 5px;
 }
 
 .flex-outer>li>label+* {
 	flex: 1 0 220px;
 }
+
 /*buton Formulaire -------SB*/
 .flex-outer li button {
     margin-left: auto;
     margin-bottom: 5px;
     padding : 8px 16px;
     border: none;
-    background: #004982;
+    border: 1px dotted rgb(158, 116, 158);
     color: white;
     text-transform: uppercase;
     letter-spacing: .09em;
     border-radius: 2px;
     padding: 8px 16px}
 
+
+
+/*fieldset------------ points de achat*/
 .fieldset {
     width: fit-content;
-    min-width: 200px;
+    min-width: 500px;
     padding: 3px 20px;
     border: 1px solid #333;
     border-radius: 8px;
+    color:  #004982;
+
     }
 
 /*-----------------------------SB*/ /* fiche des articles*/
@@ -293,7 +347,19 @@ form h1 {
     grid-template-columns:
     repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
-    padding: 1rem;}
+    padding: 1rem;
+    max-width: 1200px;
+            margin: 0 auto;
+    }
+
+
+
+
+
+
+
+
+
 
 .fiche {
     background: #ffffff;
@@ -317,6 +383,7 @@ form h1 {
     .infos h3 {
         margin: 0 0 0.5rem 0;
         }
+
 
 .categorie {
     color: #666;
@@ -346,7 +413,7 @@ background: #1565c0;
     }
 
  .logo {
-     height: 50px;
+     height: 60px;
      display: block;
      }
 

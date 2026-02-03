@@ -11,7 +11,9 @@
 
 
 <main>
-    <form method="POST" data-th-object="${utilisateurConnect}" th:action="@{/utilisateur/update}">
+
+    <h2>Mon Profil</h2>
+    <form class ="form" method="POST" data-th-object="${utilisateurConnect}" th:action="@{/utilisateur/update}">
         <ul class="flex-outer">
             <li>
                 <label for="pseudo">Pseudo</label>
