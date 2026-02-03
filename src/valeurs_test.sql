@@ -46,3 +46,5 @@ select id_article,
 from ARTICLE
 left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
 left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur;
+
+SELECT * FROM UTILISATEUR
