@@ -19,4 +19,6 @@ public interface ArticleService {
     void updateArticle(Article article);
 
     List<Article> searchArticle(String article_name);
+
+    List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription);
 }

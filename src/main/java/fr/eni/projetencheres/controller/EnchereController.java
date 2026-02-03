@@ -38,10 +38,21 @@ public class EnchereController {
         return "liste_des_artVente";
     }
 
-    @GetMapping("/encheres/search")
+    @GetMapping("/encheres/oldsearch")
     public String searchArticles(@RequestParam(name="q") String article_name, Model model) {
         System.out.println("searchArticles");
         List<Article> list = articleService.searchArticle(article_name);
+        model.addAttribute("articleLst",list);
+        return "liste_des_artVente";
+    }
+
+    @GetMapping("/encheres/search")
+    public String searchArticlesConfigurable(@RequestParam(name="q") String searchedTerm,
+        @RequestParam(name="byCategorie", defaultValue = "off") String byCategorie,
+        @RequestParam(name="byDescription", defaultValue = "off") String byDescription,
+                                            Model model) {
+        System.out.println("searchArticlesConfigurable");
+        List<Article> list = articleService.searchArticleConfigurable(searchedTerm, byCategorie, byDescription);
         model.addAttribute("articleLst",list);
         return "liste_des_artVente";
     }
