@@ -138,11 +138,13 @@ public class ArticleDaoSQL implements ArticleDao {
                                 OR ARTICLE.description LIKE :searchedTerm
                                 OR CATEGORIE.libelle   LIKE :searchedTerm
                 """;
-//        System.out.println("ArticleDaoSQL searchArticles");
+        System.out.println("ArticleDaoSQL searchArticles");
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("searchedTerm", "%" + searchedTerm + "%");
 
-        return namedParameterJdbcTemplate.query(sql, map, new ArticleRowMapper());
+        List<Article> result = namedParameterJdbcTemplate.query(sql, map, new ArticleRowMapper());
+        System.out.println(result);
+        return result;
     }
 }
