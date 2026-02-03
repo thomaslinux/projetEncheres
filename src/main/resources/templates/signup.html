@@ -13,8 +13,8 @@
     <form method="POST" th:action="@{/inscription}" th:object="${utilisateur}">
         <ul class="flex-outer">
             <li>
-                <label for="pseudo">Pseudo</label>
-                <input type="text" th:field="*{pseudo}" name="pseudo" id="pseudo" required
+                <label for="pseudo">Pseudo*</label>
+                <input type="text" th:field="*{pseudo}" name="pseudo" id="pseudo"
                        pattern="[a-zA-Z0-9]+" title="Que des chiffres et des lettres" autofocus required>
                 <span class="error" th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
                 <div class="error" th:text="${notUniqueMessage}"></div>
@@ -35,13 +35,13 @@
                 <span class="error" th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
             </li>
             <li>
-                <label for="email">Email</label>
+                <label for="email">Email*</label>
                 <input type="email" th:field="*{email}" name="email" id="email" required>
 
                 <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
             </li>
             <li>
-                <label for="password">Password</label>
+                <label for="password">Password*</label>
                 <input type="password" th:field="*{password}" name="password" id="password" required>
 
                 <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
@@ -74,6 +74,8 @@
 
                 <span class="error" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
             </li>
+            <li>* = obligatoire</li>
+            <li>Maj + Tab pour retourner au champ précédent</li>
             <li>
                 <button type="submit">S'inscrire</button>
             </li>
