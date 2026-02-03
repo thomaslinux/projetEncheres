@@ -6,12 +6,16 @@ import fr.eni.projetencheres.service.UtilisateurService;
 import fr.eni.projetencheres.security.EncheresSecurity;
 import fr.eni.projetencheres.service.exception.ServiceException;
 import jakarta.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Objects;
 
 
 @Controller
@@ -34,6 +38,15 @@ public class LoginController {
     @GetMapping("/logout")
     public String displayLogout() {
         return "logout";
+    }
+
+    @GetMapping("/profil")
+    public String profil(Model model) {
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        assert userDetails != null;
+        model.addAttribute("utilisateurConnect", utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
+        return "profil";
     }
 
     @GetMapping ("/inscription")

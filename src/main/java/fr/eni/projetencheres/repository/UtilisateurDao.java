@@ -13,8 +13,6 @@ public interface UtilisateurDao {
 
     Utilisateur getUtilisateurByID(long id_utilisateur);
 
-    Utilisateur getUtilisateurByUsername(String pseudo);
-
     Utilisateur getUtilisateurByEmail(String email);
 
     Utilisateur getUtilisateurByPseudo(String pseudo);

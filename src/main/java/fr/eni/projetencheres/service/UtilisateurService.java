@@ -13,6 +13,10 @@ public interface UtilisateurService {
 
         Utilisateur getUtilisateurById(long id);
 
+        Utilisateur getUtilisateurByUsername(String username);
+
+        Utilisateur getUtilisateurByEmail(String email);
+
         void deleteUtilisateur(long id);
 
         void updateUtilisateur(Utilisateur utilisateur);

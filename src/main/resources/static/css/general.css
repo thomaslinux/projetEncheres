@@ -209,8 +209,25 @@ button {
 
 form {
 	padding: 14px 25px;
-
 	background-color: rgba(115, 115, 115, 0.5);
+}
+
+/********************/
+/*barre de recherche*/
+
+#searchBar {
+    background: none;
+}
+
+#searchBar input {
+    height: 4vh;
+    width: 10vw;
+    border-radius: 7px;
+}
+
+#searchBar button {
+    -webkit-appearance: none;
+    font-size: 1em;
 }
 
 form h1 {

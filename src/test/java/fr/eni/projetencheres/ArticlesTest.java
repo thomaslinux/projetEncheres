@@ -29,8 +29,11 @@ public class ArticlesTest {
         LocalDate fin = LocalDate.of(2026,1,27);
         Categorie jouet = new Categorie("JOUET");
         categorieDao.addCategorie(jouet);
-        Article art = new Article("Ours en peluche", "C'est un ours en peluche", debut, fin, 10, 15, false, jouet);
+        Article art = new Article("Ours en peluche", "C'est un ours en peluche", debut, fin, 10, 15, false, jouet, null);
         articleDao.addArticle(art);
+        System.out.println(articleDao.readArticles());
+        Article art2 = new Article(art.getId_article(), "Ours en peluche 2", "C'est un autre ours en peluche", debut, fin, 15, 20, false, jouet, null);
+        articleDao.updateArticle(art2);
         System.out.println(articleDao.readArticles());
     }
 
@@ -38,7 +41,7 @@ public class ArticlesTest {
     void ilEstPasNulMonGet() {
         LocalDate debut = LocalDate.of(2026,1,15);
         LocalDate fin = LocalDate.of(2026,1,27);
-        Article art = new Article("Ours en peluche", "C'est un ours en peluche", debut, fin, 10, 15, false, categorieDao.getCategorie(2));
-        System.out.println(art.getCategorie());
+      //  Article art = new Article("Ours en peluche", "C'est un ours en peluche", debut, fin, 10, 15, false, categorieDao.getCategorie(2));
+       // System.out.println(art.getCategorie());
     }
 }

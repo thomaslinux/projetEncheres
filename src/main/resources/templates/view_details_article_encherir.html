@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" data-th-replace="~{layout/layout :: frag_layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+<title>Détails de l'article</title>
+
+
+<main>
+    <form th:action="@{/encheres/update}"
+          th:object="${article}"
+          method="post">
+        <ul class="flex-outer">
+            <li>
+                <label for="nom_article">nom_article</label>
+                <input type="text" name="nom_article" id="nom_article" th:value="*{nom_article}">
+            </li>
+            <li>
+                <label for="description">description</label>
+                <textarea name="description" id="description" th:value="*{description}"></textarea>
+            </li>
+            <li>
+                <label for="idCategory">Categorie</label>
+                <select id="idCategory" th:field="*{categorie}">
+                    <option th:each="item : ${categoriesList}"
+                            th:text="${item.libelle}"
+                            th:value="${item.id_categorie}"
+                            th:selected="${item.id_categorie == selectedCategoryId}">
+
+                    </option>
+                </select>
+            </li>
+            <li>
+<!--                TODO : cacher le bouton update si id_utilisateur connecté est différent de l'id_utilisateur qui a mis l'article en vente ou si l'utilisateur n'est pas admin-->
+                <button  type="submit">Update Article</button>
+                <!-- th:if="${utilisateur.getId_utilisateur} == ${item.id_utilisateur}" -->
+            </li>
+        </ul>
+<!--        Cacher le fieldset si l'id_utilisateur actuel est égal à l'id_utilisateur qui a mis l'article en vente-->
+        <fieldset class="fieldset">
+            <legend>Ma proposition :</legend>
+            <form action="" method="POST">
+                <label for="nombre">Eni Points :</label>
+                <input type="number" name="nombre"
+                       id="nombre" min="0" max="1000"
+                       th:value="${article.prix_de_base != null ? article.prix_de_base : 0}">
+            </form>
+        </fieldset>
+    </form>
+</main>
+</html>

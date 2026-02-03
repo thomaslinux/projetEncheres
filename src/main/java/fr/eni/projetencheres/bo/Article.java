@@ -24,6 +24,7 @@ public class Article {
     private boolean vente_en_cours;
     private Categorie categorie;
     private String image_lien;
+    private Utilisateur vendeur;
 
 
     @Override
@@ -39,10 +40,11 @@ public class Article {
                 ", vente_en_cours=" + vente_en_cours +
                 ", categorie=" + categorie +
                 ", image_lien=" + image_lien +
+                ", vendeur=" + vendeur +
                 '}';
     }
 
-    public Article(long id_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie, String image_lien) {
+    public Article(long id_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie, String image_lien, Utilisateur vendeur) {
         this.id_article = id_article;
         this.nom_article = nom_article;
         this.description = description;
@@ -53,10 +55,11 @@ public class Article {
         this.vente_en_cours = vente_en_cours;
         this.categorie = categorie;
         this.image_lien = image_lien;
+        this.vendeur = vendeur;
 
     }
 
-    public Article(String nom_article, String description, LocalDate date_debut_enchere, LocalDate date_fin_enchere, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie, String image_lien) {
+    public Article(String nom_article, String description, LocalDate date_debut_enchere, LocalDate date_fin_enchere, int prix_de_base, int prix_de_vente, boolean vente_en_cours, Categorie categorie, String image_lien, Utilisateur vendeur) {
         this.nom_article = nom_article;
         this.description = description;
         this.date_debut_enchere = date_debut_enchere;
@@ -66,6 +69,7 @@ public class Article {
         this.vente_en_cours = vente_en_cours;
         this.categorie = categorie;
         this.image_lien = image_lien;
+        this.vendeur = vendeur;
     }
 
     public Article() {
@@ -149,5 +153,13 @@ public class Article {
 
     public void setImage_lien(String image_lien) {
         this.image_lien = image_lien;
+    }
+
+    public Utilisateur getVendeur() {
+        return vendeur;
+    }
+
+    public void setVendeur(Utilisateur vendeur) {
+        this.vendeur = vendeur;
     }
 }

@@ -3,14 +3,15 @@
 --CREATE DATABASE projet_enchere;
 --GO
 
+
 USE projet_enchere;
 GO
 
 DROP TABLE IF EXISTS RETRAIT;
 DROP TABLE IF EXISTS ENCHERE;
 DROP TABLE IF EXISTS ROLE;
-DROP TABLE IF EXISTS UTILISATEUR;
 DROP TABLE IF EXISTS ARTICLE;
+DROP TABLE IF EXISTS UTILISATEUR;
 DROP TABLE IF EXISTS CATEGORIE;
 
 CREATE TABLE CATEGORIE (
@@ -18,24 +19,6 @@ CREATE TABLE CATEGORIE (
                            libelle        	VARCHAR(255),
                            CONSTRAINT CATEGORIE_PK PRIMARY KEY (id_categorie)
 );
-
-CREATE TABLE ARTICLE (
-                         id_article 			INTEGER IDENTITY(1,1),
-                         nom_article 		VARCHAR(255),
-                         description 		VARCHAR(300),
-                         date_debut_enchere 	DATETIME2,
-                         date_fin_enchere 	DATETIME2,
-                         prix_de_base 		INTEGER,
-                         prix_de_vente 		INTEGER,
-                         vente_en_cours 		bit ,
-                         id_categorie 		INTEGER,
-                         image_lien			VARCHAR(255),
-                         CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
-);
-
-ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
-    FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
-        ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE UTILISATEUR (
                              id_utilisateur   INTEGER IDENTITY(1,1) NOT NULL,
@@ -53,6 +36,29 @@ CREATE TABLE UTILISATEUR (
                              actif			 bit,
                              CONSTRAINT UTILISATEUR_PK PRIMARY KEY (id_utilisateur)
 );
+
+CREATE TABLE ARTICLE (
+                         id_article 			INTEGER IDENTITY(1,1),
+                         nom_article 		VARCHAR(255),
+                         description 		VARCHAR(300),
+                         date_debut_enchere 	DATETIME2,
+                         date_fin_enchere 	DATETIME2,
+                         prix_de_base 		INTEGER,
+                         prix_de_vente 		INTEGER,
+                         vente_en_cours 		bit ,
+                         id_categorie 		INTEGER,
+                         image_lien			VARCHAR(255),
+                         id_utilisateur		INTEGER,
+                         CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
+);
+
+ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
+    FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
+        ON UPDATE CASCADE ON DELETE SET NULL;
+
+ALTER TABLE ARTICLE ADD CONSTRAINT article_utillisateur_fk
+    FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
+        ON UPDATE CASCADE ON DELETE SET NULL;
 
 CREATE TABLE ROLE (
                       id_role 		INTEGER 	IDENTITY (1,1),
@@ -83,7 +89,7 @@ ALTER TABLE ENCHERE ADD CONSTRAINT enchere_utilisateur_fk
 ALTER TABLE ENCHERE ADD CONSTRAINT enchere_article_fk
     FOREIGN KEY (id_article)
         REFERENCES ARTICLE (id_article)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+        ON UPDATE NO ACTION ON DELETE NO ACTION;
 
 CREATE TABLE RETRAIT (
                          id_retrait 			INTEGER 	IDENTITY(1,1),

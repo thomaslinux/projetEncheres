@@ -13,11 +13,11 @@
 
 <header>
     <!-- <h1 id="nav-title" > <a href="/">Eni Enchères </a> </h1>-->
-    <div class="logo-container">
-        <a href="/">
-            <img src="/images/logo.png" alt="alt-logo" class="logo">
-        </a>
-        <a class="logo_text"><strong>ENI</strong><em>ENCHERES</em></a>
+     <div class="logo-container">
+       <a href="/">
+           <img src="/images/logo.png" alt="alt-logo" class="logo">
+       </a>
+       <a class="logo_text"><strong>ENI</strong><em>ENCHERES</em></a>
     </div>
 
 
@@ -30,7 +30,7 @@
     <nav>
         <ul>
             <li>
-                <form id="search_input" th:action="@{/encheres/search}" method="get">
+                <form id="searchBar" th:action="@{/encheres/search}" method="get">
                     <input type="search" name="q" placeholder="Recherche">
                     <label>
                         <input id="byCategorie" type="checkbox" name="byCategorie" checked>Par catégorie
@@ -45,6 +45,9 @@
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/inscription">S'inscrire</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
             <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/encheres/add">Ajout</a></li>
+            <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/profil">Profil</a></li>
+
+
             <li>
                 <a class="nav-link" href="/encheres">Enchères</a>
             </li>

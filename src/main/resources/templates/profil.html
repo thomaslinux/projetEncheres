@@ -7,3 +7,80 @@
 
 <!--  tire passé en paramètre -->
 <title>Profil</title>
+
+
+
+<main>
+    <form method="POST" data-th-object="${utilisateurConnect}" th:action="@{/utilisateur/update}">
+        <ul class="flex-outer">
+            <li>
+                <label for="pseudo">Pseudo</label>
+                <input type="text" name="pseudo" id="pseudo" th:value="${utilisateurConnect.pseudo}">
+            </li>
+            <li>
+                <label for="pseudo">Nom</label>
+                <input type="text" name="nom" id="nom" th:value="${utilisateurConnect.nom}">
+            </li>
+
+            <li>
+                <label for="pseudo">Prenom</label>
+                <input type="text" name="prenom" id="prenom" th:value="${utilisateurConnect.prenom}">
+            </li>
+
+            <li>
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="email" th:value="${utilisateurConnect.email}">
+            </li>
+
+            <li>
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" th:value="${utilisateurConnect.password}">
+            </li>
+
+            <li>
+                <label for="telephone">Telephone</label>
+                <input type="text" name="telephone" id="telephone" th:value="${utilisateurConnect.telephone}">
+            </li>
+
+
+            <li>
+                <button type="submit">Update Utilisateur</button>
+            </li>
+        </ul>
+    </form>
+</main>
+</html>
+
+
+
+<!--id_utilisateur   INTEGER IDENTITY(1,1) NOT NULL,-->
+<!--pseudo           VARCHAR(255) UNIQUE,-->
+<!--nom              VARCHAR(255),-->
+<!--prenom           VARCHAR(255),-->
+<!--email            VARCHAR(255),-->
+<!--password		 VARCHAR(255),-->
+<!--telephone        VARCHAR(255),-->
+<!--adresse              VARCHAR(255),-->
+<!--code_postal      VARCHAR(255),-->
+<!--ville            VARCHAR(255),-->
+<!--credit           INTEGER,-->
+<!--administrateur   bit,-->
+<!--actif			 bit,-->
+<!--CONSTRAINT UTILISATEUR_PK PRIMARY KEY (id_utilisateur)-->
+<!--);-->
+
+<!--<title>Details categorie</title>-->
+<!--<main>-->
+<!--    <form method="POST" data-th-object="${category}" th:action="@{/categories/update}">-->
+<!--        <ul class="flex-outer">-->
+<!--            <li>-->
+<!--                <label for="libelle">Libelle</label>-->
+<!--                <input type="text" name="libelle" id="libelle" th:value="${category.libelle}">-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <button type="submit">Update Category</button>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </form>-->
+<!--</main>-->
+<!--</html>-->
