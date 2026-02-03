@@ -50,12 +50,14 @@ public class EnchereController {
     }
 
     @GetMapping("/encheres/search")
-    public String searchArticlesConfigurable(@RequestParam(name="q") String searchedTerm,
+    public String searchArticlesConfigurable(Model model,
+        @RequestParam(name="q") String searchedTerm,
         @RequestParam(name="byCategorie", defaultValue = "off") String byCategorie,
         @RequestParam(name="byDescription", defaultValue = "off") String byDescription,
-                                            Model model) {
+        @RequestParam(name="categorie", defaultValue = "") String categorie
+                                            ) {
         System.out.println("searchArticlesConfigurable");
-        List<Article> list = articleService.searchArticleConfigurable(searchedTerm, byCategorie, byDescription);
+        List<Article> list = articleService.searchArticleConfigurable(searchedTerm, byCategorie, byDescription,categorie);
         model.addAttribute("articleLst",list);
         return "liste_des_artVente";
     }

@@ -17,5 +17,5 @@ public interface ArticleDao {
 
     public List<Article> searchArticles(String article_name);
 
-    public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription);
+    public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription, String categorie);
 }

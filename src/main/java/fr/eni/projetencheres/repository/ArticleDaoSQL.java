@@ -173,7 +173,10 @@ public class ArticleDaoSQL implements ArticleDao {
         return result;
     }
 
-    public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie, String byDescription) {
+    public List<Article> searchArticleConfigurable(String searchedTerm,
+                                                   String byCategorie,
+                                                   String byDescription,
+                                                   String categorie) {
         String baseSql = """
                 select id_article,
                        nom_article,
@@ -197,13 +200,18 @@ public class ArticleDaoSQL implements ArticleDao {
 
         // using StringBuilder instead of normal concat for more performance
         StringBuilder finalSql = new StringBuilder(baseSql);
+        MapSqlParameterSource map = new MapSqlParameterSource();
+
         if (byCategorie.equals("on")) {
             finalSql.append(" OR CATEGORIE.libelle LIKE :searchedTerm ");
         }
         if (byDescription.equals("on")) {
             finalSql.append(" OR ARTICLE.description LIKE :searchedTerm ");
         }
-        MapSqlParameterSource map = new MapSqlParameterSource();
+        if (categorie.length() > 0) {
+            finalSql.append(" AND libelle LIKE :categorie");
+            map.addValue("categorie", "%" + categorie + "%");
+        }
         map.addValue("searchedTerm", "%" + searchedTerm + "%");
 
         // decommente pour avoir les couleurs sur baseSql
