@@ -3,8 +3,11 @@ package fr.eni.projetencheres.controller;
 
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Categorie;
+import fr.eni.projetencheres.bo.Enchere;
+import fr.eni.projetencheres.security.EncheresSecurity;
 import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
+import fr.eni.projetencheres.service.EnchereService;
 import fr.eni.projetencheres.service.UtilisateurService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,12 +30,18 @@ public class EnchereController {
     ArticleService articleService;
     UtilisateurService utilisateurService;
     CategorieService categorieService;
+    EnchereService enchereService;
+    EncheresSecurity encheresSecurity;
 
-    public EnchereController(ArticleService articleService, UtilisateurService utilisateurService, CategorieService categorieService) {
+    public EnchereController(ArticleService articleService, UtilisateurService utilisateurService, CategorieService categorieService, EnchereService enchereService, EncheresSecurity encheresSecurity) {
         this.articleService = articleService;
         this.utilisateurService = utilisateurService;
         this.categorieService = categorieService;
+        this.enchereService = enchereService;
+        this.encheresSecurity = encheresSecurity;
     }
+
+    // ----------------------------Barre de recherche----------------------------
 
     @GetMapping("/encheres")
     public String displayArticles (Model model) {
@@ -62,6 +71,8 @@ public class EnchereController {
         return "liste_des_artVente";
     }
 
+// ----------------------------Mettre un article en vente----------------------------
+
     @GetMapping ("/encheres/add")
     public String addArticle(Model model, Article article) {
         List<Categorie> list= categorieService.getAllCategories();
@@ -76,28 +87,43 @@ public class EnchereController {
         articleService.addArticle(article);
         return "redirect:/encheres";
     }
-
-    @PostMapping("/encheres/update")
-    public String updateArticle(@ModelAttribute(name="article") Article article) {
-        System.out.println(article);
-        articleService.updateArticle(article);
-        return"redirect:/encheres";
-    }
-
+// ----------------------------Détails, update et possibilité d'enchérir----------------------------
 
     @GetMapping ("/encheres/details_vente")
     public String detailsArticle(@RequestParam(name="id")long id, Model model) {
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
 
         Article article = articleService.getArticleById(id);
         List<Categorie> list = categorieService.getAllCategories();
-//        debug prints
-        System.out.println(article);
-        System.out.println(list);
 
+        assert userDetails != null;
+        model.addAttribute("utilisateurConnect", utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
         model.addAttribute("selectedCategory",article.getCategorie().getId_categorie());
-        return "view_details_article";
+        model.addAttribute("enchere", new Enchere());
+        return "view_details_article_encherir";
+    }
+
+    @PostMapping("/encheres/acheter")
+    public String encherir(@ModelAttribute(name="enchere") Enchere enchere, @ModelAttribute(name="article") Article article) {
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+
+        enchere.setUtilisateur(utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
+        enchere.setArticle(article);
+
+        System.out.println(enchere);
+
+        enchereService.addEnchere(enchere);
+        return "view_details_article_encherir";
+    }
+
+    @PostMapping("/encheres/update")
+    public String updateArticle(@ModelAttribute(name="article") Article article, Model model) {
+        articleService.updateArticle(article);
+        return"redirect:/encheres";
     }
 
 }

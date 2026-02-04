@@ -1,6 +1,7 @@
 package fr.eni.projetencheres.repository;
 
 import fr.eni.projetencheres.bo.Enchere;
+import fr.eni.projetencheres.bo.Utilisateur;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -42,7 +44,8 @@ public class EnchereDaoSQL implements EnchereDao{
                 """;
         MapSqlParameterSource map = new MapSqlParameterSource();
 
-        map.addValue("date_enchere", enchere.getDate_enchere());
+
+        map.addValue("date_enchere", LocalDate.now());
         map.addValue("montant_enchere", enchere.getMontant_enchere());
         map.addValue("id_utilisateur", enchere.getUtilisateur().getId_utilisateur());
         map.addValue("id_article", enchere.getArticle().getId_article());
@@ -60,6 +63,16 @@ public class EnchereDaoSQL implements EnchereDao{
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id", id);
+
+        return namedParameterJdbcTemplate.queryForObject(sql,map, new BeanPropertyRowMapper<>(Enchere.class));
+    }
+
+    @Override
+    public Enchere getEnchereByUser(Utilisateur utilisateur) {
+        String sql = "select * from [Enchere] where id_utilisateur =:id_utilisateur";
+
+        MapSqlParameterSource map = new MapSqlParameterSource();
+        map.addValue("id", utilisateur.getId_utilisateur());
 
         return namedParameterJdbcTemplate.queryForObject(sql,map, new BeanPropertyRowMapper<>(Enchere.class));
     }

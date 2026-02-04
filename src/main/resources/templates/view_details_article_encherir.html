@@ -8,7 +8,7 @@
 <main>
     <form th:action="@{/encheres/update}"
           th:object="${article}"
-          method="post">
+          method="POST">
         <ul class="flex-outer">
             <input type="text" th:field="*{id_article}" hidden/>
             <input type="text" th:field="*{image_lien}" hidden/>
@@ -38,19 +38,23 @@
                 </select>
             </li>
             <li>
-                <button th:if="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" type="submit">Update Article</button>
-            </li>
-        </ul>
-        <!--        Cacher le fieldset si l'id_utilisateur actuel est égal à l'id_utilisateur qui a mis l'article en vente-->
+                <button type="submit">Update Article</button>
+                <!-- <button th:if="${utilisateurConnect.id_utilisateur = item.vendeur.id_utilisateur}" type="submit">Update Article</button> -->
+           </li>
+       </ul>
+    </form>
+
+        <!--  <fieldset th:unless="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" class="fieldset"> -->
         <fieldset class="fieldset">
             <legend>Ma proposition :</legend>
-            <form action="" method="POST">
-                <label for="nombre">Eni Points :</label>
-                <input type="number" name="nombre"
-                       id="nombre" min="0" max="1000"
+            <form th:action="@{/encheres/acheter}" method="POST" th:object="${enchere}">
+                <input type="text" th:field="${utilisateurConnect.id_utilisateur}" hidden>
+                <label for="montant_enchere">Eni Points :</label>
+                <input type="number" name="montant_enchere"
+                       id="montant_enchere" min="0" max="1000"
                        th:value="${article.prix_de_base != null ? article.prix_de_base : 0}">
+                <button type="submit">Enchérir</button>
             </form>
         </fieldset>
-    </form>
 </main>
 </html>
