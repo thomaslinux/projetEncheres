@@ -87,4 +87,10 @@
 
         <p>Vous avez déjà un compte ? <a href="/login">Se connecter</a></p>
     </form>
+    <button onclick="
+    document.querySelectorAll('input[pattern]').forEach(input => {
+        input.removeAttribute('pattern');
+    });">
+        Supprimer les patterns
+    </button>
 </main>
