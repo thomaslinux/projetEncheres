@@ -7,9 +7,6 @@
     .accueil {
         display: none;
     }
-}
-
-@media (max-width: 600px) {
     nav li a {
         /*display:contents;*/
         flex-direction: column;
