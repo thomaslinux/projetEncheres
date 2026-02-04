@@ -4,11 +4,12 @@ VALUES ('SuperVendeur', 'Super', 'Vendeur', 'supervendeur@vente.com', 'JADOREVEN
 
 
 
-INSERT INTO CATEGORIE( libelle)
-VALUES  ('INFORMATIQUE' ),
-        ('SPORT & LOISIRS'),
-        ('AMEUBLEMENT'),
-        ('VÊTEMENT');
+INSERT INTO CATEGORIE(libelle, image_categorie)
+VALUES  ('INFORMATIQUE','informatique.jpg'),
+        ('SPORT & LOISIRS','sport&loisirs.jpg'),
+        ('AMEUBLEMENT', 'ameublement.jpg'),
+        ('VÊTEMENT','vetement.jpg');
+
 
 
 INSERT INTO ARTICLE (nom_article,description, date_debut_enchere, date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, id_categorie, image_lien, id_utilisateur)

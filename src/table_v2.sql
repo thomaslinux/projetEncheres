@@ -17,6 +17,7 @@ DROP TABLE IF EXISTS CATEGORIE;
 CREATE TABLE CATEGORIE (
     id_categorie 	INTEGER IDENTITY(1,1),
     libelle        	VARCHAR(255),
+    image_categorie VARCHAR(255),
     CONSTRAINT CATEGORIE_PK PRIMARY KEY (id_categorie)
 );
 
@@ -52,7 +53,7 @@ CREATE TABLE ARTICLE (
     CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
 );
 
-ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
+ALTER TABLE ARTICLE ADD CONSTRAINT article_utilisateur_fk
     FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
         ON UPDATE CASCADE ON DELETE SET NULL;
 
