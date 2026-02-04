@@ -11,7 +11,12 @@
     <section class="articles">
         <article class="fiche" th:each="item : ${categories}">
             <div>
-                <img src="/images/ballonKilyan.jpg" alt="Image article">
+
+                <div class="image">
+                    <img th:src="@{'/images/' + ${item?.image_categorie}}" th:alt="${item?.libelle}">
+                </div>
+
+<!--                <img src="/images/ballonKilyan.jpg" alt="Image article">-->
                 <div class="infos">
                     <h3 th:text="${item.libelle}">Catégorie</h3>
                 </div>
