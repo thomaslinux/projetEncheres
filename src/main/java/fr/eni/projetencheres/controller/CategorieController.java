@@ -41,7 +41,6 @@ public class CategorieController {
         List<Categorie> categories = categorieService.getAllCategories();
 
         model.addAttribute("categories", categories);
-
         return "index";
     }
 
