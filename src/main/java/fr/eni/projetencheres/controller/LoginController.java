@@ -12,10 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -53,6 +50,17 @@ public class LoginController {
         assert userDetails != null;
         model.addAttribute("utilisateurConnect", utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
         return "profil";
+    }
+
+    @GetMapping("/{username}")
+    public String profilAutre(Model model, @PathVariable (name = "username", required = false) String username) {
+        Utilisateur user = utilisateurService.getUtilisateurByUsername(username);
+        System.out.println(user);
+        if (user == null) {
+            return "error_404";
+        }
+        model.addAttribute("utilisateurConnect", user);
+        return "view_details_utilisateur";
     }
 
     @PostMapping("/profil")
