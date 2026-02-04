@@ -9,11 +9,13 @@ import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
 import fr.eni.projetencheres.service.EnchereService;
 import fr.eni.projetencheres.service.UtilisateurService;
+import jakarta.validation.Valid;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -74,11 +76,14 @@ public class EnchereController {
 // ----------------------------Mettre un article en vente----------------------------
 
     @GetMapping ("/encheres/add")
-    public String addArticle(Model model, Article article) {
+    public String addArticle(Model model, @Valid Article article,  BindingResult bindingResult) {
         List<Categorie> list= categorieService.getAllCategories();
 
-        model.addAttribute("article", new Article());
         model.addAttribute("categorieList",list);
+        if (bindingResult.hasErrors()) {
+            return "add_vente"; // affiche les erreurs sur la page
+        }
+        model.addAttribute("article", new Article());
         return "add_vente";
     }
 
