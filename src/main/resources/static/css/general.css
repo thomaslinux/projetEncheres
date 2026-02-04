@@ -262,7 +262,9 @@ form {
 
 #searchBar {
     display: flex;
-    flex-flow: wrap column;
+    flex-flow: wrap row;
+    align-items: center;
+    width: 100%;
 }
 
 /*#searchBar {*/
@@ -277,7 +279,7 @@ form {
 
 #searchBar input {
     height: 4vh;
-    width: 10vw;
+    width: 20vw;
     border-radius: 7px;
 }
 
