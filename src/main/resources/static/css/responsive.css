@@ -1,0 +1,30 @@
+@media (max-width: 720px) {
+    .logo_text {
+        display:none;
+    }
+    header {
+        align-items: center;
+        padding: 1rem 0rem;
+    }
+    .accueil {
+        display:none;
+    }
+}
+
+@media (max-width: 600px) {
+    nav li a {
+        display:contents;
+        flex-direction: column;
+        /*color:red;*/
+        font-size: 1.2rem;
+    }
+
+    header {
+        padding: 0rem 0rem;
+    }
+
+    header li {
+        padding: 1rem 0.8rem;
+
+    }
+}
