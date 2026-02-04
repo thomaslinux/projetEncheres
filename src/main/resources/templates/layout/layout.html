@@ -27,15 +27,15 @@
             <li><a href="/encheres">Enchères</a></li>
         </ul>
     </nav>-->
-    <nav>
-        <ul>
-            <li>
                 <div class="logo-container">
                     <a href="/">
                         <img src="/images/logo.png" alt="alt-logo" class="logo">
                     </a>
-                    <a class="logo_text"><strong>ENI</strong><em>ENCHERES</em></a>
+                    <a class="logo_text" href="/"><strong>ENI</strong><em>ENCHERES</em></a>
                 </div>
+    <nav>
+        <ul>
+            <li>
             </li>
             <li><a class="accueil" href="/">Accueil</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/inscription">S'inscrire</a></li>

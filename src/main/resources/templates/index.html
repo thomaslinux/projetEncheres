@@ -8,17 +8,6 @@
     <div class="accueil">
         <h2 class="grandTitre">Eni Enchères</h2>
     </div>
-
-    <section class="categories">
-            <span>
-                <a class="btn" id="toutesLesCategories" href="/">Toutes les categories</a>
-            </span>
-            <span th:each="item : ${categories}">
-                <a class="btn category" th:id="${item.libelle}" th:text="${item.libelle}" th:href="@{/encheres/search(categorie=${item.libelle})}">
-                </a>
-            </span>
-    </section>
-
     <section class="articles">
         <article class="fiche" th:each="item : ${categories}">
             <div>
