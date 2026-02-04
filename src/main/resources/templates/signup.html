@@ -74,11 +74,12 @@
 
                 <span class="error" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
             </li>
-            <li>* = obligatoire</li>
-            <li>Maj + Tab pour retourner au champ précédent</li>
             <li>
                 <button type="submit">S'inscrire</button>
             </li>
+
+            <!--- <li class="information">* = obligatoire</li>--->
+            <li class="information">* = obligatoire / Maj + Tab pour retourner au champ précédent</li>
         </ul>
 
         <p>Vous avez déjà un compte <a href="/inscription">S'inscrire</a></p>

@@ -4,14 +4,20 @@ public class Categorie {
 
     private long id_categorie;
     private String libelle;
+    private String image_categorie;
 
+    public Categorie(long id_categorie, String libelle, String image_categorie) {
+        this.id_categorie = id_categorie;
+        this.libelle = libelle;
+        this.image_categorie = image_categorie;
+    }
 
-    @Override
-    public String toString() {
-        return "Categorie{" +
-                "id_categorie=" + id_categorie +
-                ", libelle='" + libelle + '\'' +
-                '}';
+    public Categorie(String libelle, String image_categorie) {
+        this.libelle = libelle;
+        this.image_categorie = image_categorie;
+    }
+
+    public Categorie() {
     }
 
     public long getId_categorie() {
@@ -30,17 +36,21 @@ public class Categorie {
         this.libelle = libelle;
     }
 
-    public Categorie(long id_categorie, String libelle) {
-        this.id_categorie = id_categorie;
-        this.libelle = libelle;
+    public String getImage_categorie() {
+        return image_categorie;
     }
 
-    public Categorie(String libelle) {
-        this.libelle = libelle;
+    public void setImage_categorie(String image_categorie) {
+        this.image_categorie = image_categorie;
     }
 
-    public Categorie() {
+    @Override
+    public String toString() {
+        return "Categorie{" +
+                "id_categorie=" + id_categorie +
+                ", libelle='" + libelle + '\'' +
+                ", image_categorie='" + image_categorie + '\'' +
+                '}';
     }
-
 }
 
