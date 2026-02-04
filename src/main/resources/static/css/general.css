@@ -15,11 +15,14 @@ padding-bottom: 1%;
 padding-top: 2%;
 text-shadow:0 4px 10px rgba(0,0,0,0.1);
 text-transform: capitalize;
+}
 
+h1 {
+	font-size: 1.7em;
 }
 
 .error {
-    color: #8B0000 ;
+    color: #EB2D07;
     font-weight: bold;
 }
 
@@ -128,9 +131,7 @@ header {
     min-height: 65px;
 }
 
-h1 {
-	font-size: 1.8em;
-}
+
 
 footer {
 	background-color: #12284c;
@@ -192,10 +193,8 @@ button {
         text-align: center;*/
 
 
-
-
 /**********form formulaire**********/
-form {
+.formulaire {
 	padding: 14px 25px;
 	background-color: white;
 	max-weight: 200px;
@@ -209,15 +208,13 @@ form {
 }
 
 
-
-
 /*******barre de recherche*******/
 
-.search-container {
+/*.search-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+}*/
 
 #searchBar {
     display: flex;
@@ -226,15 +223,16 @@ form {
     width: 100%;
 }
 
-/*#searchBar {*/
-/*    display: flex;*/
-/*    flex-flow: wrap column;*/
-/*    background: none;*/
-/*    font-size: 1rem;*/
-/*    box-shadow: none;*/
-/*    gap: 1rem;*/
-/*    align-items: center;*/
-/*}*/
+
+/*#searchBar {
+    display: flex;
+    flex-flow: wrap column;
+    background: none;
+    font-size: 1rem;
+    box-shadow: none;
+    gap: 1rem;
+    align-items: center;
+}*/
 
 #searchBar input {
     height: 4vh;

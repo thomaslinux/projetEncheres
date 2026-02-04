@@ -14,6 +14,7 @@
 
     <h2>Mon Profil</h2>
     <form class ="form" method="POST" data-th-object="${utilisateurConnect}" th:action="@{/profil}">
+
         <ul class="flex-outer">
             <li>
             <input type="text" th:field="${utilisateurConnect.id_utilisateur}" hidden>
