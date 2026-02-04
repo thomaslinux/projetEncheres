@@ -33,7 +33,11 @@ public class LoginController {
     }
 
     @GetMapping({"/login"})
-    public String displayLogin() {
+    public String displayLogin(@RequestParam(value = "error", required = false)
+                               String error, Model model) {
+        if (error != null) {
+            model.addAttribute("errorMessage", "Identifiant ou mot de passe incorrect");
+        }
         return "login";
     }
 
