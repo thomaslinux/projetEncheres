@@ -1,12 +1,9 @@
 package fr.eni.projetencheres.bo;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.security.core.parameters.P;
 
 public class Utilisateur {
     private long id_utilisateur;
@@ -16,11 +13,11 @@ public class Utilisateur {
     private String pseudo;
 
     @Size(max = 50)
-    @Pattern(regexp = "[a-zA-Z]*",message = "Que des lettres")
+    @Pattern(regexp = "[a-zA-Z -]*",message = "Que des lettres")
     private String nom;
 
     @Size(max = 50)
-    @Pattern(regexp = "[a-zA-Z]*",message = "Que des lettres")
+    @Pattern(regexp = "[a-zA-Z -]*",message = "Que des lettres")
     private String prenom;
 
     @NotBlank

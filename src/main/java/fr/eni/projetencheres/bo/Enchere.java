@@ -1,10 +1,15 @@
 package fr.eni.projetencheres.bo;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 import java.time.LocalDate;
 
 public class Enchere {
     private long id_enchere;
     private LocalDate date_enchere;
+    @NotBlank
+    @Pattern(regexp = "[0-9]*", message = "Que des nombres")
     private int montant_enchere;
     private Utilisateur utilisateur;
     private Article article;

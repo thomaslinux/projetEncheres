@@ -23,14 +23,14 @@
             <li>
                 <label for="nom">Nom</label>
                 <input type="text" th:field="*{nom}" name="nom" id="nom"
-                       pattern="[a-zA-Z]+" title="Que des lettres">
+                       pattern="[a-zA-Z -]+" title="Que des lettres">
                 <span class="error" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
 
             </li>
             <li>
                 <label for="prenom">Prenom</label>
                 <input type="text" th:field="*{prenom}" name="prenom" id="prenom"
-                       pattern="[a-zA-Z]+" title="Que des lettres">
+                       pattern="[a-zA-Z -]+" title="Que des lettres">
 
                 <span class="error" th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
             </li>
@@ -42,13 +42,16 @@
             </li>
             <li>
                 <label for="password">Password*</label>
-                <input type="password" th:field="*{password}" name="password" id="password" required>
+                <input type="password" th:field="*{password}"
+                       name="password" id="password"
+                       minlength="6" maxlength="255"
+                       required>
 
                 <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
             </li>
             <li>
                 <label for="telephone">Telephone</label>
-                <input type="text" th:field="*{telephone}" name="telephone" id="telephone"
+                <input type="text" inputmode="numeric" th:field="*{telephone}" name="telephone" id="telephone"
                     pattern="^\+?[0-9. ()-]{7,}$" title="Entrez un numero valide">
 
                 <span class="error" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></span>
@@ -84,4 +87,10 @@
 
         <p>Vous avez déjà un compte ? <a href="/login">Se connecter</a></p>
     </form>
+    <button onclick="
+    document.querySelectorAll('input[pattern]').forEach(input => {
+        input.removeAttribute('pattern');
+    });">
+        Supprimer les patterns
+    </button>
 </main>
