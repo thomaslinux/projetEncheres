@@ -9,10 +9,11 @@ nav ul {
 h2{
 text-align: center;
 font-family: Poppins,Arial;
-font-size: 2.5rem;
+font-size: 2rem;
 color: #004982;
 padding-bottom: 1%;
 padding-top: 2%;
+text-shadow:0 4px 10px rgba(0,0,0,0.1);
 
 }
 
@@ -143,8 +144,6 @@ nav li {
 	align-self: center;
 }
 
-
-
 #deconnexion {
     display: inline;
     background: none;
@@ -245,8 +244,8 @@ form {
     margin: 20px auto;  /* centré */
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     border-radius: 8px;
-    color:  #004982;
-    background: ffffff;
+    color: rgb(133, 133, 133);   /* a changer  demain mercredi */
+    background: #ffffff;
     overflow: hidden;
 }
 
@@ -261,8 +260,12 @@ form {
     background: none;
     font-size: 1rem;
     box-shadow: none;
-
+    gap: 1rem;
+    align-items: center;
 }
+
+
+
 
 #searchBar input {
     height: 4vh;
@@ -282,6 +285,8 @@ form {
 #searchBar input[type=checkbox]{
     height: auto;
 }
+
+
 /********************************/
 
 form h1 {
@@ -297,17 +302,18 @@ form h1 {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	margin:20px;
+	margin:5px 5px;
 	border-radius: 8px;
 }
 
 .flex-outer>li select {
 	flex: 1 0 50px;
+	padding: 10px;
 }
 
 .flex-outer>li>label {
-	flex: 1 0 120px;
-	max-width: 220px;
+	flex: 0 0 120px;
+	max-width: 150px;
 	padding: 5px;
 }
 
@@ -315,6 +321,15 @@ form h1 {
 	flex: 1 0 220px;
 }
 
+.information {
+   /* text-align: right;*/
+    color: rgb(133, 133, 133);
+    font-size: 0.7em;
+    margin-top: 40px;
+   /* justify-content: flex-end;*/
+   margin-bottom:5em;
+
+}
 
 
 /*buton Formulaire -------SB*/
@@ -327,7 +342,7 @@ form h1 {
     color: white;
     text-transform: uppercase;
     letter-spacing: .09em;
-    border-radius: 2px;
+    border-radius: 3px;
     padding: 8px 16px}
 
 
@@ -351,7 +366,7 @@ form h1 {
     gap: 1.5rem;
     padding: 1rem;
     max-width: 1200px;
-            margin: 0 auto;
+    margin: 0 auto;
     }
 
 
@@ -428,7 +443,7 @@ header {
     align-items: center;
     padding: 20px 50px;
     box-shadow: 0 1px 8px #ddd;
-    position: webkit-sticky; /*SB*/
+   position: -webkit-sticky;
     position: sticky;  /* SB */
     top: 0;    /* SB */
     z-index: 1000;}

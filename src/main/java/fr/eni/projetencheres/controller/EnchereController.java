@@ -100,14 +100,4 @@ public class EnchereController {
         return "view_details_article";
     }
 
-
-
-
-//    @GetMapping({"/details_vente"})
-//    public String showDetails(@RequestParam("id") long id, Model model) {
-//        Article article = this.articleService.getArticleById(id);
-//        model.addAttribute("article", article);
-//        return "details_vente";
-//    }
-
 }
