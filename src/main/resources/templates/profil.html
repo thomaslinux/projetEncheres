@@ -13,68 +13,71 @@
 <main>
 
     <h2>Mon Profil</h2>
-    <form class ="form" method="POST" data-th-object="${utilisateurConnect}" th:action="@{/utilisateur/update}">
+    <form class ="form" method="POST" data-th-object="${utilisateurConnect}" th:action="@{/profil}">
         <ul class="flex-outer">
             <li>
+            <input type="text" th:field="${utilisateurConnect.id_utilisateur}" hidden>
+            </li>
+            <li>
                 <label for="pseudo">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" th:value="${utilisateurConnect.pseudo}" autofocus>
+                <input type="text" name="pseudo" id="pseudo" th:value="${utilisateurConnect?.pseudo}" autofocus>
             </li>
             <li>
                 <label for="pseudo">Nom</label>
-                <input type="text" name="nom" id="nom" th:value="${utilisateurConnect.nom}">
+                <input type="text" name="nom" id="nom" th:value="${utilisateurConnect?.nom}">
             </li>
 
             <li>
                 <label for="pseudo">Prenom</label>
-                <input type="text" name="prenom" id="prenom" th:value="${utilisateurConnect.prenom}">
+                <input type="text" name="prenom" id="prenom" th:value="${utilisateurConnect?.prenom}">
             </li>
 
             <li>
                 <label for="email">E-mail</label>
-                <input type="text" name="email" id="email" th:value="${utilisateurConnect.email}">
+                <input type="text" name="email" id="email" th:value="${utilisateurConnect?.email}">
             </li>
 
             <li>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" th:value="${utilisateurConnect.password}">
+                <input type="password" name="password" id="password" th:value="${utilisateurConnect?.password}">
             </li>
 
 
 
             <li>
                 <label for="telephone">Telephone</label>
-                <input type="text" name="telephone" id="telephone" th:value="${utilisateurConnect.telephone}">
+                <input type="text" name="telephone" id="telephone" th:value="${utilisateurConnect?.telephone}">
             </li>
 
             <li>
                 <label for="adresse">Adresse</label>
-                <input type="text" name="adresse" id="adresse" th:value="${utilisateurConnect.adresse}">
+                <input type="text" name="adresse" id="adresse" th:value="${utilisateurConnect?.adresse}">
             </li>
 
             <li>
                 <label for="code_postal">Code Postal</label>
-                <input type="text" name="code_postal" id="code_postal" th:value="${utilisateurConnect.code_postal}">
+                <input type="text" name="code_postal" id="code_postal" th:value="${utilisateurConnect?.code_postal}">
             </li>
 
             <li>
                 <label for="ville">Ville</label>
-                <input type="ville" name="ville" id="ville" th:value="${utilisateurConnect.ville}">
+                <input type="ville" name="ville" id="ville" th:value="${utilisateurConnect?.ville}">
             </li>
 
             <li>
                 <label for="credit">Crédit</label>
-                <input type="credit" name="credit" id="credit" th:value="${utilisateurConnect.credit}">
+                <input type="credit" name="credit" id="credit" th:value="${utilisateurConnect?.credit}">
             </li>
 
 
             <li>
                 <label for="administrateur">Administrateur</label>
-                <input type="administrateur" name="administrateur" id="administrateur" th:value="${utilisateurConnect.administrateur}">
+                <input type="administrateur" name="administrateur" id="administrateur" th:value="${utilisateurConnect?.administrateur}">
             </li>
 
             <li>
                 <label for="actif">Actifr</label>
-                <input type="actif" name="actif" id="actif" th:value="${utilisateurConnect.actif}">
+                <input type="actif" name="actif" id="actif" th:value="${utilisateurConnect?.actif}">
             </li>
 
 

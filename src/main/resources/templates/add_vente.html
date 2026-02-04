@@ -10,6 +10,9 @@
 
     <form th:action="@{/encheres/create}" method="post" th:object="${article}">
         <ul class="flex-outer">
+            <li><label for="idimage_lien">Ajouter une image</label>
+                <input id="idimage_lien" type="text" th:field="*{image_lien}"></li>
+
             <li><label for="idnom_article">Nom d'Article</label>
                 <input id="idnom_article" type="text" th:field="*{nom_article}"></li>
 
