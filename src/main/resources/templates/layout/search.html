@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<div th:fragment="search-container" class="search-container">
+    <form id="searchBar" th:action="@{/encheres/search}" method="get">
+        <div>
+            <input type="search" name="q" placeholder="Recherche">
+            <button class="btn" type="submit">&#128270;</button>
+        </div>
+        <div>
+            <label>
+                <input id="byCategorie" type="checkbox" name="byCategorie" checked>Par catégorie
+            </label>
+        </div>
+        <div>
+            <label>
+                <input id="byDescription" type="checkbox" name="byDescription" checked>Par description
+            </label>
+        </div>
+        <div>
+            <input id="currentCategory" type="search" name="categorie" style="display: none" autocomplete="off">
+        </div>
+    </form>
+</div>
+</html>
