@@ -19,7 +19,7 @@ public class RetraitTest {
 
     @Test
     void seeAndAddRetrait() {
-        Categorie truc = new Categorie("Bidule");
+        Categorie truc = new Categorie("Bidule", null);
         Article bidule = new Article("trucmuche", "C'est un truc", LocalDate.of(1999, 12,24), LocalDate.now(), 100, 500, true, truc, null, null);
         Retrait test = new Retrait("12 rue de la ville", LocalDate.now(), "55555", "Villeville", bidule);
         retraitDao.addRetrait(test);

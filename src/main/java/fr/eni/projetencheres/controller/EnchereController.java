@@ -104,6 +104,7 @@ public class EnchereController {
         model.addAttribute("selectedCategory",article.getCategorie().getId_categorie());
         model.addAttribute("enchere", new Enchere());
         return "view_details_article_encherir";
+
     }
 
     @PostMapping("/encheres/acheter")

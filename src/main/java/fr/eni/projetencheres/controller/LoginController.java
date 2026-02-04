@@ -74,6 +74,8 @@ public class LoginController {
             utilisateurService.deleteUtilisateur(utilisateurConnect.getId_utilisateur());
         } else {
             utilisateurService.updateUtilisateur(utilisateurConnect);
+            System.out.println(utilisateurConnect);
+
         }
         return "redirect:/";
     }

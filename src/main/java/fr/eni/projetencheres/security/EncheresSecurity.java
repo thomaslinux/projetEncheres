@@ -2,6 +2,7 @@ package fr.eni.projetencheres.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -47,22 +48,23 @@ public class EncheresSecurity {
         http.authorizeHttpRequests(auth -> {
 
             //À SUPPRIMER : anyRequest().permitAll() <- pour travailler sur le site, mais pas sécurisé !
-            auth.anyRequest().permitAll();
+            auth.
 
 
-//                requestMatchers(HttpMethod.GET, "/encheres/add").hasRole("UTILISATEUR")
-//                    .requestMatchers(HttpMethod.POST, "/encheres/add").hasRole("UTILISATEUR")
-//
-//            //donne à tous la permission sur la page d'accueil et tous les liens de type /quelquechose
-//                    .requestMatchers("/*").permitAll()
-//                    .requestMatchers("/encheres").permitAll()
-//                    .requestMatchers("/encheres/*").permitAll()
+                requestMatchers(HttpMethod.GET, "/encheres/details_vente?*").hasRole("UTILISATEUR")
+                    .requestMatchers(HttpMethod.POST, "/encheres/acheter").hasRole("UTILISATEUR")
+                    .requestMatchers(HttpMethod.POST, "/encheres/update").hasRole("UTILISATEUR")
+
+            //donne à tous la permission sur la page d'encheres et tous les liens de type /quelquechose
+                    .requestMatchers("/*").permitAll()
+                    .requestMatchers("/encheres").permitAll()
+                    .requestMatchers("/encheres/*").permitAll()
                     //donne accès au css
-//                    .requestMatchers("/css/*").permitAll()
-//                    //donne accès aux images
-//                    .requestMatchers("/image/*").permitAll();
-//                    //tous ce qui n'est pas spécifié n'est pas accessible
-//                    .anyRequest().denyAll();
+                    .requestMatchers("/css/*").permitAll()
+                    //donne accès aux images
+                    .requestMatchers("/images/*").permitAll()
+                    //tous ce qui n'est pas spécifié n'est pas accessible
+                    .anyRequest().denyAll();
         });
 
         /*** pas touche *****/
