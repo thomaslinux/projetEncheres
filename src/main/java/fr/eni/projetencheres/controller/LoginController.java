@@ -48,7 +48,9 @@ public class LoginController {
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
         assert userDetails != null;
-        model.addAttribute("utilisateurConnect", utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
+        Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
+        System.out.println(user);
+        model.addAttribute("utilisateurConnect", user);
         return "profil";
     }
 
@@ -64,9 +66,15 @@ public class LoginController {
     }
 
     @PostMapping("/profil")
-    public String updateUtilisateur(@ModelAttribute("utilisateurConnect") Utilisateur utilisateurConnect) {
-        System.out.println(utilisateurConnect);
-        utilisateurService.updateUtilisateur(utilisateurConnect);
+    public String updateUtilisateur(@ModelAttribute("utilisateurConnect")
+                                    Utilisateur utilisateurConnect,
+                                    @RequestParam("action") String action) {
+        System.out.println("utilisateur : " + utilisateurConnect);
+        if ("delete".equals(action)) {
+            utilisateurService.deleteUtilisateur(utilisateurConnect.getId_utilisateur());
+        } else {
+            utilisateurService.updateUtilisateur(utilisateurConnect);
+        }
         return "redirect:/";
     }
 
