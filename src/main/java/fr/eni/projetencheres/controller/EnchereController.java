@@ -108,18 +108,21 @@ public class EnchereController {
     }
 
     @PostMapping("/encheres/acheter")
-    public String encherir(@ModelAttribute(name="enchere") Enchere enchere, @ModelAttribute(name="article") Article article) {
+    public String encherir(@ModelAttribute(name="enchere") Enchere enchere, @RequestParam(name="id_article") long id_article) {
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
 
         assert userDetails != null;
         enchere.setUtilisateur(utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
-        enchere.setArticle(article);
+
+        Article art = new Article();
+        art.setId_article(id_article);
+        enchere.setArticle(art);
 
         System.out.println(enchere);
 
         enchereService.addEnchere(enchere);
-        return "view_details_article_encherir";
+        return "redirect:/encheres/details_vente?id=" + id_article;
     }
 
     @PostMapping("/encheres/update")

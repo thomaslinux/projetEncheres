@@ -48,7 +48,7 @@
         <fieldset class="fieldset">
             <legend>Ma proposition :</legend>
             <form th:action="@{/encheres/acheter}" method="POST" th:object="${enchere}">
-                <input type="text" th:field="${utilisateurConnect.id_utilisateur}" hidden>
+                <input type="text" th:name="id_article" th:value="${article.id_article}" hidden>
                 <label for="montant_enchere">Eni Points :</label>
                 <input type="number" name="montant_enchere"
                        id="montant_enchere" min="0" max="1000"

@@ -51,7 +51,7 @@ public class EncheresSecurity {
             auth.
 
 
-                requestMatchers(HttpMethod.GET, "/encheres/details_vente?*").hasRole("UTILISATEUR")
+                    requestMatchers(HttpMethod.GET, "/encheres/details_vente").hasRole("UTILISATEUR")
                     .requestMatchers(HttpMethod.POST, "/encheres/acheter").hasRole("UTILISATEUR")
                     .requestMatchers(HttpMethod.POST, "/encheres/update").hasRole("UTILISATEUR")
 

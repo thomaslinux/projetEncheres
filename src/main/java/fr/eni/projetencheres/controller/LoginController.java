@@ -69,8 +69,10 @@ public class LoginController {
     public String updateUtilisateur(@ModelAttribute("utilisateurConnect")
                                     Utilisateur utilisateurConnect,
                                     @RequestParam("action") String action) {
+
         System.out.println("utilisateur : " + utilisateurConnect);
         if ("delete".equals(action)) {
+            Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).setAuthenticated(false);
             utilisateurService.deleteUtilisateur(utilisateurConnect.getId_utilisateur());
         } else {
             utilisateurService.updateUtilisateur(utilisateurConnect);
