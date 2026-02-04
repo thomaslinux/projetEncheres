@@ -418,4 +418,5 @@ header {
    position: -webkit-sticky;
     position: sticky;  /* SB */
     top: 0;    /* SB */
-    z-index: 1000;}
+    z-index: 1000;
+}
