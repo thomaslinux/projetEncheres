@@ -10,7 +10,7 @@
 
 <main class="container">
     <h2>Page d'inscription</h2>
-    <form method="POST" th:action="@{/inscription}" th:object="${utilisateur}">
+    <form class="formulaire" method="POST" th:action="@{/inscription}" th:object="${utilisateur}">
         <ul class="flex-outer">
             <li>
                 <label for="pseudo">Pseudo*</label>

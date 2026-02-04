@@ -8,7 +8,7 @@
 <main>
     <h2>Mettre un article en vente</h2>
 
-    <form th:action="@{/encheres/create}" method="post" th:object="${article}">
+    <form class="formulaire" th:action="@{/encheres/create}" method="post" th:object="${article}">
         <ul class="flex-outer">
             <li><label for="idimage_lien">Ajouter une image</label>
                 <input id="idimage_lien" type="text" th:field="*{image_lien}"></li>

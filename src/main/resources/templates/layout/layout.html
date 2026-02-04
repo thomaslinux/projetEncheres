@@ -14,23 +14,11 @@
 <body class="master">
 
 <header>
-    <!-- <h1 id="nav-title" > <a href="/">Eni Enchères </a> </h1>-->
-
-
-<!--    <img scr = "/images/back.jpg"/> -->
-
-
-    <!--<nav>
-        <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/encheres">Enchères</a></li>
-        </ul>
-    </nav>-->
                 <div class="logo-container">
                     <a href="/">
                         <img src="/images/logo.png" alt="alt-logo" class="logo">
                     </a>
-                    <a class="logo_text" href="/"><strong>ENI</strong><em>ENCHERES</em></a>
+                    <a href="/"> <h1 class="logo_text"><strong>ENI</strong><em>ENCHERES</em></h1></a>
                 </div>
     <nav>
         <ul>
@@ -57,22 +45,32 @@
         </ul>
     </nav>
 </header>
+
+
+
 <div class="search-container">
+
 <form id="searchBar" th:action="@{/encheres/search}" method="get">
     <div>
         <input type="search" name="q" placeholder="Recherche">
         <button class="btn" type="submit">&#128270; </button>
     </div>
     <div>
-        <label>
+       <label>
             <input id="byCategorie" type="checkbox" name="byCategorie" checked>Par catégorie
         </label>
+</div>
+    <div>
         <label>
             <input id="byDescription" type="checkbox" name="byDescription" checked>Par description
         </label>
+    </div>
+    <div>
         <input id="currentCategory" type="search" name="categorie" style="display: none" autocomplete="off">
     </div>
 </form>
+
+
 </div>
 
 <main data-th-replace="${content}"></main>
