@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<!--  appel du fragment layout avec les paramètre -->
+<html lang="fr" data-th-replace="~{layout/layout :: frag_layout
+						(title= ~{:: title},
+						content= ~{::main} )}">
+
+<!--  tire passé en paramètre -->
+<title>Profil</title>
+
+
+
+<main>
+
+    <h2>Profil de <span th:text="${utilisateurConnect?.pseudo}"></span></h2>
+    <form class ="form" data-th-object="${utilisateurConnect}">
+        <ul class="flex-outer">
+            <li>
+                <label for="pseudo">Pseudo</label>
+                <p id="pseudo" th:text="${utilisateurConnect?.pseudo}">
+            </li>
+            <li>
+                <label for="pseudo">Nom</label>
+                <p id="nom" th:text="${utilisateurConnect?.nom}">
+            </li>
+
+            <li>
+                <label for="pseudo">Prenom</label>
+                <p id="prenom" th:text="${utilisateurConnect?.prenom}">
+            </li>
+
+            <li>
+                <label for="email">E-mail</label>
+                <p id="email" th:text="${utilisateurConnect?.email}">
+            </li>
+
+            <li>
+                <label for="telephone">Telephone</label>
+                <p id="telephone" th:text="${utilisateurConnect?.telephone}">
+            </li>
+
+            <li>
+                <label for="adresse">Adresse</label>
+                <p id="adresse" th:text="${utilisateurConnect?.adresse}">
+            </li>
+
+            <li>
+                <label for="code_postal">Code Postal</label>
+                <p id="code_postal" th:text="${utilisateurConnect?.code_postal}">
+            </li>
+
+            <li>
+                <label for="ville">Ville</label>
+                <p id="ville" th:text="${utilisateurConnect?.ville}">
+            </li>
+
+            <li>
+                <label for="credit">Crédit</label>
+                <p id="credit" th:text="${utilisateurConnect?.credit}">
+            </li>
+
+
+            <li>
+                <label for="administrateur">Administrateur</label>
+                <p id="administrateur" th:text="${utilisateurConnect?.administrateur}">
+            </li>
+
+            <li>
+                <label for="actif">Actif</label>
+                <p id="actif" th:text="${utilisateurConnect?.actif}">
+            </li>
+        </ul>
+        </form>
+</main>
+</html>
+
+
+
