@@ -57,7 +57,7 @@ ALTER TABLE ARTICLE ADD CONSTRAINT article_utilisateur_fk
     FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
         ON UPDATE CASCADE ON DELETE SET NULL;
 
-ALTER TABLE ARTICLE ADD CONSTRAINT article_utillisateur_fk
+ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
     FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
         ON UPDATE CASCADE ON DELETE SET NULL;
 
