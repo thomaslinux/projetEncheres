@@ -18,14 +18,14 @@ public class CategorieDaoTests {
 
     @Test
     void testAddCategorie() {
-        Categorie categorie = new Categorie("Ordinateur");
+        Categorie categorie = new Categorie("Ordinateur", null);
         categorieDao.addCategorie(categorie);
         System.out.println(categorie);
     }
 
     @Test
     void testDeleteCategorie() {
-        Categorie categorie = new Categorie("Tableau");
+        Categorie categorie = new Categorie("Tableau", null);
         categorieDao.addCategorie(categorie);
         categorieDao.deleteCategorie(categorie.getId_categorie());
         System.out.println("Categorie list after delete");
@@ -34,6 +34,6 @@ public class CategorieDaoTests {
 
     @Test
     void testUpdateCategorie() {
-        categorieDao.updateCategorie(new Categorie(1,"Informatique"));
+        categorieDao.updateCategorie(new Categorie("Informatique", null));
     }
 }

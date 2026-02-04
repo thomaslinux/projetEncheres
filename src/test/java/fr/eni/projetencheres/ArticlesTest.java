@@ -27,7 +27,7 @@ public class ArticlesTest {
     void addUpdateDelete() {
         LocalDate debut = LocalDate.of(2026,1,15);
         LocalDate fin = LocalDate.of(2026,1,27);
-        Categorie jouet = new Categorie("JOUET");
+        Categorie jouet = new Categorie("JOUET", null);
         categorieDao.addCategorie(jouet);
         Article art = new Article("Ours en peluche", "C'est un ours en peluche", debut, fin, 10, 15, false, jouet, null,null);
         articleDao.addArticle(art);

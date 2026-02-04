@@ -3,13 +3,13 @@ package fr.eni.projetencheres.service;
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.UtilisateurDao;
 import fr.eni.projetencheres.service.exception.ServiceException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService {
