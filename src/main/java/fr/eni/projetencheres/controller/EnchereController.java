@@ -96,6 +96,7 @@ public class EnchereController {
 
     @GetMapping ("/encheres/details_vente")
     public String detailsArticle(@RequestParam(name="id")long id, Model model) {
+
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
 

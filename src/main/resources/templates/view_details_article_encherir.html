@@ -56,5 +56,45 @@
                 <button type="submit">Enchérir</button>
             </form>
         </fieldset>
+
+<!--    <article class="fiche"-->
+<!--             th:object="enchereMax">-->
+<!--        <div class="infos">-->
+<!--            <h3>Enchère la plus haute sur cet article</h3>-->
+<!--            <p><strong th:text="${enchere.montant_enchere}"></strong> points</p>-->
+<!--            <p>Proposé par : <em th:text="${enchere.id_utilisateur}"></em></p>-->
+
+<!--        </div>-->
+<!--    </article>-->
 </main>
 </html>
+
+
+<!-- <article class="fiche"
+                 th:each="item : ${articleLst}">
+
+            <div class="image">
+                <img th:src="@{'/images/' + ${item?.image_lien}}" th:alt="${item?.description}">
+            </div>
+
+
+            <div class="infos">
+                <h3 th:text="${item.nom_article}">Nom article</h3>
+
+                <p class="categorie" th:text="${item.categorie?.libelle}">Catégorie</p>
+                <p> Fin de l’enchère :<strong th:text="${item.date_fin_enchere}"> date</strong></p>
+                <p>Prix de base : <strong th:text="${item.prix_de_base}"></strong> points </p>
+                <p>
+
+                <a class="vendeur" th:href="@{/{username}(username=${item.vendeur?.pseudo})}" th:text="${item.vendeur?.pseudo}">Vendeur</a>
+                </p>
+
+
+                <a class="btn"
+                   th:href="@{/encheres/details_vente(id=${item.id_article})}">
+                    Voir détails
+                </a>
+
+            </div>
+
+        </article>-->

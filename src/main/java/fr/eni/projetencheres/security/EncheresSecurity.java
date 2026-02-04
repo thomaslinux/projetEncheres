@@ -51,14 +51,14 @@ public class EncheresSecurity {
             auth.
 
 
-                    requestMatchers(HttpMethod.GET, "/encheres/details_vente").hasAnyRole("UTILISATEUR", "ADMIN")
-                    .requestMatchers(HttpMethod.POST, "/encheres/acheter").hasAnyRole("UTILISATEUR", "ADMIN")
-                    .requestMatchers(HttpMethod.POST, "/encheres/update").hasAnyRole("UTILISATEUR", "ADMIN")
+                    requestMatchers(HttpMethod.GET, "/encheres/details_vente").hasRole("UTILISATEUR")
+                    .requestMatchers(HttpMethod.POST, "/encheres/acheter").hasRole("UTILISATEUR")
+                    .requestMatchers(HttpMethod.POST, "/encheres/update").hasRole("UTILISATEUR")
 
             //donne à tous la permission sur la page d'encheres et tous les liens de type /quelquechose
                     .requestMatchers("/*").permitAll()
                     .requestMatchers("/encheres").permitAll()
-                    .requestMatchers("/encheres/*").permitAll()
+                    .requestMatchers("/encheres/search").permitAll()
                     //donne accès au css
                     .requestMatchers("/css/*").permitAll()
                     //donne accès aux images

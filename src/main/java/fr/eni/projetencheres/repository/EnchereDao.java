@@ -1,5 +1,6 @@
 package fr.eni.projetencheres.repository;
 
+import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Enchere;
 import fr.eni.projetencheres.bo.Utilisateur;
 
@@ -17,4 +18,6 @@ public interface EnchereDao {
     void deleteEnchere(long id);
 
     void updateEnchere(Enchere enchere);
+
+    Enchere getHighestEnchere(Article article);
 }
