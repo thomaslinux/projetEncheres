@@ -26,14 +26,10 @@
             </li>
             <li><a class="accueil" href="/">Accueil</a></li>
             <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/encheres/add">Ajout</a></li>
+            <li><a class="nav-link" href="/encheres">Enchères</a></li>
             <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/profil">Profil</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/inscription">S'inscrire</a></li>
             <li th:if="${!#authorization.expression('isAuthenticated()')}"><a href="/login">Se Connecter</a></li>
-
-
-            <li>
-                <a class="nav-link" href="/encheres">Enchères</a>
-            </li>
 
             <!--  copie/colle du dernier TP barbie de Julian -->
             <li th:if="${#authorization.expression('isAuthenticated()')}">
