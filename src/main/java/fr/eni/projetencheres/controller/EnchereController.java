@@ -78,20 +78,26 @@ public class EnchereController {
 
     @GetMapping ("/encheres/add")
     public String addArticle(Model model,
-                             @Valid Article article,
-                             BindingResult bindingResult,
-                             @ModelAttribute("user") Utilisateur user) {
+                             @Valid Article article
+//                             BindingResult bindingResult
+    ) {
         List<Categorie> list= categorieService.getAllCategories();
 
         model.addAttribute("categorieList",list);
-        if (bindingResult.hasErrors()) {
-            System.err.println("addArticle erreur");
-            return "add_vente"; // affiche les erreurs sur la page
-        }
-        System.out.println("utilisateur actuel" + user);
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        assert userDetails != null;
+        Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
+        System.out.println("Utilisateur actuel : " + user);
         article.setVendeur(user);
+        System.out.println(article);
+//        if (bindingResult.hasErrors()) {
+//            System.err.println("addArticle erreur");
+//            return "add_vente"; // affiche les erreurs sur la page
+//        }
 
         model.addAttribute("article", new Article());
+        articleService.addArticle(article);
         return "add_vente";
     }
 
