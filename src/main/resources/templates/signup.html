@@ -48,7 +48,7 @@
             </li>
             <li>
                 <label for="telephone">Telephone</label>
-                <input type="text" th:field="*{telephone}" name="telephone" id="telephone"
+                <input type="text" inputmode="numeric" th:field="*{telephone}" name="telephone" id="telephone"
                     pattern="^\+?[0-9. ()-]{7,}$" title="Entrez un numero valide">
 
                 <span class="error" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></span>
