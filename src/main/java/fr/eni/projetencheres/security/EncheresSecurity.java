@@ -69,7 +69,9 @@ public class EncheresSecurity {
         //Gestion du login
         http.formLogin( form -> {
                     //Page login accessible à tous :
-                    form.loginPage("/login").permitAll();
+                    form.loginPage("/login")
+                            .permitAll()
+                            .failureUrl("/login?error=true");
                     //redirige après le login sur la page d'accueil
                     form.defaultSuccessUrl("/encheres");
                 }
