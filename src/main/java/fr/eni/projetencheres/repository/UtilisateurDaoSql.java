@@ -95,7 +95,11 @@ public class UtilisateurDaoSql implements UtilisateurDao {
 
     @Override
     public void deleteUtilisateur(long id_utilisateur) {
-        String sql = "DELETE FROM UTILISATEUR WHERE id_utilisateur = :id_utilisateur";
+        String sql = "DELETE FROM UTILISATEUR WHERE id_utilisateur = :id_utilisateur;"
+//                +
+//                     "DELETE FROM ARTICLE     WHERE id_utilisateur = :id_utilisateur;" +
+//                     "DELETE FROM ENCHERE     WHERE id_utilisateur = :id_utilisateur;"
+                ;
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_utilisateur", id_utilisateur);
