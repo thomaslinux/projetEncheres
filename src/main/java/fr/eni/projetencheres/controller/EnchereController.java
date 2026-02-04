@@ -4,6 +4,7 @@ package fr.eni.projetencheres.controller;
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Categorie;
 import fr.eni.projetencheres.bo.Enchere;
+import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.security.EncheresSecurity;
 import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
@@ -76,13 +77,20 @@ public class EnchereController {
 // ----------------------------Mettre un article en vente----------------------------
 
     @GetMapping ("/encheres/add")
-    public String addArticle(Model model, @Valid Article article,  BindingResult bindingResult) {
+    public String addArticle(Model model,
+                             @Valid Article article,
+                             BindingResult bindingResult,
+                             @ModelAttribute("user") Utilisateur user) {
         List<Categorie> list= categorieService.getAllCategories();
 
         model.addAttribute("categorieList",list);
         if (bindingResult.hasErrors()) {
+            System.err.println("addArticle erreur");
             return "add_vente"; // affiche les erreurs sur la page
         }
+        System.out.println("utilisateur actuel" + user);
+        article.setVendeur(user);
+
         model.addAttribute("article", new Article());
         return "add_vente";
     }
