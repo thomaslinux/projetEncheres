@@ -25,9 +25,11 @@
             <li><label for="date_fin_enchere">Date fin enchere</label>
                 <input id="date_fin_enchere" type="date" th:field="*{date_fin_enchere}"></li>
 
-            <li><label for="prix_de_base">Prix de Base</label>
-                <input id="prix_de_base" type="text" th:field="*{prix_de_base}"></li>
+            <li>
+                <label for="prix_de_base">Prix de Base</label>
                 <input id="prix_de_base" type="text" inputmode="numeric" pattern="[0-9]*" th:field="*{prix_de_base}">
+                <span class="error" th:if="${#fields.hasErrors('prix_de_base')}" th:errors="*{prix_de_base}"></span>
+            </li>
 
             <!--    private int prix_de_vente;-->
 
