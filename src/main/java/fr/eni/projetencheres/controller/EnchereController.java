@@ -116,6 +116,7 @@ public class EnchereController {
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
 
+        assert userDetails != null;
         enchere.setUtilisateur(utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
         enchere.setArticle(article);
 
