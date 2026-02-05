@@ -151,8 +151,7 @@ public class EnchereController {
     }
 
     @PostMapping("/encheres/update")
-    public String updateArticle(@ModelAttribute(name="article") Article article) {
-        articleService.updateArticle(article);
+    public String updateArticle(@ModelAttribute(name="article") Article article,
                                 @RequestParam("action") String action) {
             if("delete".equals(action)) {
                 articleService.deleteArticle(article.getId_article());
