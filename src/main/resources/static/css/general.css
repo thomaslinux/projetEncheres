@@ -418,3 +418,7 @@ header {
     top: 0;    /* SB */
     z-index: 1000;
 }
+
+.background-color-red {
+    background-color: red;
+}
