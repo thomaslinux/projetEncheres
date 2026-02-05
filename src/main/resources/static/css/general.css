@@ -216,12 +216,12 @@ button {
     align-items: center;
 }*/
 
-#searchBar {
-    display: flex;
-    flex-flow: wrap row;
-    align-items: center;
-    width: 100%;
-}
+/*#searchBar {*/
+/*    display: flex;*/
+/*    flex-flow: wrap row;*/
+/*    align-items: center;*/
+/*    width: 100%;*/
+/*}*/
 
 
 /*#searchBar {
@@ -244,10 +244,10 @@ button {
     -webkit-appearance: none;
 }
 
-#searchBar div:last-child {
-    display:flex;
-    flex-direction: column;
-}
+/*#searchBar div:last-child {*/
+/*    display:flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
 #searchBar input[type=checkbox]{
     height: auto;
