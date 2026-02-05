@@ -1,20 +1,14 @@
 package fr.eni.projetencheres.repository;
 
 import fr.eni.projetencheres.bo.Article;
-import fr.eni.projetencheres.repository.RowMapper.ArticleRowMapper;
-import fr.eni.projetencheres.repository.RowMapper.EnchereRowMapper;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import fr.eni.projetencheres.repository.RowMapper.ArticleRowMapperV2;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class ArticleDaoSQL implements ArticleDao {
@@ -48,7 +42,7 @@ public class ArticleDaoSQL implements ArticleDao {
                 left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur;
                 """;
 
-        return jdbcTemplate.query(sql, new EnchereRowMapper());
+        return jdbcTemplate.query(sql, new ArticleRowMapperV2());
 
     }
 
@@ -109,7 +103,7 @@ public class ArticleDaoSQL implements ArticleDao {
                 """;
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_article", id_article);
-        return namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereRowMapper());
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new ArticleRowMapperV2());
     }
 
     @Override
@@ -180,7 +174,7 @@ public class ArticleDaoSQL implements ArticleDao {
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("searchedTerm", "%" + searchedTerm + "%");
 
-        List<Article> result = namedParameterJdbcTemplate.query(sql, map, new EnchereRowMapper());
+        List<Article> result = namedParameterJdbcTemplate.query(sql, map, new ArticleRowMapperV2());
         System.out.println(result);
         return result;
     }
@@ -227,8 +221,8 @@ public class ArticleDaoSQL implements ArticleDao {
         map.addValue("searchedTerm", "%" + searchedTerm + "%");
 
         // decommente pour avoir les couleurs sur baseSql
-//        List<Article> result = namedParameterJdbcTemplate.query(baseSql, map, new ArticleRowMapper());
-        List<Article> result = namedParameterJdbcTemplate.query(finalSql.toString(), map, new EnchereRowMapper());
+//        List<Article> result = namedParameterJdbcTemplate.query(baseSql, map, new ArticleRowMapperV2());
+        List<Article> result = namedParameterJdbcTemplate.query(finalSql.toString(), map, new ArticleRowMapperV2());
         System.out.println(result);
         return result;
     }
