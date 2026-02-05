@@ -78,6 +78,8 @@
                 <span class="error" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
             </li>
             <li>
+                <button id="cancel" class="button btn background-color-red" type="button" onclick="window.location.href='/'">Annuler</button>
+
                 <button class="btn" type="submit">S'inscrire</button>
             </li>
 
