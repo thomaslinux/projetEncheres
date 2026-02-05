@@ -59,7 +59,7 @@
         </fieldset>
 
 
-    <section class="articles">
+    <section th:if="${enchereMax}" class="articles">
         <article class="fiche" th:object="${enchereMax}">
             <div class="infos"><h3>Enchère la plus haute sur cet article</h3>
                 <p><strong th:text="${enchereMax?.montant_enchere}"></strong> points</p>

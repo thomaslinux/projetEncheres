@@ -86,8 +86,6 @@ public class EnchereController {
 
         Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
 
-        System.out.println("Utilisateur actuel : ");
-        System.out.println(user);
         model.addAttribute("user", user);
         model.addAttribute("article", new Article());
         return "add_vente";
