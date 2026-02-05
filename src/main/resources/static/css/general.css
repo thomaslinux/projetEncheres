@@ -21,9 +21,13 @@ h1 {
 	font-size: 1.7em;
 }
 
+
 .error {
-    color: #EB2D07;
-    font-weight: bold;
+    color: #F54927;
+
+    family-font:poppins, arial;
+    font-weight: lighter;
+    font-size:1em;
 }
 
 body {
@@ -45,16 +49,7 @@ body {
     position: relative;
     z-index: 2;
 }
-/*
-.master img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    opacity: 0.5;
-}
-*/
+
 
 * {
 	margin: 0;
@@ -96,6 +91,13 @@ header a:hover {
 	color: rgb(0, 128, 192);
 }
 
+
+header {
+	padding: 5px;
+    min-height: 65px;
+}
+
+
 main {
 	margin-top: 15px;
 	margin-left: 15px;
@@ -126,10 +128,6 @@ body {
 	margin: 0;
 }
 
-header {
-	padding: 5px;
-    min-height: 65px;
-}
 
 
 
@@ -214,7 +212,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-}*/
+}
 
 #searchBar {
     display: flex;
@@ -232,7 +230,7 @@ button {
     box-shadow: none;
     gap: 1rem;
     align-items: center;
-}*/
+}
 
 #searchBar input {
     height: 4vh;
@@ -254,15 +252,58 @@ button {
 }
 #searchBar input[type=checkbox]{
     height: auto;
+}*/
+
+.search-container {
+    display: flex;
+    justify-content: center;   /*  horizontal */
+
+    margin-top:0;
 }
 
+#searchBar {
+    display: flex;
+    align-items: center;       /*  vertical */
+    gap: 15px;                 /* espace entre éléments */
+}
+
+#searchBar > div {
+    display: flex;
+    align-items: center;
+}
+
+#searchBar input[type="search"] {
+    height: 34px;
+    padding: 0 8px;
+    font-size: 1rem;
+}
+#searchBar button.btnLupe {
+    height: 34px;
+    padding: 0 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;    /* vertical */
+    justify-content: center;/* horizont */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #004982;
+    color: white;
+    margin-top:0;
+
+}
+
+#searchBar input[type="checkbox"] {
+    accent-color: #004982; /* color de la marca y borde al ser seleccionado */
+    width: 18px;   /* opcional, tamaño */
+    height: 18px;  /* opcional, tamaño */
+
+}
 
 /********************************/
 
 form h1 {
 	margin: 15px;
 	color: black;
-
 }
 
 
@@ -297,7 +338,7 @@ form h1 {
     font-size: 0.7em;
     margin-top: 40px;
    /* justify-content: flex-end;*/
-   margin-bottom:5em;
+   margin-bottom:none;
 
 }
 
@@ -418,3 +459,10 @@ header {
     top: 0;    /* SB */
     z-index: 1000;
 }
+
+a {
+    color: #004982;
+    text-decoration: shadow;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    transition: color 0.3s ease;
+    }

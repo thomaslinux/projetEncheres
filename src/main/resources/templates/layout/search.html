@@ -4,11 +4,11 @@
     <form id="searchBar" th:action="@{/encheres/search}" method="get">
         <div>
             <input type="search" name="q" placeholder="Recherche">
-            <button class="btn" type="submit">&#128270;</button>
+            <button class="btnLupe" type="submit">&#128270;</button>
         </div>
         <div>
             <label>
-                <input id="byCategorie" type="checkbox" name="byCategorie" checked><span>Par catégorie</span>
+                <input class="chec" id="byCategorie" type="checkbox" name="byCategorie" checked><span>Par catégorie</span>
             </label>
         </div>
         <div>
