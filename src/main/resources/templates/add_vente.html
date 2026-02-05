@@ -11,7 +11,7 @@
     <form class="formulaire" th:action="@{/encheres/create}" method="post" th:object="${article}">
         <ul class="flex-outer">
             <li>
-                <input type="text" th:field="${user.id_utilisateur}">
+                <input type="text" th:field="${user.id_utilisateur}" hidden>
             </li>
             <li><label for="idimage_lien">Ajouter une image</label>
                 <input id="idimage_lien" type="text" th:field="*{image_lien}"></li>
