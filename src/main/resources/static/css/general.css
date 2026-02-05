@@ -427,6 +427,10 @@ button.btn {
 background: #1565c0;
 }
 
+.btnLupe:hover {
+    background: #1565c0 !important;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
