@@ -21,15 +21,16 @@
             </li>
             <li>
                 <label for="pseudo">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" th:value="${utilisateurConnect?.pseudo}" autofocus>
+                <input type="text" name="pseudo" id="pseudo" th:value="${utilisateurConnect?.pseudo}" hidden>
+                <p th:text="${utilisateurConnect?.pseudo}"></p>
             </li>
             <li>
-                <label for="pseudo">Nom</label>
-                <input type="text" name="nom" id="nom" th:value="${utilisateurConnect?.nom}">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" id="nom" th:value="${utilisateurConnect?.nom}" autofocus>
             </li>
 
             <li>
-                <label for="pseudo">Prenom</label>
+                <label for="prenom">Prenom</label>
                 <input type="text" name="prenom" id="prenom" th:value="${utilisateurConnect?.prenom}">
             </li>
 
@@ -39,8 +40,8 @@
             </li>
 
             <li>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" th:value="${utilisateurConnect?.password}">
+<!--                <label for="password">Password</label>-->
+                <input type="password" name="password" id="password" th:value="${utilisateurConnect?.password}" hidden>
             </li>
 
 
@@ -83,10 +84,11 @@
 
 
 
-            <li>
-
-                <button type="submit" name="action" value="delete">Supprimer mon compte</button>
-                <button type="submit" name="action" value="update">Update Utilisateur</button>
+            <li class="align-item-center">
+                <button class="btn background-color-red" type="submit" name="action" value="cancel">Annuler</button>
+<!--                <a class="btn right" href="/">Annuler</a>-->
+                <button class="btn" type="submit" name="action" value="delete">Supprimer mon compte</button>
+                <button class="btn" type="submit" name="action" value="update">Enregistrer</button>
             </li>
 
 

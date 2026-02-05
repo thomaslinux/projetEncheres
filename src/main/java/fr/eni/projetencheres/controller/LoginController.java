@@ -74,7 +74,8 @@ public class LoginController {
         if ("delete".equals(action)) {
             Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).setAuthenticated(false);
             utilisateurService.deleteUtilisateur(utilisateurConnect.getId_utilisateur());
-        } else {
+        }
+        if ("update".equals(action)){
             utilisateurService.updateUtilisateur(utilisateurConnect);
             System.out.println(utilisateurConnect);
 

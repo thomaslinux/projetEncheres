@@ -26,7 +26,8 @@
             <p class="error" th:text="${errorMessage}"></p>
             </li>
             <li>
-                <button type="submit">Se Connecter</button>
+                <button id="cancel" class="button btn background-color-red" type="button" onclick="window.location.href='/'">Annuler</button>
+                <button class="btn" type="submit">Se Connecter</button>
             </li>
         </ul>
         <p class="information">Pas encore de compte ? <a href="/inscription">S'inscrire</a></p>

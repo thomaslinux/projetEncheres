@@ -11,7 +11,7 @@
     <form class="formulaire" th:action="@{/encheres/create}" method="post" th:object="${article}">
         <ul class="flex-outer">
             <li>
-                <input type="text" th:field="${user.id_utilisateur}">
+                <input type="text" th:field="${user.id_utilisateur}" hidden>
             </li>
             <li><label for="idimage_lien">Ajouter une image</label>
                 <input id="idimage_lien" type="text" th:field="*{image_lien}"></li>
@@ -41,19 +41,21 @@
                 <input id="vente_en_cours" type="radio" th:field="*{vente_en_cours}"></li>
 -->
 
-            <li><label for="idCategorie">Categorie</label>
-                <select id="idCategorie" th:field="*{categorie}">
-                <option th:each="item : ${categorieList}"
-
-                        th:value="${item.id_categorie}"
-                        th:text="${item.libelle}">
-
-
-
-                </option>
-            </select></li>
             <li>
-                <button type="submit">Ajouter</button>
+                <label for="idCategorie">Categorie</label>
+                <select id="idCategorie" th:field="*{categorie}">
+                    <option th:each="item : ${categorieList}"
+
+                            th:value="${item.id_categorie}"
+                            th:text="${item.libelle}">
+
+
+                    </option>
+                </select>
+            </li>
+            <li>
+                <button id="cancel" class="button btn background-color-red" type="button" onclick="window.location.href='/'">Annuler</button>
+                <button class="btn" type="submit">Ajouter</button>
             </li>
         </ul>
     </form>

@@ -273,6 +273,7 @@ button {
 }
 
 #searchBar input[type="search"] {
+    width: 30vw;
     height: 34px;
     padding: 0 8px;
     font-size: 1rem;
@@ -290,6 +291,11 @@ button {
     color: white;
     margin-top:0;
 
+}
+
+#searchCheckbox {
+    display: flex;
+    flex-flow: wrap column;
 }
 
 #searchBar input[type="checkbox"] {
@@ -344,7 +350,8 @@ form h1 {
 
 
 /*buton Formulaire -------SB*/
-.flex-outer li button {
+/*.flex-outer li button {*/
+button.btn {
     margin-left: auto;
     margin-bottom: 5px;
     padding : 8px 16px;
@@ -354,7 +361,8 @@ form h1 {
     text-transform: uppercase;
     letter-spacing: .09em;
     border-radius: 3px;
-    padding: 8px 16px}
+    padding: 8px 16px;
+}
 
 
 
@@ -425,6 +433,10 @@ form h1 {
 background: #1565c0;
 }
 
+.btnLupe:hover {
+    background: #1565c0 !important;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -466,3 +478,8 @@ a {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     transition: color 0.3s ease;
     }
+
+
+.background-color-red {
+    background-color: red;
+}
