@@ -23,6 +23,7 @@
 
             <div class="image">
                 <img th:src="@{'/images/' + ${item?.image_lien}}" th:alt="${item?.description}">
+<!--                <img th:src="@{/images/{filename}(filename=${item?.image_lien})}" th:alt="${item?.description}">-->
             </div>
 
 

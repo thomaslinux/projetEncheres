@@ -8,13 +8,18 @@
 <main>
     <h2>Mettre un article en vente</h2>
 
-    <form class="formulaire" th:action="@{/encheres/create}" method="post" th:object="${article}">
+    <form class="formulaire" th:action="@{/encheres/create}" method="post" th:object="${article}"
+    >
+<!--    enctype="multipart/form-data"-->
         <ul class="flex-outer">
             <li>
                 <input type="text" th:field="${user.id_utilisateur}" hidden>
             </li>
             <li><label for="idimage_lien">Ajouter une image</label>
                 <input id="idimage_lien" type="text" th:field="*{image_lien}"></li>
+<!--                <input id="image" type="file" name="image" accept=".jpg,.png,.bmp">-->
+<!--                <small>Format acceptés : .jpg, .png, .bmp</small>-->
+            </li>
 
             <li><label for="idnom_article">Nom d'Article</label>
                 <input id="idnom_article" type="text" th:field="*{nom_article}"></li>

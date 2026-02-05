@@ -119,7 +119,10 @@ public class EnchereDaoSQL implements EnchereDao{
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_article", article.getId_article());
-
-        return namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereMaxRowMapper());
+        List<Enchere> list = namedParameterJdbcTemplate.query(sql, map, new EnchereMaxRowMapper());
+        if (!list.isEmpty()) {
+            return list.get(0);
+        }
+        return null;
     }
 }
