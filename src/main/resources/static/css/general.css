@@ -280,6 +280,7 @@ button {
 #searchBar > div button {
     align-items: center;
 }
+
 #searchBar button.btnLupe {
     height: 34px;
     padding: 0 12px;
