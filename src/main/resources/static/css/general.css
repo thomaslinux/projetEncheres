@@ -344,7 +344,8 @@ form h1 {
 
 
 /*buton Formulaire -------SB*/
-.flex-outer li button {
+/*.flex-outer li button {*/
+button.btn {
     margin-left: auto;
     margin-bottom: 5px;
     padding : 8px 16px;
@@ -354,7 +355,8 @@ form h1 {
     text-transform: uppercase;
     letter-spacing: .09em;
     border-radius: 3px;
-    padding: 8px 16px}
+    padding: 8px 16px;
+}
 
 
 
@@ -423,6 +425,10 @@ form h1 {
 
 .btn:hover {
 background: #1565c0;
+}
+
+.btnLupe:hover {
+    background: #1565c0 !important;
 }
 
 .logo-container {

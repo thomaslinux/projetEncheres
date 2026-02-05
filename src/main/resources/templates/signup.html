@@ -78,7 +78,9 @@
                 <span class="error" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
             </li>
             <li>
-                <button type="submit">S'inscrire</button>
+                <button id="cancel" class="button btn background-color-red" type="button" onclick="window.location.href='/'">Annuler</button>
+
+                <button class="btn" type="submit">S'inscrire</button>
             </li>
 
             <!--- <li class="information">* = obligatoire</li>--->
@@ -87,7 +89,7 @@
 
         <p>Vous avez déjà un compte ? <a href="/login">Se connecter</a></p>
     </form>
-    <button onclick="
+    <button class="btn" onclick="
     document.querySelectorAll('input[pattern]').forEach(input => {
         input.removeAttribute('pattern');
     });">
