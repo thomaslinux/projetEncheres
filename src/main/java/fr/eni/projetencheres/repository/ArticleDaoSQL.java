@@ -179,10 +179,8 @@ public class ArticleDaoSQL implements ArticleDao {
         return result;
     }
 
-    public List<Article> searchArticleConfigurable(String searchedTerm,
-                                                   String byCategorie,
-                                                   String byDescription,
-                                                   String categorie) {
+    public List<Article> searchArticleConfigurable(String searchedTerm, String byCategorie,
+                                                   String byDescription, String categorie) {
         String baseSql = """
                 select id_article,
                        nom_article,
@@ -202,9 +200,9 @@ public class ArticleDaoSQL implements ArticleDao {
                 left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur
                 WHERE ARTICLE.nom_article LIKE :searchedTerm 
                 """;
-        System.out.println("ArticleDaoSQL searchArticlesConfigurable");
+//        List<Article> result = namedParameterJdbcTemplate.query(baseSql, new ArticleRowMapperV2());
+//         couleurs sur String baseSql ^
 
-        // using StringBuilder instead of normal concat for more performance
         StringBuilder finalSql = new StringBuilder(baseSql);
         MapSqlParameterSource map = new MapSqlParameterSource();
 
@@ -220,9 +218,8 @@ public class ArticleDaoSQL implements ArticleDao {
         }
         map.addValue("searchedTerm", "%" + searchedTerm + "%");
 
-        // decommente pour avoir les couleurs sur baseSql
-//        List<Article> result = namedParameterJdbcTemplate.query(baseSql, map, new ArticleRowMapperV2());
-        List<Article> result = namedParameterJdbcTemplate.query(finalSql.toString(), map, new ArticleRowMapperV2());
+        List<Article> result = namedParameterJdbcTemplate.query(
+                finalSql.toString(), map, new ArticleRowMapperV2());
         System.out.println(result);
         return result;
     }
