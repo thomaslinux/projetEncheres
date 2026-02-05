@@ -72,7 +72,8 @@ public class EnchereController {
         @RequestParam(name="categorie", defaultValue = "") String categorie
                                             ) {
         System.out.println("searchArticlesConfigurable");
-        List<Article> list = articleService.searchArticleConfigurable(searchedTerm, byCategorie, byDescription, categorie);
+        List<Article> list = articleService.searchArticleConfigurable
+                                            (searchedTerm, byCategorie, byDescription, categorie);
         model.addAttribute("articleLst",list);
         return "liste_des_artVente";
     }
@@ -130,21 +131,12 @@ public class EnchereController {
         Article article = articleService.getArticleById(id);
         List<Categorie> list = categorieService.getAllCategories();
 
-//
-//        boolean isVendeur = false;
-//        if (utilisateurService.getUtilisateurByUsername(userDetails.getUsername()).getId_utilisateur() == article.getVendeur().getId_utilisateur()) {
-//            isVendeur = true;
-//        }
-
         assert userDetails != null;
         model.addAttribute("utilisateurConnect", utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
         model.addAttribute("selectedCategory",article.getCategorie().getId_categorie());
-//        model.addAttribute("enchere", new Enchere());
-//        System.out.println(enchereService.getEnchereMax(article));
-//        model.addAttribute("enchereMax", enchereService.getEnchereMax(article));
-//        model.addAttribute("isVendeur", isVendeur);
+        model.addAttribute("enchereMax", enchereService.getEnchereMax(article));
         return "view_details_article_encherir";
 
     }

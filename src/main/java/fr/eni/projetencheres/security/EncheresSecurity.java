@@ -63,8 +63,6 @@ public class EncheresSecurity {
                     //donne accès aux images
                     .requestMatchers("/images/*").permitAll()
 
-                    //Admin a tous les droits :
-
                     //tous ce qui n'est pas spécifié n'est pas accessible
                     .anyRequest().denyAll();
         });
