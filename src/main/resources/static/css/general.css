@@ -364,6 +364,12 @@ button.btn {
     object-fit: cover;
     }
 
+.imageGRAND img {
+    width: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+    }
+
 .infos {
     padding: 1rem;
     }

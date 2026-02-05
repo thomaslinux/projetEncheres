@@ -13,6 +13,9 @@
             <input type="text" th:field="*{id_article}" hidden/>
             <input type="text" th:field="*{image_lien}" hidden/>
             <input type="text" th:field="*{prix_de_base}" hidden/>
+            <div class="imageGRAND">
+                <img th:src="@{'/images/' + *{image_lien}}" th:alt="*{description}">
+            </div>
             <li>
                 <label for="nom_article">nom_article</label>
                 <input type="text" name="nom_article" id="nom_article" th:value="*{nom_article}">
@@ -45,7 +48,7 @@
        </ul>
     </form>
 
-      <div class="finEnchere"> <!--  <fieldset th:unless="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" class="fieldset"> -->
+      <div  th:if="${utilisateurConnect.id_utilisateur != article.vendeur.id_utilisateur}" class="finEnchere"> <!--  <fieldset th:unless="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" class="fieldset"> -->
         <fieldset class ="formulaire">
             <legend>Ma proposition :</legend>
             <form th:action="@{/encheres/acheter}" method="POST" th:object="${enchere}">
