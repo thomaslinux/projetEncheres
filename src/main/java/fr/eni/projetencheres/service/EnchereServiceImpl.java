@@ -1,5 +1,6 @@
 package fr.eni.projetencheres.service;
 
+import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Enchere;
 import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.repository.EnchereDao;
@@ -45,4 +46,10 @@ public class EnchereServiceImpl implements EnchereService {
     public void updateEnchere(Enchere enchere) {
         enchereDao.updateEnchere(enchere);
     }
+
+    @Override
+    public Enchere getEnchereMax(Article article) {return enchereDao.getHighestEnchere(article);
+    }
+
+
 }
