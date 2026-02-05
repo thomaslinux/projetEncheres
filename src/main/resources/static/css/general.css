@@ -257,7 +257,7 @@ button {
 .search-container {
     display: flex;
     justify-content: center;   /*  horizontal */
-
+    position: sticky;
     margin-top:0;
 }
 
@@ -294,8 +294,8 @@ button {
 
 #searchBar input[type="checkbox"] {
     accent-color: #004982; /* color de la marca y borde al ser seleccionado */
-    width: 18px;   /* opcional, tamaño */
-    height: 18px;  /* opcional, tamaño */
+    width: 14px;   /* opcional, tamaño */
+    height: 14px;  /* opcional, tamaño */
 
 }
 

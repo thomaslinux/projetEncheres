@@ -51,9 +51,8 @@ public class EncheresSecurity {
             auth.
 
 
-                    requestMatchers(HttpMethod.GET, "/encheres/details_vente").hasRole("UTILISATEUR")
-                    .requestMatchers(HttpMethod.POST, "/encheres/acheter").hasRole("UTILISATEUR")
-                    .requestMatchers(HttpMethod.POST, "/encheres/update").hasRole("UTILISATEUR")
+                    requestMatchers(HttpMethod.GET, "/encheres/*").hasRole("UTILISATEUR")
+                    .requestMatchers(HttpMethod.POST, "/encheres/*").hasRole("UTILISATEUR")
 
             //donne à tous la permission sur la page d'encheres et tous les liens de type /quelquechose
                     .requestMatchers("/*").permitAll()
