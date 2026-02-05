@@ -120,9 +120,9 @@ public class EnchereController {
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
         model.addAttribute("selectedCategory",article.getCategorie().getId_categorie());
-        model.addAttribute("enchere", new Enchere());
-        System.out.println(enchereService.getEnchereMax(article));
-        model.addAttribute("enchereMax", enchereService.getEnchereMax(article));
+//        model.addAttribute("enchere", new Enchere());
+//        System.out.println(enchereService.getEnchereMax(article));
+//        model.addAttribute("enchereMax", enchereService.getEnchereMax(article));
 //        model.addAttribute("isVendeur", isVendeur);
         return "view_details_article_encherir";
 
