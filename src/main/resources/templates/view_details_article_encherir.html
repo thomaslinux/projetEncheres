@@ -59,16 +59,28 @@
         </fieldset>
 
 
+    <section class="articles">
+        <article class="fiche" th:object="${enchereMax}">
+            <div class="infos"><h3>Enchère la plus haute sur cet article</h3>
+                <p><strong th:text="${enchereMax?.montant_enchere}"></strong> points</p>
+                <p>Proposé par : <em th:text="${enchereMax?.utilisateur?.pseudo}"></em></p></div>
+        </article>
+    </section>
+
+
 <!--    <section class="articles">-->
-<!--        <article class="fiche" th:object="${enchere}">-->
-<!--            <div class="infos"><h3>Enchère la plus haute sur cet article</h3>-->
-<!--                <p><strong th:text="${enchere.montant_enchere}"></strong> points</p>-->
-<!--                <p>Proposé par : <em th:text="${enchere.id_utilisateur}"></em></p></div>-->
+<!--        <article class="fiche"-->
+<!--                 th:if="${enchereMax != null}"-->
+<!--                 th:object="${enchereMax}">-->
+
+<!--            <div class="infos">-->
+<!--                <h3>Enchère la plus haute sur cet article</h3>-->
+<!--                <p><strong th:text="*{montant_enchere}"></strong> points</p>-->
+<!--                <p>Proposé par :<em th:text="*{utilisateur.pseudo}"></em></p>-->
+<!--            </div>-->
+
 <!--        </article>-->
 <!--    </section>-->
-
-
-
 
 </main>
 </html>

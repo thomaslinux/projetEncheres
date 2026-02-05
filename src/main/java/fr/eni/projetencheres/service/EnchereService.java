@@ -1,5 +1,6 @@
 package fr.eni.projetencheres.service;
 
+import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Enchere;
 import fr.eni.projetencheres.bo.Utilisateur;
 
@@ -18,4 +19,6 @@ public interface EnchereService {
         void deleteEnchere(long id);
 
         void updateEnchere(Enchere enchere);
+
+        Enchere getEnchereMax(Article article);
 }

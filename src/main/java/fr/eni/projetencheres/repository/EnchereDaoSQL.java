@@ -3,6 +3,7 @@ package fr.eni.projetencheres.repository;
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Enchere;
 import fr.eni.projetencheres.bo.Utilisateur;
+import fr.eni.projetencheres.repository.RowMapper.EnchereMaxRowMapper;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -108,11 +109,17 @@ public class EnchereDaoSQL implements EnchereDao{
 
     @Override
     public Enchere getHighestEnchere(Article article) {
-        String sql = "SELECT MAX(montant_enchere) FROM ENCHERE INNER JOIN ARTICLE "
-                + "ON ENCHERE.id_article = ARTICLE.id_article WHERE ENCHERE.id_article = :id_article";
+        String sql = """
+                SELECT top 1 id_enchere, date_enchere, montant_enchere, UTILISATEUR.id_utilisateur, pseudo
+                    FROM ENCHERE left JOIN ARTICLE  ON ENCHERE.id_article = ARTICLE.id_article
+                    left JOIN UTILISATEUR on UTILISATEUR.id_utilisateur = ENCHERE.id_utilisateur
+                    WHERE ENCHERE.id_article = :id_article
+                    order by montant_enchere desc
+                """;
+
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_article", article.getId_article());
 
-        return namedParameterJdbcTemplate.queryForObject(sql, map, new BeanPropertyRowMapper<>(Enchere.class));
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereMaxRowMapper());
     }
 }
