@@ -46,7 +46,7 @@
     </form>
 
         <!--  <fieldset th:unless="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" class="fieldset"> -->
-        <fieldset class="fieldset">
+        <fieldset class="formulaire">
             <legend>Ma proposition :</legend>
             <form th:action="@{/encheres/acheter}" method="POST" th:object="${enchere}">
                 <input type="text" th:name="id_article" th:value="${article.id_article}" hidden>

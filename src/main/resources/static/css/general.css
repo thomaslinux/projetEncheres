@@ -269,7 +269,6 @@ button {
 
 #searchBar > div {
     display: flex;
-    align-items: center;
 }
 
 #searchBar input[type="search"] {
@@ -277,6 +276,9 @@ button {
     height: 34px;
     padding: 0 8px;
     font-size: 1rem;
+}
+#searchBar > div button {
+    align-items: center;
 }
 #searchBar button.btnLupe {
     height: 34px;
@@ -290,7 +292,6 @@ button {
     background-color: #004982;
     color: white;
     margin-top:0;
-
 }
 
 #searchCheckbox {
