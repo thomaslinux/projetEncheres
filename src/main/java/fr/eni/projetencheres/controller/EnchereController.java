@@ -4,6 +4,7 @@ package fr.eni.projetencheres.controller;
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Categorie;
 import fr.eni.projetencheres.bo.Enchere;
+import fr.eni.projetencheres.bo.Utilisateur;
 import fr.eni.projetencheres.security.EncheresSecurity;
 import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
@@ -76,14 +77,27 @@ public class EnchereController {
 // ----------------------------Mettre un article en vente----------------------------
 
     @GetMapping ("/encheres/add")
-    public String addArticle(Model model, @Valid Article article,  BindingResult bindingResult) {
+    public String addArticle(Model model,
+                             @Valid Article article
+//                             BindingResult bindingResult
+    ) {
         List<Categorie> list= categorieService.getAllCategories();
 
         model.addAttribute("categorieList",list);
-        if (bindingResult.hasErrors()) {
-            return "add_vente"; // affiche les erreurs sur la page
-        }
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        assert userDetails != null;
+        Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
+        System.out.println("Utilisateur actuel : " + user);
+        article.setVendeur(user);
+        System.out.println(article);
+//        if (bindingResult.hasErrors()) {
+//            System.err.println("addArticle erreur");
+//            return "add_vente"; // affiche les erreurs sur la page
+//        }
+
         model.addAttribute("article", new Article());
+        articleService.addArticle(article);
         return "add_vente";
     }
 
