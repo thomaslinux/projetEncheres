@@ -56,9 +56,9 @@ public class ArticleDaoSQL implements ArticleDao {
     public void addArticle(Article article) {
         GeneratedKeyHolder kh = new GeneratedKeyHolder();
         String sql = "INSERT INTO ARTICLE(nom_article, description, date_debut_enchere, " +
-                "date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, id_categorie, image_lien) " +
+                "date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, id_categorie, image_lien, id_utilisateur) " +
                 "VALUES (:nom_article, :description, :date_debut_enchere, " +
-                ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie, :image_lien)";
+                ":date_fin_enchere, :prix_de_base, :prix_de_vente, :vente_en_cours, :id_categorie, :image_lien, :id_utilisateur)";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("nom_article", article.getNom_article());
@@ -70,6 +70,7 @@ public class ArticleDaoSQL implements ArticleDao {
         map.addValue("vente_en_cours", article.isVente_en_cours());
         map.addValue("id_categorie", article.getCategorie().getId_categorie());
         map.addValue("image_lien", article.getImage_lien());
+        map.addValue("id_utilisateur", article.getVendeur().getId_utilisateur());
 
         namedParameterJdbcTemplate.update(sql, map, kh);
 

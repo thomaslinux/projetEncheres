@@ -39,7 +39,10 @@
 
 
                 <a class="btn"
-                   th:href="@{/encheres/details_vente(id=${item.id_article})}">
+                   th:href="${#authorization.expression('isAuthenticated()')} ?
+                            @{/encheres/details_vente(id=${item.id_article})} :
+                            @{/login}"
+                >
                     Voir détails
                 </a>
 

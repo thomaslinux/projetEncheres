@@ -6,7 +6,8 @@
 
 
 <main>
-    <form th:action="@{/encheres/update}"
+    <form   class="formulaire"
+            th:action="@{/encheres/update}"
           th:object="${article}"
           method="POST">
         <ul class="flex-outer">
@@ -38,6 +39,7 @@
                 </select>
             </li>
             <li>
+               <!-- <button th:if="${isVendeur == true}" type="submit">Update Article</button> -->
                 <button type="submit">Update Article</button>
                 <!-- <button th:if="${utilisateurConnect.id_utilisateur = item.vendeur.id_utilisateur}" type="submit">Update Article</button> -->
            </li>
@@ -45,7 +47,7 @@
     </form>
 
         <!--  <fieldset th:unless="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" class="fieldset"> -->
-        <fieldset class="fieldset">
+        <fieldset class="formulaire">
             <legend>Ma proposition :</legend>
             <form th:action="@{/encheres/acheter}" method="POST" th:object="${enchere}">
                 <input type="text" th:name="id_article" th:value="${article.id_article}" hidden>
@@ -56,5 +58,37 @@
                 <button type="submit">Enchérir</button>
             </form>
         </fieldset>
+
+
 </main>
 </html>
+
+
+<!-- <article class="fiche"
+                 th:each="item : ${articleLst}">
+
+            <div class="image">
+                <img th:src="@{'/images/' + ${item?.image_lien}}" th:alt="${item?.description}">
+            </div>
+
+
+            <div class="infos">
+                <h3 th:text="${item.nom_article}">Nom article</h3>
+
+                <p class="categorie" th:text="${item.categorie?.libelle}">Catégorie</p>
+                <p> Fin de l’enchère :<strong th:text="${item.date_fin_enchere}"> date</strong></p>
+                <p>Prix de base : <strong th:text="${item.prix_de_base}"></strong> points </p>
+                <p>
+
+                <a class="vendeur" th:href="@{/{username}(username=${item.vendeur?.pseudo})}" th:text="${item.vendeur?.pseudo}">Vendeur</a>
+                </p>
+
+
+                <a class="btn"
+                   th:href="@{/encheres/details_vente(id=${item.id_article})}">
+                    Voir détails
+                </a>
+
+            </div>
+
+        </article>-->

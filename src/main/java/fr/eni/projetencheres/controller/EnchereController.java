@@ -77,32 +77,28 @@ public class EnchereController {
 // ----------------------------Mettre un article en vente----------------------------
 
     @GetMapping ("/encheres/add")
-    public String addArticle(Model model,
-                             @Valid Article article
-//                             BindingResult bindingResult
-    ) {
+    public String addArticle(Model model) {
         List<Categorie> list= categorieService.getAllCategories();
 
         model.addAttribute("categorieList",list);
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
-        assert userDetails != null;
-        Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
-        System.out.println("Utilisateur actuel : " + user);
-        article.setVendeur(user);
-        System.out.println(article);
-//        if (bindingResult.hasErrors()) {
-//            System.err.println("addArticle erreur");
-//            return "add_vente"; // affiche les erreurs sur la page
-//        }
 
+        Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
+
+        System.out.println("Utilisateur actuel : ");
+        System.out.println(user);
+        model.addAttribute("user", user);
         model.addAttribute("article", new Article());
-        articleService.addArticle(article);
         return "add_vente";
     }
 
     @PostMapping("/encheres/create")
-    public String createArticle(Model model, Article article) {
+    public String createArticle(@ModelAttribute(name="article") Article article) {
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        article.setVendeur(utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
+
         articleService.addArticle(article);
         return "redirect:/encheres";
     }
@@ -110,11 +106,18 @@ public class EnchereController {
 
     @GetMapping ("/encheres/details_vente")
     public String detailsArticle(@RequestParam(name="id")long id, Model model) {
+
         UserDetails userDetails =
                 (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
 
         Article article = articleService.getArticleById(id);
         List<Categorie> list = categorieService.getAllCategories();
+
+//
+//        boolean isVendeur = false;
+//        if (utilisateurService.getUtilisateurByUsername(userDetails.getUsername()).getId_utilisateur() == article.getVendeur().getId_utilisateur()) {
+//            isVendeur = true;
+//        }
 
         assert userDetails != null;
         model.addAttribute("utilisateurConnect", utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
@@ -122,6 +125,7 @@ public class EnchereController {
         model.addAttribute("categoriesList",list);
         model.addAttribute("selectedCategory",article.getCategorie().getId_categorie());
         model.addAttribute("enchere", new Enchere());
+//        model.addAttribute("isVendeur", isVendeur);
         return "view_details_article_encherir";
 
     }
@@ -145,7 +149,7 @@ public class EnchereController {
     }
 
     @PostMapping("/encheres/update")
-    public String updateArticle(@ModelAttribute(name="article") Article article, Model model) {
+    public String updateArticle(@ModelAttribute(name="article") Article article) {
         articleService.updateArticle(article);
         return"redirect:/encheres";
     }

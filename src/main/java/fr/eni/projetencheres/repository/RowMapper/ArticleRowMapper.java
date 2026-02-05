@@ -2,6 +2,7 @@ package fr.eni.projetencheres.repository.RowMapper;
 
 import fr.eni.projetencheres.bo.Article;
 import fr.eni.projetencheres.bo.Categorie;
+import fr.eni.projetencheres.bo.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
