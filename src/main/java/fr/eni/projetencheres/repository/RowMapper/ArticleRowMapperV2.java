@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EnchereRowMapper implements RowMapper<Article> {
+public class ArticleRowMapperV2 implements RowMapper<Article> {
     @Override
     public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
         Article articleResult = new Article();

@@ -38,7 +38,7 @@
                     </option>
                 </select>
             </li>
-            <li>
+            <li th:if="${utilisateurConnect.id_utilisateur == article.vendeur.id_utilisateur}">
                 <button id="cancel" class="button btn background-color-red" type="button" onclick="window.location.href='/'">Annuler</button>
                <!-- <button class="btn"
                th:if="${isVendeur == true}" type="submit">Update Article</button> -->
