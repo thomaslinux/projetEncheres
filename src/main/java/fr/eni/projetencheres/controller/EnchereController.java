@@ -94,8 +94,11 @@ public class EnchereController {
     }
 
     @PostMapping("/encheres/create")
-    public String createArticle(@ModelAttribute("user") Utilisateur user, @ModelAttribute(name="article") Article article) {
-        article.setVendeur(user);
+    public String createArticle(@ModelAttribute(name="article") Article article) {
+        UserDetails userDetails =
+                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        article.setVendeur(utilisateurService.getUtilisateurByUsername(userDetails.getUsername()));
+
         articleService.addArticle(article);
         return "redirect:/encheres";
     }
