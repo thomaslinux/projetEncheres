@@ -153,12 +153,23 @@ public class EnchereController {
     @PostMapping("/encheres/update")
     public String updateArticle(@ModelAttribute(name="article") Article article,
                                 @RequestParam("action") String action) {
+//        UserDetails userDetails =
+//                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+//        assert userDetails != null;
+//        Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
+//        System.out.println("current_user = " + user);
+//        System.out.println("vendeur of article = " + article.getVendeur());
+//        if (article.getVendeur() == null) {
+//            return"redirect:/encheres";
+//        }
+//        if (article.getVendeur().getId_utilisateur() == user.getId_utilisateur()) {
             if("delete".equals(action)) {
                 articleService.deleteArticle(article.getId_article());
             }
             if("update".equals(action)) {
                 articleService.updateArticle(article);
             }
+//        }
         return"redirect:/encheres";
     }
 
