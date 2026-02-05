@@ -49,13 +49,13 @@ CREATE TABLE ARTICLE (
     vente_en_cours 		bit ,
     id_categorie 		INTEGER,
     image_lien			VARCHAR(255),
-    id_utilisateur		INTEGER,
+    id_utilisateur		INTEGER NOT NULL,
     CONSTRAINT ARTICLE_PK PRIMARY KEY (id_article)
 );
 
 ALTER TABLE ARTICLE ADD CONSTRAINT article_utilisateur_fk
     FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur)
-        ON UPDATE CASCADE ON DELETE SET NULL;
+        ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE ARTICLE ADD CONSTRAINT article_categorie_fk
     FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie)
