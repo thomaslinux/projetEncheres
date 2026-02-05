@@ -45,8 +45,8 @@
        </ul>
     </form>
 
-        <!--  <fieldset th:unless="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" class="fieldset"> -->
-        <fieldset class="fieldset">
+      <div class="finEnchere"> <!--  <fieldset th:unless="${utilisateurConnect.id_utilisateur == item.vendeur.id_utilisateur}" class="fieldset"> -->
+        <fieldset class ="formulaire">
             <legend>Ma proposition :</legend>
             <form th:action="@{/encheres/acheter}" method="POST" th:object="${enchere}">
                 <input type="text" th:name="id_article" th:value="${article.id_article}" hidden>
@@ -59,7 +59,7 @@
         </fieldset>
 
 
-    <section class="articles">
+    <section class ="enchereMax">
         <article class="fiche" th:object="${enchereMax}">
             <div class="infos"><h3>Enchère la plus haute sur cet article</h3>
                 <p><strong th:text="${enchereMax?.montant_enchere}"></strong> points</p>
@@ -67,20 +67,7 @@
         </article>
     </section>
 
-
-<!--    <section class="articles">-->
-<!--        <article class="fiche"-->
-<!--                 th:if="${enchereMax != null}"-->
-<!--                 th:object="${enchereMax}">-->
-
-<!--            <div class="infos">-->
-<!--                <h3>Enchère la plus haute sur cet article</h3>-->
-<!--                <p><strong th:text="*{montant_enchere}"></strong> points</p>-->
-<!--                <p>Proposé par :<em th:text="*{utilisateur.pseudo}"></em></p>-->
-<!--            </div>-->
-
-<!--        </article>-->
-<!--    </section>-->
+      </div>
 
 </main>
 </html>
