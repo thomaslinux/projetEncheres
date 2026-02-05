@@ -89,16 +89,27 @@ public class ArticleDaoSQL implements ArticleDao {
     @Override
     public Article getArticle(long id_article) {
         String sql = """
-                select id_article, nom_article,description, date_debut_enchere, 
-                                date_fin_enchere, prix_de_base, prix_de_vente, vente_en_cours, image_lien,
-                                ARTICLE.id_categorie, libelle from ARTICLE
-                                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                select id_article,
+                       nom_article,
+                       description,
+                       date_debut_enchere,
+                       date_fin_enchere,
+                       prix_de_base,
+                       prix_de_vente,
+                       vente_en_cours,
+                       image_lien,
+                       ARTICLE.id_categorie,
+                       libelle AS 'categorie',
+                       UTILISATEUR.id_utilisateur AS 'id_vendeur',
+                       pseudo  AS 'vendeur'
+                from ARTICLE
+                left join CATEGORIE on ARTICLE.id_categorie = CATEGORIE.id_categorie
+                left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur
                                                               where id_article = :id_article;
-                
                 """;
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("id_article", id_article);
-        return namedParameterJdbcTemplate.queryForObject(sql, map, new ArticleRowMapper());
+        return namedParameterJdbcTemplate.queryForObject(sql, map, new EnchereRowMapper());
     }
 
     @Override
