@@ -41,17 +41,18 @@
                 <input id="vente_en_cours" type="radio" th:field="*{vente_en_cours}"></li>
 -->
 
-            <li><label for="idCategorie">Categorie</label>
+            <li>
+                <label for="idCategorie">Categorie</label>
                 <select id="idCategorie" th:field="*{categorie}">
-                <option th:each="item : ${categorieList}"
+                    <option th:each="item : ${categorieList}"
 
-                        th:value="${item.id_categorie}"
-                        th:text="${item.libelle}">
+                            th:value="${item.id_categorie}"
+                            th:text="${item.libelle}">
 
 
-
-                </option>
-            </select></li>
+                    </option>
+                </select>
+            </li>
             <li>
                 <button class="btn" type="submit">Ajouter</button>
             </li>
