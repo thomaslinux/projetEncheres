@@ -46,3 +46,5 @@ left join UTILISATEUR on ARTICLE.id_utilisateur = UTILISATEUR.id_utilisateur
 WHERE libelle = 'INFORMATIQUE';
 
 SELECT * FROM UTILISATEUR
+
+SELECT * FROM ARTICLE
