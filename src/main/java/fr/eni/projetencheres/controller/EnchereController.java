@@ -10,20 +10,16 @@ import fr.eni.projetencheres.service.ArticleService;
 import fr.eni.projetencheres.service.CategorieService;
 import fr.eni.projetencheres.service.EnchereService;
 import fr.eni.projetencheres.service.UtilisateurService;
-import jakarta.validation.Valid;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -122,9 +118,9 @@ public class EnchereController {
         model.addAttribute("article", article);
         model.addAttribute("categoriesList",list);
         model.addAttribute("selectedCategory",article.getCategorie().getId_categorie());
-        model.addAttribute("enchere", new Enchere());
-        System.out.println(enchereService.getEnchereMax(article));
-        model.addAttribute("enchereMax", enchereService.getEnchereMax(article));
+//        model.addAttribute("enchere", new Enchere());
+//        System.out.println(enchereService.getEnchereMax(article));
+//        model.addAttribute("enchereMax", enchereService.getEnchereMax(article));
 //        model.addAttribute("isVendeur", isVendeur);
         return "view_details_article_encherir";
 
@@ -149,8 +145,25 @@ public class EnchereController {
     }
 
     @PostMapping("/encheres/update")
-    public String updateArticle(@ModelAttribute(name="article") Article article) {
-        articleService.updateArticle(article);
+    public String updateArticle(@ModelAttribute(name="article") Article article,
+                                @RequestParam("action") String action) {
+//        UserDetails userDetails =
+//                (UserDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+//        assert userDetails != null;
+//        Utilisateur user = utilisateurService.getUtilisateurByUsername(userDetails.getUsername());
+//        System.out.println("current_user = " + user);
+//        System.out.println("vendeur of article = " + article.getVendeur());
+//        if (article.getVendeur() == null) {
+//            return"redirect:/encheres";
+//        }
+//        if (article.getVendeur().getId_utilisateur() == user.getId_utilisateur()) {
+            if("delete".equals(action)) {
+                articleService.deleteArticle(article.getId_article());
+            }
+            if("update".equals(action)) {
+                articleService.updateArticle(article);
+            }
+//        }
         return"redirect:/encheres";
     }
 

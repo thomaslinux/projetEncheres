@@ -6,7 +6,8 @@
 
 
 <main>
-    <form class ="formulaire" th:action="@{/encheres/update}"
+    <form class="formulaire"
+          th:action="@{/encheres/update}"
           th:object="${article}"
           method="POST">
         <ul class="flex-outer">
@@ -37,10 +38,10 @@
                     </option>
                 </select>
             </li>
-            <li>
-               <!-- <button th:if="${isVendeur == true}" type="submit">Update Article</button> -->
-                <button type="submit">Update Article</button>
-                <!-- <button th:if="${utilisateurConnect.id_utilisateur = item.vendeur.id_utilisateur}" type="submit">Update Article</button> -->
+            <li th:if="${utilisateurConnect.id_utilisateur == article.vendeur.id_utilisateur}">
+                <button id="cancel" class="button btn background-color-red" type="button" onclick="window.location.href='/'">Annuler</button>
+                <button class="btn" type="submit" name="action" value="delete">Supprimer Article</button>
+                <button class="btn" type="submit" name="action" value="update">Update Article</button>
            </li>
        </ul>
     </form>
@@ -54,12 +55,12 @@
                 <input type="number" name="montant_enchere"
                        id="montant_enchere" min="0" max="1000"
                        th:value="${article.prix_de_base != null ? article.prix_de_base : 0}">
-                <button type="submit">Enchérir</button>
+                <button class="btn" type="submit">Enchérir</button>
             </form>
         </fieldset>
 
 
-    <section th:if="${enchereMax}" class="articles">
+    <section class="articles">
         <article class="fiche" th:object="${enchereMax}">
             <div class="infos"><h3>Enchère la plus haute sur cet article</h3>
                 <p><strong th:text="${enchereMax?.montant_enchere}"></strong> points</p>
