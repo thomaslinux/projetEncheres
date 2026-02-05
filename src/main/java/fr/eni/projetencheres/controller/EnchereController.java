@@ -151,6 +151,13 @@ public class EnchereController {
     @PostMapping("/encheres/update")
     public String updateArticle(@ModelAttribute(name="article") Article article) {
         articleService.updateArticle(article);
+                                @RequestParam("action") String action) {
+            if("delete".equals(action)) {
+                articleService.deleteArticle(article.getId_article());
+            }
+            if("update".equals(action)) {
+                articleService.updateArticle(article);
+            }
         return"redirect:/encheres";
     }
 
