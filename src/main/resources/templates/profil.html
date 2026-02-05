@@ -21,7 +21,8 @@
             </li>
             <li>
                 <label for="pseudo">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" th:value="${utilisateurConnect?.pseudo}" autofocus>
+                <input type="text" name="pseudo" id="pseudo" th:value="${utilisateurConnect?.pseudo}" hidden>
+                <p th:text="${utilisateurConnect?.pseudo}"></p>
             </li>
             <li>
                 <label for="nom">Nom</label>
@@ -39,8 +40,8 @@
             </li>
 
             <li>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" th:value="${utilisateurConnect?.password}">
+<!--                <label for="password">Password</label>-->
+                <input type="password" name="password" id="password" th:value="${utilisateurConnect?.password}" hidden>
             </li>
 
 
