@@ -10,23 +10,11 @@
 <main>
     <div th:replace="~{layout/search :: search-container}"></div>
     <h2>Nos Enchères</h2>
-
-<!--    <form th:action="@{/encheres/search}" method="get">-->
-<!--        <input type="search" name="q" placeholder="Recherche">-->
-<!--        <button type="submit">Recherche </button>-->
-<!--    </form>-->
-
     <section class="articles">
-
-        <article class="fiche"
-                 th:each="item : ${articleLst}">
-
+        <article class="fiche" th:each="item : ${articleLst}">
             <div class="image">
                 <img th:src="@{'/images/' + ${item?.image_lien}}" th:alt="${item?.description}">
-<!--                <img th:src="@{/images/{filename}(filename=${item?.image_lien})}" th:alt="${item?.description}">-->
             </div>
-
-
             <div class="infos">
                 <h3 th:text="${item.nom_article}">Nom article</h3>
 
@@ -35,22 +23,18 @@
                 <p>Prix de base : <strong th:text="${item.prix_de_base}"></strong> points </p>
                 <p>
 
-                <a class="vendeur" th:href="@{/{username}(username=${item.vendeur?.pseudo})}" th:text="${item.vendeur?.pseudo}">Vendeur</a>
+                <a class="vendeur" th:href="@{/{username}(username=${item.vendeur?.pseudo})}"
+                   th:text="${item.vendeur?.pseudo}">Vendeur</a>
                 </p>
-
-
                 <a class="btn"
                    th:href="${#authorization.expression('isAuthenticated()')} ?
                             @{/encheres/details_vente(id=${item.id_article})} :
                             @{/login}"
                 >
-                    Voir détails
+                Voir détails
                 </a>
-
             </div>
-
         </article>
-
     </section>
 
 
