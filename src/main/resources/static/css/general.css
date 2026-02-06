@@ -453,10 +453,11 @@ a {
 
 .finEnchere {
     display: flex;
-    justify-items: space-around;
-    align-items: flex-start;
+    justify-self: center;
+    align-items: center;
     gap: 2rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
